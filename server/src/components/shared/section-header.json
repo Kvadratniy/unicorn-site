@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_section_headers",
+  "info": {
+    "displayName": "Section header"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Question": {
+      "type": "component",
+      "component": "shared.question",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

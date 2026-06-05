@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_widgets_navigations",
+  "info": {
+    "displayName": "Navigation"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "src": {
+      "type": "string"
+    },
+    "Navigation": {
+      "type": "component",
+      "component": "shared.nav",
+      "repeatable": true
+    },
+    "Subtitle": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

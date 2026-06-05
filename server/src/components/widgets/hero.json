@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_widgets_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "component",
+      "component": "shared.shared-lines",
+      "repeatable": false
+    },
+    "image": {
+      "type": "component",
+      "component": "shared.shared-image",
+      "repeatable": false
+    },
+    "video": {
+      "type": "component",
+      "component": "shared.shared-video",
+      "repeatable": false
+    },
+    "Card": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    },
+    "Chip": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

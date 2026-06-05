@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_teachers",
+  "info": {
+    "displayName": "Teachers"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Teacher": {
+      "type": "component",
+      "component": "shared.teacher",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

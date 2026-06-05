@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "rents",
+  "info": {
+    "singularName": "rent",
+    "pluralName": "rents",
+    "displayName": "Page.Rent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HeroBlock": {
+      "type": "component",
+      "component": "widgets.hero",
+      "repeatable": false
+    },
+    "MainBlock": {
+      "type": "component",
+      "component": "widgets.main",
+      "repeatable": false
+    },
+    "VariantsBlock": {
+      "type": "component",
+      "component": "widgets.rent-variants",
+      "repeatable": false
+    }
+  }
+}

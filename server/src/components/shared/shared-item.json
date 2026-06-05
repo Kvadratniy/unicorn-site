@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_shared_items",
+  "info": {
+    "displayName": "Shared.Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "value": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

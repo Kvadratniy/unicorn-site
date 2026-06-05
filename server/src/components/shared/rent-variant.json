@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_rent_variants",
+  "info": {
+    "displayName": "Shared.VariantCard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "Image": {
+      "type": "component",
+      "component": "shared.shared-image",
+      "repeatable": false
+    },
+    "lines": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    },
+    "price": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

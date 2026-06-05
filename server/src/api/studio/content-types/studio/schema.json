@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "studios",
+  "info": {
+    "singularName": "studio",
+    "pluralName": "studios",
+    "displayName": "Page.Studio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Hero": {
+      "type": "component",
+      "component": "widgets.hero",
+      "repeatable": false
+    },
+    "Main": {
+      "type": "component",
+      "component": "widgets.main",
+      "repeatable": false
+    },
+    "Services": {
+      "type": "component",
+      "component": "widgets.studio-services",
+      "repeatable": false
+    },
+    "Clients": {
+      "type": "component",
+      "component": "widgets.studio-clients",
+      "repeatable": false
+    },
+    "Audience": {
+      "type": "component",
+      "component": "widgets.studio-audience",
+      "repeatable": false
+    }
+  }
+}

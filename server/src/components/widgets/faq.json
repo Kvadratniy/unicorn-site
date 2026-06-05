@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_widgets_faqs",
+  "info": {
+    "displayName": "FAQ"
+  },
+  "options": {},
+  "attributes": {
+    "FAQ_H": {
+      "type": "component",
+      "component": "shared.section-header",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

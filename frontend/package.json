@@ -1,0 +1,36 @@
+{
+  "name": "unicorn-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "deploy": "bash scripts/deploy.sh",
+    "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host 0.0.0.0",
+    "generate": "nuxt generate",
+    "start": "node .output/server/index.mjs",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/image": "^2.0.0",
+    "@nuxtjs/robots": "^5.7.0",
+    "@nuxtjs/sitemap": "^7.6.0",
+    "@nuxtjs/strapi": "^2.1.1",
+    "@vueuse/core": "^14.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "maska": "^3.2.0",
+    "nuxt": "^4.3.0",
+    "radix-vue": "^1.9.17",
+    "tailwind-merge": "^3.4.0",
+    "vaul-vue": "^0.4.1",
+    "vue": "^3.5.27",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^25.2.0",
+    "sass": "^1.100.0"
+  }
+}

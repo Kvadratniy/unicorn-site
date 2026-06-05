@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_widgets_studio_audiences",
+  "info": {
+    "displayName": "Studio.Audience"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "component",
+      "component": "shared.shared-audience",
+      "repeatable": false
+    },
+    "Items": {
+      "type": "component",
+      "component": "shared.shared-audience",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "vocals",
+  "info": {
+    "singularName": "vocal",
+    "pluralName": "vocals",
+    "displayName": "Page.Vocal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Hero": {
+      "type": "component",
+      "component": "widgets.hero",
+      "repeatable": false
+    },
+    "Main": {
+      "type": "component",
+      "component": "widgets.main",
+      "repeatable": false
+    },
+    "Services": {
+      "type": "component",
+      "component": "widgets.formats",
+      "repeatable": false
+    },
+    "Teachers": {
+      "type": "component",
+      "component": "widgets.teachers",
+      "repeatable": false
+    },
+    "FAQ": {
+      "type": "component",
+      "component": "widgets.faq",
+      "repeatable": false
+    }
+  }
+}

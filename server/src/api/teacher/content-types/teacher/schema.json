@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teachers",
+  "info": {
+    "singularName": "teacher",
+    "pluralName": "teachers",
+    "displayName": "Teacher"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "Role": {
+      "type": "enumeration",
+      "enum": [
+        "Тренер по вокалу",
+        "Тренер по фортепиано",
+        "Тренер по гитаре"
+      ]
+    },
+    "Achievements": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_distributions",
+  "info": {
+    "singularName": "page-distribution",
+    "pluralName": "page-distributions",
+    "displayName": "Page.Distribution"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HeroBlock": {
+      "type": "component",
+      "component": "widgets.hero",
+      "repeatable": false
+    },
+    "MainBlock": {
+      "type": "component",
+      "component": "widgets.main",
+      "repeatable": false
+    },
+    "Variants": {
+      "type": "component",
+      "component": "widgets.distribution-variants",
+      "repeatable": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_formats",
+  "info": {
+    "displayName": "Formats"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "services": {
+      "type": "component",
+      "component": "shared.formats",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

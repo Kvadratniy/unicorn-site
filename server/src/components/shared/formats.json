@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_formats",
+  "info": {
+    "displayName": "Shared.ServiceCard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "new": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "string"
+    },
+    "advantages": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

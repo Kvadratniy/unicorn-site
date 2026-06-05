@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_questions",
+  "info": {
+    "displayName": "Shared.Question"
+  },
+  "options": {},
+  "attributes": {
+    "Question": {
+      "type": "string"
+    },
+    "Answer": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_shared_videos",
+  "info": {
+    "displayName": "Shared.Video"
+  },
+  "options": {},
+  "attributes": {
+    "src": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "alt": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

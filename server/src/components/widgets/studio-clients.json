@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_studio_clients",
+  "info": {
+    "displayName": "Studio.Clients"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Client": {
+      "type": "component",
+      "component": "shared.studio-client",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

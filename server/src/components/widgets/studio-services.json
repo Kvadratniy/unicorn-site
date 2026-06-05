@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_studio_services",
+  "info": {
+    "displayName": "Studio.Services"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Service": {
+      "type": "component",
+      "component": "shared.studio-service",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

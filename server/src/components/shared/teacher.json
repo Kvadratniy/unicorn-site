@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_teachers",
+  "info": {
+    "displayName": "Shared.Teacher"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Role": {
+      "type": "string"
+    },
+    "Achievements": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

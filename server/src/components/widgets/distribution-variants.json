@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_distribution_variants",
+  "info": {
+    "displayName": "Distribution.Variants"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "Variant": {
+      "type": "component",
+      "component": "shared.rent-variant",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

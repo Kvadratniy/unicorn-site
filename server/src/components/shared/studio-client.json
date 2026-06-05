@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_studio_clients",
+  "info": {
+    "displayName": "Studio.Client"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

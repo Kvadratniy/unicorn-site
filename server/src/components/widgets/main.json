@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_widgets_mains",
+  "info": {
+    "displayName": "Main"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "paragraph": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Cards": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

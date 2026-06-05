@@ -1,0 +1,30 @@
+/* When adding webfonts (Druk Wide, Suisse Intl): use font-display: optional or swap in @font-face,
+   and add preload for critical faces in nuxt.config app.head.link to reduce CLS. */
+
+
+.unicorn-studio-title {
+  font-size: clamp(2.75rem, 5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #1d1d1f;
+  font-family: 'Suisse Intl', sans-serif;
+}
+
+.unicorn-studio-title-2 {
+  font-size: clamp(2.75rem, 5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #1d1d1f;
+  font-family: 'Suisse Intl', sans-serif;
+}
+
+.unicorn-studio-subtitle {
+  font-family: 'Montserrat';
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  color: #86868b;
+}

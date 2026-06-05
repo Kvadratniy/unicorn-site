@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_navs",
+  "info": {
+    "displayName": "Nav"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "src": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

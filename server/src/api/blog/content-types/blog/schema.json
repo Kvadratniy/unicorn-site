@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "News"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "MainImage": {
+      "type": "component",
+      "component": "shared.shared-image",
+      "repeatable": false
+    },
+    "Content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.news-headline",
+        "shared.news-paragraph",
+        "shared.shared-list"
+      ]
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_news_headlines",
+  "info": {
+    "displayName": "News.Headline"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

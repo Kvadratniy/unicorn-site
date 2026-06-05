@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_shared_lists",
+  "info": {
+    "displayName": "Shared.List"
+  },
+  "options": {},
+  "attributes": {
+    "Items": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_studio_services",
+  "info": {
+    "displayName": "Studio.Service"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Price": {
+      "type": "string"
+    },
+    "Badge": {
+      "type": "string"
+    },
+    "Features": {
+      "type": "json"
+    },
+    "List": {
+      "type": "component",
+      "component": "shared.shared-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

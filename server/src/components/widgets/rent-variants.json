@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_widgets_rent_variants",
+  "info": {
+    "displayName": "Rent.Variants"
+  },
+  "options": {},
+  "attributes": {
+    "Variant": {
+      "type": "component",
+      "component": "shared.rent-variant",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
