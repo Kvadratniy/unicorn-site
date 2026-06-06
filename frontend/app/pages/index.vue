@@ -10,7 +10,7 @@ usePageSeo({
   keywords:
     'музыкальная школа ставрополь, студия звукозаписи ставрополь, запись песен ставрополь, уроки вокала, уроки гитары, уроки фортепиано, вокалисты на мероприятия, музыкальная школа для детей и взрослых, юникорн, unicorn',
 })
-// Preload LCP image (hero fallback on mobile/slow connection)
+
 useHead({
   link: [
     { rel: 'preload', as: 'image', href: '/images/studio/main.jpg' },

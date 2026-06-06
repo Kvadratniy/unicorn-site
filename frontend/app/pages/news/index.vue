@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { createNewsCollectionSchema } from '~/composables/useSchemas'
+
 const { getNewsArticles } = useNews()
 const { data: articles, pending } = await useAsyncData('news-list', getNewsArticles)
 
@@ -6,7 +8,27 @@ usePageSeo({
   title: 'Новости — Unicorn Studio',
   description:
     'Статьи и заметки студии: вокал, инструменты, запись и практические советы для занятий и сессий в студии.',
-  noindex: true,
+})
+
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const pageUrl = `${siteUrl}/news`
+
+const newsCollectionSchema = computed(() =>
+  createNewsCollectionSchema({
+    siteUrl,
+    pageUrl,
+    articles: articles.value || [],
+  }),
+)
+
+useHead({
+  script: computed(() => [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(newsCollectionSchema.value),
+    },
+  ]),
 })
 </script>
 

@@ -1,28 +1,10 @@
 <script setup lang="ts">
+import { createOrganizationSchema } from '~/composables/useSchemas'
+
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl as string
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Unicorn Studio',
-  url: siteUrl,
-  logo: `${siteUrl}/images/logo/logo-4.png`,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Ставрополь',
-    streetAddress: 'ул. 50 лет ВЛКСМ, д. 93',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+7-906-464-94-96',
-    email: 'studio.unicorn.stv@gmail.com',
-    contactType: 'customer service',
-    areaServed: 'RU',
-    availableLanguage: 'Russian',
-  },
-  sameAs: ['https://vk.com/1unicornstudio'],
-}
+const organizationSchema = createOrganizationSchema(siteUrl)
 
 useHead({
   script: [

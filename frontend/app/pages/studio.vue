@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useStudio } from '~/composables/pages/useStudio'
+import { createStudioServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Студия звукозаписи в Ставрополе — запись песни, сведение, мастеринг и аранжировка',
@@ -11,6 +12,28 @@ usePageSeo({
 
 const { open: openContactModal } = useContactModal()
 const { hero, main, services, clients, audience } = await useStudio('studio-content')
+
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const pageUrl = `${siteUrl}/studio`
+
+const serviceSchema = computed(() =>
+  createStudioServiceSchema({
+    siteUrl,
+    pageUrl,
+    servicesTitle: services.value.title,
+    services: services.value.items,
+  }),
+)
+
+useHead({
+  script: computed(() => [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(serviceSchema.value),
+    },
+  ]),
+})
 </script>
 
 <template>

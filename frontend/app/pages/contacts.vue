@@ -1,55 +1,27 @@
 <script setup lang="ts">
+import { createLocalBusinessSchema } from '~/composables/useSchemas'
+
 usePageSeo({
   title: 'Контакты',
   description:
     'Unicorn Studio, Ставрополь: адрес 50 лет ВЛКСМ д. 93, телефон +7 (906) 464-94-96, почта. График работы пн–вс 10:00–22:00. Как добраться.',
 })
 
-// Координаты для адреса: Ставрополь, ул. 50 лет ВЛКСМ, д. 93
-// Источник: геокодинг Яндекс / открытые данные
-const mapCenter: [number, number] = [45.000217, 41.9192]
-const mapZoom = 17
-
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl as string
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Unicorn Studio',
-  url: siteUrl,
-  image: `${siteUrl}/images/logo/logo-4.png`,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Ставрополь',
-    streetAddress: 'ул. 50 лет ВЛКСМ, д. 93',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 45.000217,
-    longitude: 41.9192,
-  },
-  telephone: '+7-906-464-94-96',
-  email: 'studio.unicorn.stv@gmail.com',
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    opens: '10:00',
-    closes: '22:00',
-  },
-}
+const localBusinessSchema = createLocalBusinessSchema(siteUrl)
 
 useHead({
   link: [
     { rel: 'preconnect', href: 'https://api-maps.yandex.ru' },
   ],
-  script: [
+  script: computed(() => [
     {
       type: 'application/ld+json',
-      // Nuxt 3 рекомендует использовать children для JSON-LD
       children: JSON.stringify(localBusinessSchema),
     },
-  ],
+  ]),
 })
 </script>
 
@@ -66,22 +38,6 @@ useHead({
           Ставрополь, 50 лет ВЛКСМ д. 93, 5 этаж
         </p>
         <div class="contacts-divider" />
-        <!-- <button class="contacts-button">
-          <svg
-            class="contacts-button-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 0C4.134 0 1 3.134 1 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5c-1.381 0-2.5-1.119-2.5-2.5S6.619 4.5 8 4.5s2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5z"
-              fill="currentColor"
-            />
-          </svg>
-          <span>Как добраться</span>
-        </button> -->
       </div>
 
       <!-- Телефоны -->
@@ -113,15 +69,6 @@ useHead({
       </div>
 
       <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=161471835951" height="600" frameborder="0"></iframe>
-      <!-- Карта -->
-      <!-- <div class="contacts-map">
-        <ClientOnly>
-          <YandexMap :center="mapCenter" :zoom="mapZoom" />
-          <template #fallback>
-            <div class="yandex-map" style="width: 100%; height: 600px; background-color: #f5f5f5;" />
-          </template>
-        </ClientOnly>
-      </div> -->
     </UBaseWrapper>
   </div>
 </template>

@@ -40,10 +40,10 @@ export default defineNuxtConfig({
     name: 'Unicorn Studio',
   },
   sitemap: {
-    exclude: ['/teacher', '/teacher/**', '/news', '/news/**', '/events'],
+    exclude: ['/teacher', '/teacher/**', '/events'],
   },
   robots: {
-    disallow: ['/teacher', '/teacher/**', '/news', '/news/**', '/events'],
+    disallow: ['/teacher', '/teacher/**', '/events'],
   },
   image: {
     // Используем ipx провайдер (автоматически переключается на ipxStatic при nuxt generate)

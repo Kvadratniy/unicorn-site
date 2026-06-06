@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useVocal } from '~/composables/pages/useVocal'
+import { createFaqPageSchema, createVocalServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Уроки вокала в Ставрополе для детей и взрослых. Бесплатное пробное занятие. Индивидуальные и групповые занятия!',
@@ -10,6 +11,34 @@ usePageSeo({
 })
 
 const { hero, main, services, teachers, faq } = await useVocal('vocal-content')
+
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const pageUrl = `${siteUrl}/vocal`
+
+const serviceSchema = computed(() =>
+  createVocalServiceSchema({
+    siteUrl,
+    pageUrl,
+    servicesTitle: services.value.title,
+    services: services.value.items,
+  }),
+)
+
+const faqSchema = computed(() => createFaqPageSchema(pageUrl, faq.value.items))
+
+useHead({
+  script: computed(() => [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(serviceSchema.value),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    },
+  ]),
+})
 
 </script>
 <template>

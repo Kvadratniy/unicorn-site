@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePiano } from '~/composables/pages/usePiano'
+import { createFaqPageSchema, createPianoServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Уроки фортепиано в Ставрополе для детей и взрослых. Бесплатное пробное занятие!',
@@ -10,6 +11,34 @@ usePageSeo({
 })
 
 const { hero, main, services, teachers, faq } = await usePiano('piano-content')
+
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const pageUrl = `${siteUrl}/piano`
+
+const serviceSchema = computed(() =>
+  createPianoServiceSchema({
+    siteUrl,
+    pageUrl,
+    servicesTitle: services.value.title,
+    services: services.value.items,
+  }),
+)
+
+const faqSchema = computed(() => createFaqPageSchema(pageUrl, faq.value.items))
+
+useHead({
+  script: computed(() => [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(serviceSchema.value),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    },
+  ]),
+})
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { newsContentBlockTypes } from '~/types/news.types'
+import { createNewsArticleSchema } from '~/composables/useSchemas'
 
 const route = useRoute()
 const { getNewsArticleBySlug } = useNews()
@@ -19,6 +20,11 @@ const { data: article } = await useAsyncData(
   },
 )
 
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+
+const pageUrl = computed(() => `${siteUrl}/news/${String(route.params.id ?? '')}`)
+
 watch(
   () => article.value,
   (a) => {
@@ -27,11 +33,32 @@ watch(
       title: a.title,
       description: a.subtitle,
       image: a.heroImage,
-      noindex: true,
     })
   },
   { immediate: true },
 )
+
+const newsArticleSchema = computed(() => {
+  if (!article.value) return null
+  return createNewsArticleSchema({
+    siteUrl,
+    pageUrl: pageUrl.value,
+    article: article.value,
+  })
+})
+
+useHead({
+  script: computed(() =>
+    !newsArticleSchema.value
+      ? []
+      : [
+          {
+            type: 'application/ld+json',
+            children: JSON.stringify(newsArticleSchema.value),
+          },
+        ],
+  ),
+})
 
 const contentBlockTypes = newsContentBlockTypes
 </script>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useDistribution } from '~/composables/pages/useDistribution'
+import { createDistributionServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Музыкальная дистрибуция в Ставрополе — выпуск и монетизация музыки от Unicorn Studio',
@@ -17,6 +18,28 @@ const {
   packagesSection,
   packages,
 } = await useDistribution('distribution-content')
+
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const pageUrl = `${siteUrl}/distribution`
+
+const serviceSchema = computed(() =>
+  createDistributionServiceSchema({
+    siteUrl,
+    pageUrl,
+    packagesTitle: packagesSection.value.title,
+    packages: packages.value,
+  }),
+)
+
+useHead({
+  script: computed(() => [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(serviceSchema.value),
+    },
+  ]),
+})
 </script>
 
 <template>
