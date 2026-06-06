@@ -109,6 +109,8 @@ $mobile-menu-text: rgb(38 38 38);
   display: none;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   background: rgb(23 23 23 / 0.6);
   backdrop-filter: blur(16px);
 
@@ -123,12 +125,15 @@ $mobile-menu-text: rgb(38 38 38);
     width: 100%;
     max-width: 100%;
     height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
     flex-direction: column;
     padding: 0;
     overflow-y: auto;
     background: #fff;
     font-family: 'Montserrat', sans-serif;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__header {

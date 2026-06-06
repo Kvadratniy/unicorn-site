@@ -53,8 +53,6 @@ const isMobileMenuOpen = ref(false)
 
 const lockPageScroll = (locked: boolean) => {
   document.body.style.overflow = locked ? 'hidden' : ''
-  document.body.style.overscrollBehavior = locked ? 'none' : ''
-  document.body.style.touchAction = locked ? 'none' : ''
 }
 
 const toggleMobileMenu = () => {
