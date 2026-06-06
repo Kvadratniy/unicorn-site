@@ -12,13 +12,18 @@ type Feature = {
   readonly text: string
 }
 
+type IntroImage = string | {
+  readonly src: string
+  readonly alt?: string
+}
+
 type Props = {
   titleId: string
   title: string
   leadParagraphs: readonly string[]
   features: readonly Feature[]
   visualLabel: string
-  images?: readonly string[]
+  images?: readonly IntroImage[]
   backgroundImage?: string
   reverseLayout?: boolean
   theme?: Theme
@@ -38,9 +43,27 @@ const currentImageIndex = ref(0)
 let intervalId: ReturnType<typeof setInterval> | null = null
 let stopSectionObserver: (() => void) | null = null
 
-const hasMultipleImages = computed(() => props.images.length > 1)
-const hasImages = computed(() => props.images.length > 0)
-const currentImageSrc = computed(() => props.images[currentImageIndex.value] ?? '')
+const normalizedImages = computed(() =>
+  props.images
+    .map((image): { src: string, alt: string } | null => {
+      if (typeof image === 'string') {
+        const src = image.trim()
+        if (!src) return null
+        return { src, alt: props.visualLabel }
+      }
+
+      const src = image.src.trim()
+      if (!src) return null
+      const alt = image.alt?.trim() || props.visualLabel
+      return { src, alt }
+    })
+    .filter((image): image is { src: string, alt: string } => image !== null),
+)
+const hasMultipleImages = computed(() => normalizedImages.value.length > 1)
+const hasImages = computed(() => normalizedImages.value.length > 0)
+const currentImage = computed(() => normalizedImages.value[currentImageIndex.value] ?? null)
+const currentImageSrc = computed(() => currentImage.value?.src || '')
+const currentImageAlt = computed(() => currentImage.value?.alt || props.visualLabel)
 
 onMounted(() => {
   const { stop } = useIntersectionObserver(
@@ -56,7 +79,7 @@ onMounted(() => {
 
   if (hasMultipleImages.value) {
     intervalId = setInterval(() => {
-      currentImageIndex.value = (currentImageIndex.value + 1) % props.images.length
+      currentImageIndex.value = (currentImageIndex.value + 1) % normalizedImages.value.length
     }, SLIDE_INTERVAL_MS)
   }
 })
@@ -132,7 +155,7 @@ onUnmounted(() => {
               <NuxtImg
                 :key="currentImageSrc"
                 :src="currentImageSrc"
-                alt=""
+                :alt="currentImageAlt"
                 loading="lazy"
                 class="visual__image"
                 width="500"

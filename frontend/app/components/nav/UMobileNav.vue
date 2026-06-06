@@ -41,7 +41,7 @@ const isExactActive = (to?: string) => {
         <div class="mobile-menu__header">
           <NuxtImg
             src="/images/logo/heda.png"
-            alt="Unicorn"
+            alt="Unicorn Studio Logo"
             class="mobile-menu__logo"
             format="webp"
           />

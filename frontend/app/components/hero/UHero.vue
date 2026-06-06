@@ -68,6 +68,8 @@ const handleVideoError = () => {
 
 /** Всегда загружаем видео на всех скоростях соединения */
 const shouldLoadVideo = computed(() => {
+  // On mobile we prefer image-only hero to reduce LCP and bandwidth.
+  if (isMobile.value && props.imageSrc) return false
   return true
 })
 
@@ -90,7 +92,7 @@ watch(currentVideoSrc, () => {
   >
     <div class="hero__bg" aria-hidden="true">
       <!-- Картинка всегда показывается как placeholder -->
-      <img
+      <NuxtImg
         v-if="imageSrc"
         :src="imageSrc"
         alt=""
@@ -99,6 +101,8 @@ watch(currentVideoSrc, () => {
         fetchpriority="high"
         width="600"
         height="1080"
+        sizes="100vw"
+        format="webp"
       />
 
       <!-- Видео загружается в фоне и показывается после готовности -->
@@ -112,7 +116,7 @@ watch(currentVideoSrc, () => {
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         class="hero__video"
         :class="{ 'hero__video--visible': showVideo }"
         @canplaythrough="handleVideoCanPlay"

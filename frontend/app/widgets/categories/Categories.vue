@@ -157,7 +157,7 @@ const categories = computed<Category[]>(() => {
             >
               <NuxtImg
                 :src="service.image"
-                alt="Unicorn Studio"
+                :alt="service.title"
                 format="webp"
                 class="services-card__image"
                 width="220px"

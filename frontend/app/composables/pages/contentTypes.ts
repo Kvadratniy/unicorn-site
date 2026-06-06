@@ -23,7 +23,7 @@ export type MainViewModel = {
   title: string
   leadParagraphs: string[]
   features: MainFeature[]
-  images: string[]
+  images: Array<{ src: string, alt: string }>
 }
 
 export type ServiceViewModel = {

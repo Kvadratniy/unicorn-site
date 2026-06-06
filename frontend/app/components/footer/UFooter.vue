@@ -6,8 +6,8 @@ const menuItems = [
   { label: 'Курсы вокала', to: '/vocal' },
   { label: 'Курсы фортепиано', to: '/piano' },
   { label: 'Курсы гитары', to: '/guitar' },
-  { label: 'Музыкальная дистрибуция', to: '/distribution' },
-  { label: 'Аренда', to: '/rent' },
+  // { label: 'Музыкальная дистрибуция', to: '/distribution' },
+  // { label: 'Аренда', to: '/rent' },
   { label: 'Контакты', to: '/contacts' },
 ]
 

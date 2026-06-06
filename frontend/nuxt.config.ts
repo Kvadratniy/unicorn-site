@@ -12,7 +12,7 @@ const siteUrl = normalizeBaseUrl(process.env.NUXT_PUBLIC_SITE_URL || 'https://un
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === 'development' },
   ssr: true,
   routeRules: {
     // Для SSR не выполняем глобальный pre-render страниц.
@@ -31,8 +31,8 @@ export default defineNuxtConfig({
   },
   hooks: {
     'nitro:config'(nitroConfig) {
-      // Extra hardening: ensure no public Strapi token is shipped in runtime payload.
-      delete nitroConfig.runtimeConfig?.public?.strapi?.token
+      // Extra hardening: keep public runtime payload lean.
+      void nitroConfig
     },
   },
   site: {
@@ -40,10 +40,10 @@ export default defineNuxtConfig({
     name: 'Unicorn Studio',
   },
   sitemap: {
-    exclude: ['/teacher', '/teacher/**', '/events'],
+    exclude: ['/teacher', '/teacher/**', '/events', '/distribution', '/rent'],
   },
   robots: {
-    disallow: ['/teacher', '/teacher/**', '/events'],
+    disallow: ['/teacher', '/teacher/**', '/events', '/distribution', '/rent'],
   },
   image: {
     // Используем ipx провайдер (автоматически переключается на ipxStatic при nuxt generate)
@@ -73,7 +73,6 @@ export default defineNuxtConfig({
     public: {
       strapi: {
         url: publicStrapiBaseUrl,
-        token: '',
       },
       siteUrl,
       site: {
@@ -95,7 +94,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
         },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon/favicon.svg' },

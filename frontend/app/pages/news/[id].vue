@@ -112,7 +112,7 @@ const contentBlockTypes = newsContentBlockTypes
         <div class="flex items-center gap-3">
           <div
             class="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-neutral-100 ring-1 ring-neutral-200/80">
-            <NuxtImg src="/images/logo/heda.png" alt="аватар автора"
+            <NuxtImg src="/images/logo/heda.png" alt="Unicorn Studio Logo"
               width="44" height="44" class="h-full w-full object-contain" format="webp" />
           </div>
           <p class="text-sm text-neutral-600">

@@ -16,7 +16,7 @@ defineProps<{
         <div class="app-loader__logo-wrap">
           <NuxtImg
             src="/images/logo/logo-4.png"
-            alt="Unicorn Studio"
+            alt="Unicorn Studio Logo"
             class="app-loader__logo"
             width="200"
             height="200"

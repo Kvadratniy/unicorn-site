@@ -167,8 +167,15 @@ const createMain = (mainData: StudioCms['Main'], strapiBaseUrl: string): MainVie
     .filter((item): item is MainFeature => item !== null)
   const features = cardsFeatures
   const images = (mainData?.images || [])
-    .map(image => toMediaUrl(image?.formats?.large?.url || image?.formats?.medium?.url || image?.url, strapiBaseUrl))
-    .filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+    .map((image, index) => {
+      const src = toMediaUrl(image?.formats?.large?.url || image?.formats?.medium?.url || image?.url, strapiBaseUrl)
+      if (!src || !src.trim()) return null
+      return {
+        src,
+        alt: `${mainData?.title || 'Студия'} — изображение ${index + 1}`,
+      }
+    })
+    .filter((image): image is { src: string, alt: string } => image !== null)
 
   return {
     title: mainData?.title || '',

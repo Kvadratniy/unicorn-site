@@ -2,7 +2,7 @@
   <NuxtLink to="/" class="u-logo" aria-label="Unicorn Studio">
     <NuxtImg
       src="/images/logo/heda.png"
-      alt=""
+      alt="Unicorn Studio Logo"
       class="u-logo__image"
       format="webp"
     />

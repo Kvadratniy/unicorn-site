@@ -41,13 +41,17 @@ const { open: openContactModal } = useContactModal()
       </div>
 
       <div class="hero-image__visual">
-        <img
+        <NuxtImg
           :src="props.imageSrc"
           :alt="props.imageAlt"
           class="hero-image__img"
           :width="props.imageWidth"
           :height="props.imageHeight"
           fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          sizes="(max-width: 768px) 100vw, 60vw"
+          format="webp"
         />
       </div>
 

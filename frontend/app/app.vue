@@ -16,36 +16,44 @@ useHead({
 })
 
 const isAppReady = ref(false)
-/** Лоадер скрывается по DOMContentLoaded или по таймауту — не ждём window.load, чтобы не откладывать LCP */
-const LOADER_TIMEOUT_MS = 1800
+/**
+ * Prevent first-load FOUC: keep overlay until styles/assets are ready.
+ * We still use a timeout fallback to avoid a stuck loader.
+ */
+const LOADER_TIMEOUT_MS = 3000
 
 onMounted(() => {
   if (import.meta.server) return
 
   let timeoutId: number | null = null
 
-  const finish = () => {
+  const finish = async () => {
     if (timeoutId !== null) {
       window.clearTimeout(timeoutId)
       timeoutId = null
     }
-    window.removeEventListener('DOMContentLoaded', finish)
-    nextTick(() => {
+    window.removeEventListener('load', finish)
+
+    // One frame buffer after load to avoid a flash between hydration and styles paint.
+    await nextTick()
+    requestAnimationFrame(() => {
       isAppReady.value = true
     })
   }
 
-  if (document.readyState !== 'loading') {
-    nextTick(() => { isAppReady.value = true })
+  if (document.readyState === 'complete') {
+    void finish()
     return
   }
 
-  window.addEventListener('DOMContentLoaded', finish, { once: true })
-  timeoutId = window.setTimeout(finish, LOADER_TIMEOUT_MS)
+  window.addEventListener('load', finish, { once: true })
+  timeoutId = window.setTimeout(() => {
+    void finish()
+  }, LOADER_TIMEOUT_MS)
 
   onUnmounted(() => {
     if (timeoutId !== null) window.clearTimeout(timeoutId)
-    window.removeEventListener('DOMContentLoaded', finish)
+    window.removeEventListener('load', finish)
   })
 })
 </script>
