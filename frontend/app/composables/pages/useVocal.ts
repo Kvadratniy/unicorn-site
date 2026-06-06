@@ -35,7 +35,8 @@ export const useVocal = async (key = 'vocal-content') => {
     contentName: 'vocal',
     fetchContent: () => api.fetchVocal(),
     selectServices: content => (content as VocalCms | null)?.Services,
-    faqMode: 'array',
+    // Strapi now returns FAQ as object on this endpoint; auto keeps compatibility with both formats.
+    faqMode: 'auto',
     teachersFallback: {
       title: 'Тренеры по вокалу',
       subtitle: 'Кто ведёт занятия по вокалу — познакомьтесь с нашими тренерами',
