@@ -46,7 +46,7 @@ const features = [
           </span>
 
           <h2 class="gift-title">
-            Подарочный<br><span class="gift-title-accent">сертификат</span>
+            Подарочный{{ ' ' }}<br aria-hidden="true"><span class="gift-title-accent">сертификат</span>
           </h2>
 
           <p class="gift-description">

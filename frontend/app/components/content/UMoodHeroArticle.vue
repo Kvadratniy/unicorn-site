@@ -26,9 +26,7 @@ const props = defineProps<{
     <h1 class="mood-hero__article-title">
       <span class="mood-hero__article-title-line1">
         {{ props.titleLine1 }}
-      </span>
-      <br>
-      <span class="mood-hero__article-title-line2">
+      </span>{{ ' ' }}<br aria-hidden="true"><span class="mood-hero__article-title-line2">
         {{ props.titleLine2 }}
       </span>
     </h1>

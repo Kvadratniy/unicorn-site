@@ -138,8 +138,7 @@ watch(currentVideoSrc, () => {
             :class="{ 'title__line--nowrap': titleNowrap }"
           >
             {{ titleAccent }}
-          </span>
-          <span
+          </span>{{ ' ' }}<span
             class="title__line title__line--3"
             :class="{ 'title__line--nowrap': titleNowrap }"
           >

@@ -2,13 +2,14 @@
 const route = useRoute()
 
 const menuItems = [
-  { label: 'Студия звукозаписи', to: '/studio' },
-  { label: 'Курсы вокала', to: '/vocal' },
-  { label: 'Курсы фортепиано', to: '/piano' },
-  { label: 'Курсы гитары', to: '/guitar' },
+  { label: 'Студия звукозаписи', to: '/studio/' },
+  { label: 'Курсы вокала', to: '/vocal/' },
+  { label: 'Курсы фортепиано', to: '/piano/' },
+  { label: 'Курсы гитары', to: '/guitar/' },
+  { label: 'Новости', to: '/news/' },
   // { label: 'Музыкальная дистрибуция', to: '/distribution' },
   // { label: 'Аренда', to: '/rent' },
-  { label: 'Контакты', to: '/contacts' },
+  { label: 'Контакты', to: '/contacts/' },
 ]
 
 const socialLinks = [

@@ -35,8 +35,7 @@ const { open: openContactModal } = useContactModal()
     <div class="hero-image__wrapper">
       <div class="hero-image__heading">
         <h1 :id="titleId" class="hero-image__title">
-          <span class="title__line title__line--accent">{{ titleAccent }}</span>
-          <span class="title__line">{{ titleLine2 }}</span>
+          <span class="title__line title__line--accent">{{ titleAccent }}</span>{{ ' ' }}<span class="title__line">{{ titleLine2 }}</span>
         </h1>
       </div>
 

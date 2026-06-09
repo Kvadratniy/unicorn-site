@@ -174,9 +174,7 @@ const onFocusOut = (e: FocusEvent) => {
           <h1 class="u-article-title">
             <span class="u-article-title-line1">
               {{ titleLine1 }}
-            </span>
-            <br>
-            <span class="u-article-title-line2">
+            </span>{{ ' ' }}<br aria-hidden="true"><span class="u-article-title-line2">
               {{ titleLine2 }}
             </span>
           </h1>
