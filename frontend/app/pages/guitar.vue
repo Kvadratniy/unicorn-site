@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGuitar } from '~/composables/pages/useGuitar'
-import { createFaqPageSchema, createGuitarServiceSchema } from '~/composables/useSchemas'
+import { createFaqPageSchema, createGuitarMusicSchoolSchema, createGuitarServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Уроки гитары в Ставрополе для детей и взрослых. Бесплатное пробное занятие!',
@@ -26,9 +26,14 @@ const serviceSchema = computed(() =>
 )
 
 const faqSchema = computed(() => createFaqPageSchema(pageUrl, faq.value.items))
+const musicSchoolSchema = createGuitarMusicSchoolSchema(siteUrl, pageUrl)
 
 useHead({
   script: computed(() => [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(musicSchoolSchema),
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify(serviceSchema.value),

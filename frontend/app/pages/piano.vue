@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePiano } from '~/composables/pages/usePiano'
-import { createFaqPageSchema, createPianoServiceSchema } from '~/composables/useSchemas'
+import { createFaqPageSchema, createPianoMusicSchoolSchema, createPianoServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
   title: 'Уроки фортепиано в Ставрополе для детей и взрослых. Бесплатное пробное занятие!',
@@ -26,9 +26,14 @@ const serviceSchema = computed(() =>
 )
 
 const faqSchema = computed(() => createFaqPageSchema(pageUrl, faq.value.items))
+const musicSchoolSchema = createPianoMusicSchoolSchema(siteUrl, pageUrl)
 
 useHead({
   script: computed(() => [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(musicSchoolSchema),
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify(serviceSchema.value),

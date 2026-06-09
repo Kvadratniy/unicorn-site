@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useVocal } from '~/composables/pages/useVocal'
-import { createFaqPageSchema, createVocalServiceSchema } from '~/composables/useSchemas'
+import { createFaqPageSchema, createVocalMusicSchoolSchema, createVocalServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Уроки вокала в Ставрополе для детей и взрослых. Бесплатное пробное занятие. Индивидуальные и групповые занятия!',
+  title: 'Уроки вокала в Ставрополе',
   description:
-    'Уроки вокала в Ставрополе от Unicorn Studio: обучение пению для детей и взрослых с нуля. Индивидуальные и групповые занятия. Запишитесь на бесплатное пробное занятие!',
+    'Уроки вокала в Ставрополе в музыкальной студии Юникорн: обучение пению для детей и взрослых с нуля, индивидуально и в группе. Бесплатное пробное занятие!',
   keywords:
     'уроки вокала ставрополь, школа вокала ставрополь, курсы вокала ставрополь, обучение вокалу ставрополь, занятия по вокалу ставрополь, преподаватель по вокалу, тренер по вокалу, студия вокала ставрополь, юникорн вокал, постановка голоса ставрополь, вокал для детей, вокал для взрослых, уроки пения ставрополь, пробное занятие по вокалу',
 })
@@ -26,9 +26,14 @@ const serviceSchema = computed(() =>
 )
 
 const faqSchema = computed(() => createFaqPageSchema(pageUrl, faq.value.items))
+const musicSchoolSchema = createVocalMusicSchoolSchema(siteUrl, pageUrl)
 
 useHead({
   script: computed(() => [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(musicSchoolSchema),
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify(serviceSchema.value),

@@ -212,7 +212,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
   logo: `${siteUrl}${LOGO_PATH}`,
   image: `${siteUrl}${LOGO_PATH}`,
   description:
-    'Музыкальная студия в Ставрополе: уроки вокала, фортепиано и гитары, студия звукозаписи, аранжировка, сведение и мастеринг.',
+    'Музыкальная студия Unicorn Studio в Ставрополе: обучение музыке и студийные услуги.',
   slogan: 'Полный цикл музыкального производства в Ставрополе',
   telephone: COMPANY_PHONE,
   email: COMPANY_EMAIL,
@@ -242,9 +242,9 @@ export const createOrganizationSchema = (siteUrl: string) => ({
         '@type': 'OfferCatalog',
         name: 'Обучение',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Уроки вокала' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Уроки гитары' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' } },
+          { '@type': 'Offer', url: `${siteUrl}/vocal/`, itemOffered: { '@type': 'Service', name: 'Уроки вокала' } },
+          { '@type': 'Offer', url: `${siteUrl}/guitar/`, itemOffered: { '@type': 'Service', name: 'Уроки гитары' } },
+          { '@type': 'Offer', url: `${siteUrl}/piano/`, itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Уроки музыкального продюсирования' } },
         ],
       },
@@ -252,12 +252,12 @@ export const createOrganizationSchema = (siteUrl: string) => ({
         '@type': 'OfferCatalog',
         name: 'Студийные услуги',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Звукозапись' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Аранжировка' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Сведение' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Мастеринг' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Коррекция вокала' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Саунд-дизайн' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Звукозапись' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Аранжировка' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Сведение' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Мастеринг' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Коррекция вокала' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Саунд-дизайн' } },
         ],
       },
     ],
@@ -265,46 +265,58 @@ export const createOrganizationSchema = (siteUrl: string) => ({
   makesOffer: [
     {
       '@type': 'Offer',
-      url: `${siteUrl}/vocal/`,
-      priceCurrency: CURRENCY,
-      itemOffered: {
-        '@type': 'Service',
-        name: 'Уроки вокала',
-      },
-    },
-    {
-      '@type': 'Offer',
       url: `${siteUrl}/studio/`,
       priceCurrency: CURRENCY,
       itemOffered: {
         '@type': 'Service',
-        name: 'Студия звукозаписи',
+        name: 'Запись песни в Ставрополе',
+      },
+    },
+    {
+      '@type': 'Offer',
+      url: `${siteUrl}/vocal/`,
+      priceCurrency: CURRENCY,
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Уроки вокала в Ставрополе',
       },
     },
   ],
   knowsAbout: [
-    'Обучение вокалу',
-    'Постановка голоса',
-    'Уроки гитары',
-    'Уроки фортепиано',
     'Звукозапись',
     'Сведение',
     'Мастеринг',
     'Аранжировка',
+    'Обучение вокалу',
+    'Уроки гитары',
+    'Уроки фортепиано',
   ],
   sameAs: ['https://vk.com/1unicornstudio'],
 })
 
-export const createMusicSchoolSchema = (siteUrl: string) => ({
+type CourseMusicSchoolInput = {
+  siteUrl: string
+  pageUrl: string
+  name: string
+  description: string
+  serviceName: string
+}
+
+const createCourseMusicSchoolSchema = ({
+  siteUrl,
+  pageUrl,
+  name,
+  description,
+  serviceName,
+}: CourseMusicSchoolInput) => ({
   '@context': SCHEMA_CONTEXT,
   '@type': 'MusicSchool',
-  '@id': `${siteUrl}#music-school`,
-  name: COMPANY_NAME,
-  url: siteUrl,
+  '@id': `${pageUrl}#music-school`,
+  name,
+  url: pageUrl,
   logo: `${siteUrl}${LOGO_PATH}`,
   image: `${siteUrl}${LOGO_PATH}`,
-  description:
-    'Музыкальная школа в Ставрополе: уроки вокала, фортепиано и гитары для детей и взрослых.',
+  description,
   telephone: COMPANY_PHONE,
   email: COMPANY_EMAIL,
   priceRange: 'от 1500 RUB',
@@ -324,25 +336,102 @@ export const createMusicSchoolSchema = (siteUrl: string) => ({
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Направления обучения',
+    name: serviceName,
     itemListElement: [
       {
         '@type': 'Offer',
-        url: `${siteUrl}/vocal/`,
+        url: pageUrl,
         priceCurrency: CURRENCY,
-        itemOffered: { '@type': 'Service', name: 'Уроки вокала' },
+        itemOffered: { '@type': 'Service', name: serviceName },
+      },
+    ],
+  },
+  sameAs: ['https://vk.com/1unicornstudio'],
+})
+
+export const createVocalMusicSchoolSchema = (siteUrl: string, pageUrl: string) =>
+  createCourseMusicSchoolSchema({
+    siteUrl,
+    pageUrl,
+    name: 'Уроки вокала в Ставрополе',
+    description:
+      'Уроки вокала в Ставрополе для детей и взрослых: индивидуальные и групповые занятия, постановка голоса и дыхания.',
+    serviceName: 'Уроки вокала',
+  })
+
+export const createPianoMusicSchoolSchema = (siteUrl: string, pageUrl: string) =>
+  createCourseMusicSchoolSchema({
+    siteUrl,
+    pageUrl,
+    name: 'Уроки фортепиано в Ставрополе',
+    description:
+      'Уроки фортепиано в Ставрополе для детей и взрослых: индивидуальные занятия, обучение с нуля.',
+    serviceName: 'Уроки фортепиано',
+  })
+
+export const createGuitarMusicSchoolSchema = (siteUrl: string, pageUrl: string) =>
+  createCourseMusicSchoolSchema({
+    siteUrl,
+    pageUrl,
+    name: 'Уроки гитары в Ставрополе',
+    description:
+      'Уроки гитары в Ставрополе для детей и взрослых: акустика, электрогитара, бас и укулеле.',
+    serviceName: 'Уроки гитары',
+  })
+
+export const createStudioLocalBusinessSchema = (siteUrl: string, pageUrl: string) => ({
+  '@context': SCHEMA_CONTEXT,
+  '@type': 'LocalBusiness',
+  '@id': `${pageUrl}#recording-studio`,
+  name: 'Студия звукозаписи в Ставрополе',
+  url: pageUrl,
+  image: `${siteUrl}${LOGO_PATH}`,
+  description:
+    'Запись песни в Ставрополе: запись вокала и инструментов, сведение, мастеринг и аранжировка.',
+  telephone: COMPANY_PHONE,
+  email: COMPANY_EMAIL,
+  priceRange: 'от 1000 RUB',
+  address: basePostalAddress(),
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: COMPANY_LAT,
+    longitude: COMPANY_LNG,
+  },
+  openingHoursSpecification: openingHoursSpecification(),
+  areaServed: baseAreaServed(),
+  parentOrganization: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: COMPANY_NAME,
+    url: siteUrl,
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Услуги студии звукозаписи',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        url: pageUrl,
+        priceCurrency: CURRENCY,
+        itemOffered: { '@type': 'Service', name: 'Запись песни' },
       },
       {
         '@type': 'Offer',
-        url: `${siteUrl}/guitar/`,
+        url: pageUrl,
         priceCurrency: CURRENCY,
-        itemOffered: { '@type': 'Service', name: 'Уроки гитары' },
+        itemOffered: { '@type': 'Service', name: 'Сведение' },
       },
       {
         '@type': 'Offer',
-        url: `${siteUrl}/piano/`,
+        url: pageUrl,
         priceCurrency: CURRENCY,
-        itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' },
+        itemOffered: { '@type': 'Service', name: 'Мастеринг' },
+      },
+      {
+        '@type': 'Offer',
+        url: pageUrl,
+        priceCurrency: CURRENCY,
+        itemOffered: { '@type': 'Service', name: 'Аранжировка' },
       },
     ],
   },
@@ -407,18 +496,18 @@ const createGenericCourseServiceSchema = (
 
 export const createVocalServiceSchema = (input: ServiceSchemaInput) =>
   createGenericCourseServiceSchema(input, {
-    serviceType: 'Уроки вокала',
+    serviceType: 'Уроки вокала в Ставрополе',
     name: 'Уроки вокала в Ставрополе',
-    description: 'Обучение вокалу для детей и взрослых с нуля: индивидуальные и групповые занятия, постановка голоса и дыхания.',
+    description: 'Уроки вокала в Ставрополе для детей и взрослых с нуля: индивидуальные и групповые занятия, постановка голоса и дыхания.',
     catalogFallback: 'Программы по вокалу',
     unitText: 'за занятие',
   })
 
 export const createStudioServiceSchema = (input: ServiceSchemaInput) =>
   createGenericCourseServiceSchema(input, {
-    serviceType: 'Студия звукозаписи',
-    name: 'Студия звукозаписи в Ставрополе',
-    description: 'Профессиональная запись вокала и инструментов, сведение, мастеринг и аранжировка. Услуги студии полного цикла в Ставрополе.',
+    serviceType: 'Студия звукозаписи в Ставрополе',
+    name: 'Запись песни в Ставрополе',
+    description: 'Запись песни в Ставрополе: запись вокала и инструментов, сведение, мастеринг и аранжировка.',
     catalogFallback: 'Услуги студии звукозаписи',
     unitText: 'за услугу',
   })

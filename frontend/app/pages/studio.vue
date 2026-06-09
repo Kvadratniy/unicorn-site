@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useStudio } from '~/composables/pages/useStudio'
-import { createStudioServiceSchema } from '~/composables/useSchemas'
+import { createStudioLocalBusinessSchema, createStudioServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Студия звукозаписи в Ставрополе — запись песни, сведение, мастеринг и аранжировка',
+  title: 'Студия звукозаписи в Ставрополе',
   description:
-    'Профессиональная студия звукозаписи Unicorn Studio в Ставрополе: запись вокала и инструментов, сведение, мастеринг, аранжировка. От идеи до релиза. Аренда студии.',
+    'Запись песни в Ставрополе в студии Юникорн: запись вокала и инструментов, сведение, мастеринг и аранжировка. От идеи до релиза.',
   keywords:
-    'студия звукозаписи ставрополь, запись песни ставрополь, запись песни под ключ, запись вокала ставрополь, запись инструментов, сведение треков ставрополь, мастеринг ставрополь, аранжировка на заказ, аренда студии звукозаписи ставрополь, профессиональная запись звука, музыкальная студия ставрополь, саунд-дизайн, коррекция вокала, дикторская озвучка, Unicorn Studio',
+    'студия звукозаписи ставрополь, запись песни ставрополь, запись песни под ключ, запись вокала ставрополь, запись инструментов, сведение треков ставрополь, мастеринг ставрополь, аранжировка на заказ, профессиональная запись звука, саунд-дизайн, коррекция вокала, дикторская озвучка',
 })
 
 const { open: openContactModal } = useContactModal()
@@ -25,9 +25,14 @@ const serviceSchema = computed(() =>
     services: services.value.items,
   }),
 )
+const studioLocalBusinessSchema = createStudioLocalBusinessSchema(siteUrl, pageUrl)
 
 useHead({
   script: computed(() => [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(studioLocalBusinessSchema),
+    },
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify(serviceSchema.value),
