@@ -14,7 +14,7 @@ const { hero, main, services, teachers, faq } = await useGuitar('guitar-content'
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/guitar`
+const pageUrl = `${siteUrl}/guitar/`
 
 const serviceSchema = computed(() =>
   createGuitarServiceSchema({

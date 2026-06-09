@@ -21,7 +21,7 @@ const {
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/distribution`
+const pageUrl = `${siteUrl}/distribution/`
 
 const serviceSchema = computed(() =>
   createDistributionServiceSchema({

@@ -16,7 +16,7 @@ const { hero, intro, options: rentOptions } = await useRent('rent-content')
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/rent`
+const pageUrl = `${siteUrl}/rent/`
 
 const serviceSchema = computed(() =>
   createRentServiceSchema({

@@ -23,7 +23,7 @@ const { data: article } = await useAsyncData(
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
 
-const pageUrl = computed(() => `${siteUrl}/news/${String(route.params.id ?? '')}`)
+const pageUrl = computed(() => `${siteUrl}/news/${String(route.params.id ?? '')}/`)
 
 watch(
   () => article.value,

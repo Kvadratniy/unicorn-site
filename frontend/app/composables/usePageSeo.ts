@@ -8,11 +8,13 @@ type PageSeoOptions = {
 
 export const usePageSeo = (options: PageSeoOptions) => {
   const config = useRuntimeConfig()
-  const siteConfig = useSiteConfig()
   const route = useRoute()
-  const siteUrl = (siteConfig.url || config.public.siteUrl) as string
+  const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
 
-  const canonicalUrl = `${siteUrl}${route.path === '/' ? '' : route.path}`
+  const canonicalPath = route.path === '/'
+    ? '/'
+    : `${route.path.replace(/\/$/, '')}/`
+  const canonicalUrl = `${siteUrl}${canonicalPath === '/' ? '' : canonicalPath}`
   const ogImage = options.image
     ? (options.image.startsWith('http') ? options.image : `${siteUrl}${options.image}`)
     : `${siteUrl}/images/logo/logo-4.png`

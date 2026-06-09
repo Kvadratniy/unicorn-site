@@ -12,7 +12,7 @@ usePageSeo({
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/news`
+const pageUrl = `${siteUrl}/news/`
 
 const newsCollectionSchema = computed(() =>
   createNewsCollectionSchema({

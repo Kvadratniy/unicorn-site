@@ -17,8 +17,16 @@ export default defineNuxtConfig({
   routeRules: {
     // Для SSR не выполняем глобальный pre-render страниц.
     '/**': { prerender: false },
+    '/teacher': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/teacher/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/events': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/events/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/distribution': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/distribution/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/rent': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    '/rent/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxt/image', '@nuxtjs/strapi'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/strapi'],
   strapi: {
     url: publicStrapiBaseUrl,
     // Keep browser-side Strapi token empty; server-side token lives in runtimeConfig.strapi.
@@ -35,16 +43,6 @@ export default defineNuxtConfig({
       void nitroConfig
     },
   },
-  site: {
-    url: siteUrl,
-    name: 'Unicorn Studio',
-  },
-  sitemap: {
-    exclude: ['/teacher', '/teacher/**', '/events', '/distribution', '/rent'],
-  },
-  robots: {
-    disallow: ['/teacher', '/teacher/**', '/events', '/distribution', '/rent'],
-  },
   image: {
     // Используем ipx провайдер (автоматически переключается на ipxStatic при nuxt generate)
     provider: 'ipx',
@@ -55,21 +53,12 @@ export default defineNuxtConfig({
   },
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['vue'] },
-    { path: '~/features', pathPrefix: false, extensions: ['vue'] },
   ],
   runtimeConfig: {
     strapi: {
       url: strapiBaseUrl,
       token: process.env.STRAPI_TOKEN,
     },
-    /** Секрет подписи cookie сессии кабинета учителя (обязателен в проде) */
-    teacherSessionSecret: process.env.NUXT_TEACHER_SESSION_SECRET || '',
-    /** JSON-массив: [{ "id": "veta", "nameInSheet": "Вета Дейникина", "password": "..." }] */
-    teacherAccountsJson: process.env.NUXT_TEACHER_ACCOUNTS || '[]',
-    /** Путь к JSON с событиями (от корня проекта), по умолчанию server/data/teacher-events.json */
-    teacherEventsFile: process.env.NUXT_TEACHER_EVENTS_FILE || 'server/data/teacher-events.json',
-    /** 1 — брать абонементы из mock (разработка); 0 — из Google Sheets (см. docs) */
-    teacherAbonementsMock: process.env.NUXT_TEACHER_ABONEMENTS_MOCK || '1',
     public: {
       strapi: {
         url: publicStrapiBaseUrl,
@@ -90,12 +79,6 @@ export default defineNuxtConfig({
       titleTemplate: '%s | Unicorn Studio',
       title: 'Unicorn Studio',
       link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
-        },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon/favicon.svg' },
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon/favicon-96x96.png' },

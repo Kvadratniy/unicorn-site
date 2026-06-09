@@ -15,7 +15,7 @@ const { hero, main, services, clients, audience } = await useStudio('studio-cont
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/studio`
+const pageUrl = `${siteUrl}/studio/`
 
 const serviceSchema = computed(() =>
   createStudioServiceSchema({

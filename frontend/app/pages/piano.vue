@@ -14,7 +14,7 @@ const { hero, main, services, teachers, faq } = await usePiano('piano-content')
 
 const config = useRuntimeConfig()
 const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/piano`
+const pageUrl = `${siteUrl}/piano/`
 
 const serviceSchema = computed(() =>
   createPianoServiceSchema({
