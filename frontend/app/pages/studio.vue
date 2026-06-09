@@ -30,7 +30,7 @@ useHead({
   script: computed(() => [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(serviceSchema.value),
+      innerHTML: JSON.stringify(serviceSchema.value),
     },
   ]),
 })

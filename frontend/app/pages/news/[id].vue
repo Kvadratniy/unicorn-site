@@ -54,7 +54,7 @@ useHead({
       : [
           {
             type: 'application/ld+json',
-            children: JSON.stringify(newsArticleSchema.value),
+            innerHTML: JSON.stringify(newsArticleSchema.value),
           },
         ],
   ),

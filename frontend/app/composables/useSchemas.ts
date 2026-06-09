@@ -265,7 +265,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
   makesOffer: [
     {
       '@type': 'Offer',
-      url: `${siteUrl}/vocal`,
+      url: `${siteUrl}/vocal/`,
       priceCurrency: CURRENCY,
       itemOffered: {
         '@type': 'Service',
@@ -274,7 +274,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
     },
     {
       '@type': 'Offer',
-      url: `${siteUrl}/studio`,
+      url: `${siteUrl}/studio/`,
       priceCurrency: CURRENCY,
       itemOffered: {
         '@type': 'Service',
@@ -474,7 +474,7 @@ export const createNewsCollectionSchema = ({
     itemListElement: articles.map((article, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: `${siteUrl}/news/${article.id}`,
+      url: `${siteUrl}/news/${article.id}/`,
       item: {
         '@type': 'Article',
         headline: article.title,

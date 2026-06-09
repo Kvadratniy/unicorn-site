@@ -26,7 +26,7 @@ useHead({
   script: computed(() => [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(newsCollectionSchema.value),
+      innerHTML: JSON.stringify(newsCollectionSchema.value),
     },
   ]),
 })

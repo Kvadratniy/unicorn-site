@@ -19,7 +19,7 @@ useHead({
   script: computed(() => [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(localBusinessSchema),
+      innerHTML: JSON.stringify(localBusinessSchema),
     },
   ]),
 })

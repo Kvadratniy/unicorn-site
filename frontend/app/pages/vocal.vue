@@ -31,11 +31,11 @@ useHead({
   script: computed(() => [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(serviceSchema.value),
+      innerHTML: JSON.stringify(serviceSchema.value),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
+      innerHTML: JSON.stringify(faqSchema.value),
     },
   ]),
 })
