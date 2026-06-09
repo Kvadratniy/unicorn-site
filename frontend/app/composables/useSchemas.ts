@@ -295,6 +295,60 @@ export const createOrganizationSchema = (siteUrl: string) => ({
   sameAs: ['https://vk.com/1unicornstudio'],
 })
 
+export const createMusicSchoolSchema = (siteUrl: string) => ({
+  '@context': SCHEMA_CONTEXT,
+  '@type': 'MusicSchool',
+  '@id': `${siteUrl}#music-school`,
+  name: COMPANY_NAME,
+  url: siteUrl,
+  logo: `${siteUrl}${LOGO_PATH}`,
+  image: `${siteUrl}${LOGO_PATH}`,
+  description:
+    'Музыкальная школа в Ставрополе: уроки вокала, фортепиано и гитары для детей и взрослых.',
+  telephone: COMPANY_PHONE,
+  email: COMPANY_EMAIL,
+  priceRange: 'от 1500 RUB',
+  address: basePostalAddress(),
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: COMPANY_LAT,
+    longitude: COMPANY_LNG,
+  },
+  openingHoursSpecification: openingHoursSpecification(),
+  areaServed: baseAreaServed(),
+  parentOrganization: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: COMPANY_NAME,
+    url: siteUrl,
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Направления обучения',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        url: `${siteUrl}/vocal/`,
+        priceCurrency: CURRENCY,
+        itemOffered: { '@type': 'Service', name: 'Уроки вокала' },
+      },
+      {
+        '@type': 'Offer',
+        url: `${siteUrl}/guitar/`,
+        priceCurrency: CURRENCY,
+        itemOffered: { '@type': 'Service', name: 'Уроки гитары' },
+      },
+      {
+        '@type': 'Offer',
+        url: `${siteUrl}/piano/`,
+        priceCurrency: CURRENCY,
+        itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' },
+      },
+    ],
+  },
+  sameAs: ['https://vk.com/1unicornstudio'],
+})
+
 export const createLocalBusinessSchema = (siteUrl: string) => ({
   '@context': SCHEMA_CONTEXT,
   '@type': 'LocalBusiness',

@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { createOrganizationSchema } from '~/composables/useSchemas'
+import { createMusicSchoolSchema, createOrganizationSchema } from '~/composables/useSchemas'
 
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl as string
 
 const organizationSchema = createOrganizationSchema(siteUrl)
+const musicSchoolSchema = createMusicSchoolSchema(siteUrl)
 
 useHead({
   script: [
     {
       type: 'application/ld+json',
       innerHTML: () => JSON.stringify(organizationSchema),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: () => JSON.stringify(musicSchoolSchema),
     },
   ],
 })
