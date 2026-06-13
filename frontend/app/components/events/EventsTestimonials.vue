@@ -116,12 +116,12 @@ const testimonials: Testimonial[] = [
   flex-direction: column;
   gap: 20px;
   padding: 32px 28px;
-  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(135deg, var(--u-color-white) 0%, #fafafa 100%);
+  border: 1px solid var(--u-black-a06);
   border-radius: 24px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--u-ease-standard);
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 100ms);
 }
 
@@ -134,8 +134,8 @@ const testimonials: Testimonial[] = [
 
 .testimonial-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-  border-color: rgba(236, 72, 153, 0.2);
+  box-shadow: 0 16px 40px var(--u-black-a10);
+  border-color: var(--u-pink-a20);
 }
 
 .testimonial-header {
@@ -157,7 +157,7 @@ const testimonials: Testimonial[] = [
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  border: 3px solid rgba(236, 72, 153, 0.2);
+  border: 3px solid var(--u-pink-a20);
   transition: all 0.3s ease;
 }
 
@@ -169,7 +169,7 @@ const testimonials: Testimonial[] = [
 }
 
 .testimonial-card:hover .testimonial-avatar-wrapper {
-  border-color: rgba(236, 72, 153, 0.4);
+  border-color: var(--u-pink-a40);
   transform: scale(1.05);
 }
 
@@ -189,7 +189,7 @@ const testimonials: Testimonial[] = [
 
 .testimonial-name {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111;
@@ -199,22 +199,22 @@ const testimonials: Testimonial[] = [
 
 @media (min-width: 1024px) {
   .testimonial-name {
-    font-size: 19px;
+    font-size: var(--u-font-19);
   }
 }
 
 .testimonial-event {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--u-font-14);
   line-height: 1.4;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 500;
 }
 
 @media (min-width: 1024px) {
   .testimonial-event {
-    font-size: 15px;
+    font-size: var(--u-font-15);
   }
 }
 
@@ -225,20 +225,20 @@ const testimonials: Testimonial[] = [
 }
 
 .star {
-  font-size: 14px;
+  font-size: var(--u-font-14);
   color: #fbbf24;
   line-height: 1;
 }
 
 @media (min-width: 1024px) {
   .star {
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
 .testimonial-text {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.7;
   color: #475569;
   font-family: 'Suisse Intl', sans-serif;
@@ -250,15 +250,15 @@ const testimonials: Testimonial[] = [
 
 @media (min-width: 1024px) {
   .testimonial-text {
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.75;
   }
 }
 
 .quote-mark {
-  font-size: 28px;
+  font-size: var(--u-font-28);
   line-height: 0;
-  color: rgba(236, 72, 153, 0.3);
+  color: var(--u-pink-a30);
   font-weight: 700;
   font-style: normal;
   vertical-align: middle;
@@ -266,7 +266,7 @@ const testimonials: Testimonial[] = [
 
 @media (min-width: 1024px) {
   .quote-mark {
-    font-size: 32px;
+    font-size: var(--u-font-32);
   }
 }
 

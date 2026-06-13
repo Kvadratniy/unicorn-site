@@ -112,7 +112,7 @@ useHead({
 <style scoped lang="scss">
 .breadcrumbs {
   width: 100%;
-  font-family: 'Montserrat';
+  font-family: var(--u-font-montserrat);
 
   &__list {
     display: flex;
@@ -122,7 +122,7 @@ useHead({
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 18px;
+    font-size: var(--u-font-18);
     font-weight: 500;
     line-height: 1;
   }
@@ -139,12 +139,12 @@ useHead({
     transition: color 0.2s ease-in-out;
 
     &:hover {
-      color: #be185d;
+      color: var(--u-color-pink-deep);
     }
   }
 
   &__current {
-    color: #64748b;
+    color: var(--u-text-muted);
   }
 
   &__separator {

@@ -27,11 +27,11 @@ defineProps<Props>()
 .head__subtitle {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 17px;
+  font-size: var(--u-font-17);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.011em;
-  color: #86868b;
+  color: var(--u-text-secondary);
   max-width: 70ch;
 }
 </style>

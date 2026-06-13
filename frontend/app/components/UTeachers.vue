@@ -102,32 +102,32 @@ const initials = (name: string) =>
 .teachers-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  row-gap: 2.5rem;
-  column-gap: 1.5rem;
+  row-gap: 40px;
+  column-gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 3rem;
-    column-gap: 2rem;
+    row-gap: 48px;
+    column-gap: 32px;
   }
 }
 
 .teacher-card {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 20px;
   align-items: flex-start;
   opacity: 0;
   transform: scale(0.7);
   transition:
-    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity 0.7s var(--u-ease-standard),
+    transform 0.7s var(--u-ease-spring);
 
   @media (min-width: 640px) {
-    gap: 1.5rem;
+    gap: 24px;
   }
 
   &.is-visible {
@@ -173,29 +173,29 @@ const initials = (name: string) =>
   }
 
   &__initials {
-    font-size: 32px;
-    color: #86868b;
+    font-size: var(--u-font-32);
+    color: var(--u-text-secondary);
 
     @media (min-width: 640px) {
-      font-size: 40px;
+      font-size: var(--u-font-40);
     }
   }
 
   &__body {
     display: grid;
-    gap: 0.375rem;
+    gap: 6px;
     min-width: 0;
-    padding-top: 0.25rem;
+    padding-top: 4px;
   }
 
   &__name {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: var(--u-font-20);
     line-height: 1.25;
-    color: #1d1d1f;
+    color: var(--u-text-primary);
 
     @media (min-width: 640px) {
-      font-size: 22px;
+      font-size: var(--u-font-22);
     }
   }
 
@@ -206,23 +206,23 @@ const initials = (name: string) =>
   }
 
   &__role {
-    font-size: 13px;
+    font-size: var(--u-font-13);
     font-weight: 500;
     line-height: 1.4;
-    color: #86868b;
+    color: var(--u-text-secondary);
     letter-spacing: 0.025em;
     text-transform: uppercase;
   }
 
   &__descriptions {
     display: grid;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+    gap: 12px;
+    margin-top: 8px;
   }
 
   &__description {
     max-width: 56ch;
-    font-size: 15px;
+    font-size: var(--u-font-15);
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.006em;
@@ -232,7 +232,7 @@ const initials = (name: string) =>
     }
 
     &--secondary {
-      font-size: 0.875rem;
+      font-size: var(--u-font-14);
       color: #6e6e73;
     }
   }

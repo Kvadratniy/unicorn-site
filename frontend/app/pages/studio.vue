@@ -3,7 +3,7 @@ import { useStudio } from '~/composables/pages/useStudio'
 import { createStudioLocalBusinessSchema, createStudioServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Студия звукозаписи в Ставрополе',
+  title: 'Студия звукозаписи Юникорн',
   description:
     'Запись песни в Ставрополе в студии Юникорн: запись вокала и инструментов, сведение, мастеринг и аранжировка. От идеи до релиза.',
   keywords:
@@ -14,8 +14,8 @@ const { open: openContactModal } = useContactModal()
 const { hero, main, services, clients, audience } = await useStudio('studio-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/studio/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/studio`
 
 const serviceSchema = computed(() =>
   createStudioServiceSchema({

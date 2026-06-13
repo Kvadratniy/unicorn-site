@@ -33,30 +33,29 @@
   font-display: swap;
 }
 
-
 .unicorn-studio-title {
-  font-size: clamp(2.75rem, 5vw, 3.8rem);
+  font-size: var(--u-font-fluid-display-xl);
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.04em;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   font-family: 'Suisse Intl', sans-serif;
 }
 
 .unicorn-studio-title-2 {
-  font-size: clamp(2.75rem, 5vw, 3.2rem);
+  font-size: var(--u-font-fluid-display-lg);
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.04em;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   font-family: 'Suisse Intl', sans-serif;
 }
 
 .unicorn-studio-subtitle {
-  font-family: 'Montserrat';
-  font-size: 17px;
+  font-family: var(--u-font-montserrat);
+  font-size: var(--u-font-17);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.011em;
-  color: #86868b;
+  color: var(--u-text-secondary);
 }

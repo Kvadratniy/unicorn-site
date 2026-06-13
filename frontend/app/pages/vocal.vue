@@ -3,7 +3,7 @@ import { useVocal } from '~/composables/pages/useVocal'
 import { createFaqPageSchema, createVocalMusicSchoolSchema, createVocalServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Уроки вокала в Ставрополе',
+  title: 'Уроки вокала в студии Юникорн',
   description:
     'Уроки вокала в Ставрополе в музыкальной студии Юникорн: обучение пению для детей и взрослых с нуля, индивидуально и в группе. Бесплатное пробное занятие!',
   keywords:
@@ -13,8 +13,8 @@ usePageSeo({
 const { hero, main, services, teachers, faq } = await useVocal('vocal-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/vocal/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/vocal`
 
 const serviceSchema = computed(() =>
   createVocalServiceSchema({

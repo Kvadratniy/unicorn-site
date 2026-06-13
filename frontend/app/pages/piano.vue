@@ -3,9 +3,9 @@ import { usePiano } from '~/composables/pages/usePiano'
 import { createFaqPageSchema, createPianoMusicSchoolSchema, createPianoServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Уроки фортепиано в Ставрополе для детей и взрослых. Бесплатное пробное занятие!',
+  title: 'Уроки фортепиано в студии Юникорн',
   description:
-    'Индивидуальные занятия по фортепиано в Ставрополе для детей от 5 лет и взрослых. Учим с нуля и развиваем технику. Бесплатное пробное занятие!',
+    'Уроки фортепиано в Ставрополе в студии Юникорн: индивидуальные занятия для детей от 5 лет и взрослых с нуля. Бесплатное пробное занятие!',
   keywords:
     'уроки фортепиано ставрополь, школа фортепиано ставрополь, уроки пианино ставрополь, курсы фортепиано ставрополь, обучение фортепиано ставрополь, фортепиано с нуля, фортепиано для начинающих, фортепиано для детей, фортепиано для взрослых, индивидуальные занятия фортепиано, преподаватель фортепиано ставрополь, научиться играть на пианино, пробное занятие фортепиано бесплатно, фортепиано с 5 лет',
 })
@@ -13,8 +13,8 @@ usePageSeo({
 const { hero, main, services, teachers, faq } = await usePiano('piano-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/piano/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/piano`
 
 const serviceSchema = computed(() =>
   createPianoServiceSchema({

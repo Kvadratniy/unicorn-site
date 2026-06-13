@@ -38,6 +38,10 @@ export type NewsArticle = {
   author: NewsAuthor
   category: string
   publishDate: string
+  /** Исходная ISO-дата публикации (для structured data) */
+  publishedAt: string
+  /** Исходная ISO-дата последнего изменения (для structured data) */
+  updatedAt: string
   readingTime: string
   heroImage: string
   content: NewsContentBlock[]

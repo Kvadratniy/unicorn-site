@@ -96,20 +96,20 @@ const portfolioItems: PortfolioItem[] = [
 .portfolio-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
   border-radius: 24px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--u-ease-standard);
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 120ms);
 }
 
 .portfolio-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 20px 50px var(--u-black-a12);
+  border-color: var(--u-pink-a30);
 }
 
 .portfolio-image-wrapper {
@@ -124,7 +124,7 @@ const portfolioItems: PortfolioItem[] = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s var(--u-ease-standard);
 }
 
 .portfolio-card:hover .portfolio-image {
@@ -136,9 +136,9 @@ const portfolioItems: PortfolioItem[] = [
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.4) 100%
+    var(--u-black-a00) 0%,
+    var(--u-black-a10) 50%,
+    var(--u-black-a40) 100%
   );
   transition: opacity 0.3s ease;
 }
@@ -160,12 +160,12 @@ const portfolioItems: PortfolioItem[] = [
 .portfolio-badge {
   display: inline-block;
   padding: 6px 12px;
-  font-size: 11px;
+  font-size: var(--u-font-11);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
+  color: var(--u-color-white);
+  background: var(--u-black-a60);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   font-family: 'Suisse Intl', sans-serif;
@@ -173,7 +173,7 @@ const portfolioItems: PortfolioItem[] = [
 
 @media (min-width: 1024px) {
   .portfolio-badge {
-    font-size: 12px;
+    font-size: var(--u-font-12);
     padding: 7px 14px;
   }
 }
@@ -194,7 +194,7 @@ const portfolioItems: PortfolioItem[] = [
 
 .portfolio-title {
   margin: 0;
-  font-size: 21px;
+  font-size: var(--u-font-21);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111;
@@ -205,26 +205,26 @@ const portfolioItems: PortfolioItem[] = [
 
 @media (min-width: 1024px) {
   .portfolio-title {
-    font-size: 23px;
+    font-size: var(--u-font-23);
   }
 }
 
 .portfolio-card:hover .portfolio-title {
-  color: #ec4899;
+  color: var(--u-color-pink);
 }
 
 .portfolio-description {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.65;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
 }
 
 @media (min-width: 1024px) {
   .portfolio-description {
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.7;
   }
 }

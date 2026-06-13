@@ -4,6 +4,7 @@ export type StrapiMedia = {
     large?: { url?: string }
     medium?: { url?: string }
   }
+
 }
 
 type CmsService = {

@@ -52,96 +52,11 @@ const { open: openContactModal } = useContactModal()
 </template>
 
 <style scoped>
-.section {
-  padding: 40px 0 50px;
-  background: linear-gradient(180deg, #ffffff 0%, #fafafa 50%, #de71a80f 100%);
-  position: relative;
-}
-
-@media (min-width: 1024px) {
-  .section {
-    padding: 50px 0 70px;
-  }
-}
-
-.wrap {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-@media (min-width: 1024px) {
-  .wrap {
-    padding: 0 40px;
-  }
-}
-
-.head {
-  margin-bottom: 64px;
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .head {
-    margin-bottom: 80px;
-  }
-}
-
-.head__label {
-  margin: 0 0 12px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #94a3b8;
-  font-family: 'Suisse Intl', sans-serif;
-}
-
-@media (min-width: 1024px) {
-  .head__label {
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-}
-
-.title {
-  margin: 0 0 20px;
-  font-size: clamp(2.75rem, 5vw, 4rem);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  color: #1d1d1f;
-  font-family: 'Suisse Intl', sans-serif;
-}
-
-@media (min-width: 1024px) {
-  .title {
-    margin-bottom: 28px;
-  }
-}
-
-.subtitle {
-  margin: 0 auto;
-  max-width: 640px;
-  font-size: 17px;
-  line-height: 1.65;
-  color: #64748b;
-  font-weight: 400;
-  font-family: 'Suisse Intl', sans-serif;
-}
-
-@media (min-width: 1024px) {
-  .subtitle {
-    font-size: 19px;
-    line-height: 1.7;
-  }
-}
-
 .services-menu {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--u-black-a04);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -158,9 +73,9 @@ const { open: openContactModal } = useContactModal()
   gap: 24px 32px;
   align-items: start;
   padding: 32px 24px;
-  background: #fff;
+  background: var(--u-color-white);
   opacity: 0;
-  animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.5s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 50ms);
   transition: background 0.25s ease;
   cursor: default;
@@ -185,19 +100,19 @@ const { open: openContactModal } = useContactModal()
 }
 
 .menu-item__num {
-  font-size: 13px;
+  font-size: var(--u-font-13);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
-  color: rgba(0, 0, 0, 0.25);
+  color: var(--u-black-a25);
   font-family: 'Suisse Intl', sans-serif;
   padding-top: 2px;
 }
 
 @media (min-width: 1024px) {
   .menu-item__num {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.3);
+    font-size: var(--u-font-14);
+    color: var(--u-black-a30);
   }
 }
 
@@ -231,7 +146,7 @@ const { open: openContactModal } = useContactModal()
 
 .menu-item__title {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -241,13 +156,13 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 768px) {
   .menu-item__title {
-    font-size: 20px;
+    font-size: var(--u-font-20);
   }
 }
 
 @media (min-width: 1024px) {
   .menu-item__title {
-    font-size: 22px;
+    font-size: var(--u-font-22);
     letter-spacing: -0.04em;
   }
 }
@@ -255,26 +170,26 @@ const { open: openContactModal } = useContactModal()
 .menu-item__badge {
   display: inline-block;
   padding: 3px 8px;
-  font-size: 10px;
+  font-size: var(--u-font-10);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.06);
+  color: var(--u-black-a50);
+  background: var(--u-black-a06);
   border-radius: 4px;
   font-family: 'Suisse Intl', sans-serif;
 }
 
 @media (min-width: 1024px) {
   .menu-item__badge {
-    font-size: 11px;
+    font-size: var(--u-font-11);
     padding: 4px 10px;
   }
 }
 
 .menu-item__price {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--u-font-17);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
@@ -285,13 +200,13 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 1024px) {
   .menu-item__price {
-    font-size: 19px;
+    font-size: var(--u-font-19);
   }
 }
 
 .menu-item__desc {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.6;
   color: rgba(0, 0, 0, 0.55);
   font-family: 'Suisse Intl', sans-serif;
@@ -301,7 +216,7 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 1024px) {
   .menu-item__desc {
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.65;
   }
 }
@@ -325,7 +240,7 @@ const { open: openContactModal } = useContactModal()
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: var(--u-font-14);
   line-height: 1.45;
   color: rgba(0, 0, 0, 0.7);
   font-family: 'Suisse Intl', sans-serif;
@@ -334,7 +249,7 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 1024px) {
   .menu-item__features li {
-    font-size: 15px;
+    font-size: var(--u-font-15);
     gap: 12px;
   }
 }
@@ -344,7 +259,7 @@ const { open: openContactModal } = useContactModal()
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--u-black-a35);
 }
 
 .actions {
@@ -376,24 +291,24 @@ const { open: openContactModal } = useContactModal()
 
 .actions__text {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 600;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   font-family: 'Suisse Intl', sans-serif;
   letter-spacing: -0.02em;
 }
 
 @media (min-width: 1024px) {
   .actions__text {
-    font-size: 20px;
+    font-size: var(--u-font-20);
   }
 }
 
 .actions__note {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.6;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   max-width: 480px;
@@ -401,7 +316,7 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 1024px) {
   .actions__note {
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
@@ -411,14 +326,14 @@ const { open: openContactModal } = useContactModal()
   gap: 12px;
   padding: 18px 36px;
   border-radius: 14px;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: #fff;
+  color: var(--u-color-white);
   text-decoration: none;
-  background: linear-gradient(135deg, #fb7185, #8b5cf6);
-  box-shadow: 0 8px 32px rgba(251, 113, 133, 0.22);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, var(--u-color-rose), var(--u-color-purple));
+  box-shadow: 0 8px 32px var(--u-rose-a22);
+  transition: all 0.4s var(--u-ease-standard);
   position: relative;
   overflow: hidden;
   font-family: 'Suisse Intl', sans-serif;
@@ -427,7 +342,7 @@ const { open: openContactModal } = useContactModal()
 @media (min-width: 1024px) {
   .cta {
     padding: 20px 40px;
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
@@ -435,14 +350,14 @@ const { open: openContactModal } = useContactModal()
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  background: linear-gradient(135deg, var(--u-color-purple), var(--u-color-blue));
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .cta:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(251, 113, 133, 0.32);
+  box-shadow: 0 20px 50px var(--u-rose-a32);
 }
 
 .cta:hover::before {

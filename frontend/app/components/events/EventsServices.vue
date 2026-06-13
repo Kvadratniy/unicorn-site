@@ -118,12 +118,12 @@ const services: Service[] = [
   flex-direction: column;
   gap: 20px;
   padding: 32px 28px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
   border-radius: 20px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--u-ease-standard);
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 80ms);
 }
 
@@ -136,8 +136,8 @@ const services: Service[] = [
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-  border-color: rgba(236, 72, 153, 0.2);
+  box-shadow: 0 16px 40px var(--u-black-a10);
+  border-color: var(--u-pink-a20);
 }
 
 .service-icon {
@@ -146,8 +146,8 @@ const services: Service[] = [
   justify-content: center;
   width: 64px;
   height: 64px;
-  font-size: 32px;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(139, 92, 246, 0.08));
+  font-size: var(--u-font-32);
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), var(--u-purple-a08));
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -156,13 +156,13 @@ const services: Service[] = [
   .service-icon {
     width: 72px;
     height: 72px;
-    font-size: 36px;
+    font-size: var(--u-font-36);
   }
 }
 
 .service-card:hover .service-icon {
   transform: scale(1.1) rotate(-5deg);
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15));
+  background: linear-gradient(135deg, var(--u-pink-a15), var(--u-purple-a15));
 }
 
 .service-content {
@@ -173,7 +173,7 @@ const services: Service[] = [
 
 .service-title {
   margin: 0;
-  font-size: 19px;
+  font-size: var(--u-font-19);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111;
@@ -183,22 +183,22 @@ const services: Service[] = [
 
 @media (min-width: 1024px) {
   .service-title {
-    font-size: 21px;
+    font-size: var(--u-font-21);
   }
 }
 
 .service-description {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.6;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
 }
 
 @media (min-width: 1024px) {
   .service-description {
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.65;
   }
 }
@@ -212,7 +212,7 @@ const services: Service[] = [
   padding: 40px 24px;
   background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
   border-radius: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--u-black-a04);
 }
 
 @media (min-width: 1024px) {
@@ -224,24 +224,24 @@ const services: Service[] = [
 
 .services-cta-text {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--u-font-20);
   font-weight: 600;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   font-family: 'Suisse Intl', sans-serif;
   letter-spacing: -0.02em;
 }
 
 @media (min-width: 1024px) {
   .services-cta-text {
-    font-size: 22px;
+    font-size: var(--u-font-22);
   }
 }
 
 .services-cta-note {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.6;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   max-width: 480px;
@@ -249,7 +249,7 @@ const services: Service[] = [
 
 @media (min-width: 1024px) {
   .services-cta-note {
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
@@ -259,14 +259,14 @@ const services: Service[] = [
   gap: 12px;
   padding: 18px 36px;
   border-radius: 14px;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: #fff;
+  color: var(--u-color-white);
   text-decoration: none;
-  background: linear-gradient(135deg, #fb7185, #8b5cf6);
-  box-shadow: 0 8px 32px rgba(251, 113, 133, 0.22);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, var(--u-color-rose), var(--u-color-purple));
+  box-shadow: 0 8px 32px var(--u-rose-a22);
+  transition: all 0.4s var(--u-ease-standard);
   position: relative;
   overflow: hidden;
   font-family: 'Suisse Intl', sans-serif;
@@ -277,7 +277,7 @@ const services: Service[] = [
 @media (min-width: 1024px) {
   .cta-button {
     padding: 20px 40px;
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
@@ -285,14 +285,14 @@ const services: Service[] = [
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  background: linear-gradient(135deg, var(--u-color-purple), var(--u-color-blue));
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .cta-button:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(251, 113, 133, 0.32);
+  box-shadow: 0 20px 50px var(--u-rose-a32);
 }
 
 .cta-button:hover::before {

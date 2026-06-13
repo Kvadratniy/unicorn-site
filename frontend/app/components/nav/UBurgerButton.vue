@@ -35,18 +35,18 @@ const burgerLineClass = 'u-burger-button__line'
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--burger-button-border, rgb(16 16 16 / 0.08));
+  border: 1px solid var(--burger-button-border, var(--u-neutral-a08));
   border-radius: 9999px;
   padding: 0;
-  border-color: var(--burger-button-border, rgb(16 16 16 / 0.08));
-  background-color: var(--burger-button-bg, rgb(255 255 255 / 0.82));
+  border-color: var(--burger-button-border, var(--u-neutral-a08));
+  background-color: var(--burger-button-bg, var(--u-white-a82));
 
   &__line {
     display: block;
     width: 18px;
     height: 2px;
     border-radius: 9999px;
-    background-color: var(--burger-button-line, #e339a2);
+    background-color: var(--burger-button-line, var(--u-color-magenta));
     transition: transform 250ms ease-out, opacity 250ms ease-out;
 
     &--middle,

@@ -2,14 +2,14 @@
 const route = useRoute()
 
 const menuItems = [
-  { label: 'Студия звукозаписи', to: '/studio/' },
-  { label: 'Курсы вокала', to: '/vocal/' },
-  { label: 'Курсы фортепиано', to: '/piano/' },
-  { label: 'Курсы гитары', to: '/guitar/' },
-  { label: 'Новости', to: '/news/' },
+  { label: 'Студия звукозаписи', to: '/studio' },
+  { label: 'Курсы вокала', to: '/vocal' },
+  { label: 'Курсы фортепиано', to: '/piano' },
+  { label: 'Курсы гитары', to: '/guitar' },
+  { label: 'Новости', to: '/news' },
   // { label: 'Музыкальная дистрибуция', to: '/distribution' },
-  // { label: 'Аренда', to: '/rent' },
-  { label: 'Контакты', to: '/contacts/' },
+  { label: 'Аренда', to: '/rent' },
+  { label: 'Контакты', to: '/contacts' },
 ]
 
 const socialLinks = [
@@ -133,7 +133,7 @@ const contacts = {
 <style scoped>
 .footer {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: #fff;
+  color: var(--u-color-white);
   padding: 60px 20px 20px;
   position: relative;
   z-index: 10;
@@ -174,27 +174,27 @@ const contacts = {
 }
 
 .footer-logo-text {
-  font-size: 24px;
+  font-size: var(--u-font-24);
   font-weight: 700;
   font-family: 'Druk Wide', sans-serif;
-  color: #fff;
+  color: var(--u-color-white);
   margin-bottom: 16px;
   letter-spacing: -0.5px;
 }
 
 .footer-description {
-  font-size: 14px;
+  font-size: var(--u-font-14);
   line-height: 22px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--u-white-a70);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 500;
 }
 
 .footer-title {
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 700;
   font-family: 'Druk Wide', sans-serif;
-  color: #fff;
+  color: var(--u-color-white);
   margin-bottom: 8px;
   letter-spacing: -0.5px;
 }
@@ -206,12 +206,12 @@ const contacts = {
 }
 
 .footer-link {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--u-font-14);
+  color: var(--u-white-a70);
   text-decoration: none;
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s var(--u-ease-smooth);
   position: relative;
   padding-left: 0;
   display: inline-block;
@@ -226,12 +226,12 @@ const contacts = {
   transform: translateY(-50%);
   width: 0;
   height: 2px;
-  background: var(--ui-primary, #ec4899);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--ui-primary, var(--u-color-pink));
+  transition: width 0.3s var(--u-ease-smooth);
 }
 
 .footer-link:hover {
-  color: #fff;
+  color: var(--u-color-white);
   padding-left: 20px;
 }
 
@@ -240,7 +240,7 @@ const contacts = {
 }
 
 .footer-link--active {
-  color: var(--ui-primary, #ec4899);
+  color: var(--ui-primary, var(--u-color-pink));
   font-weight: 600;
 }
 
@@ -254,20 +254,20 @@ const contacts = {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--u-font-14);
+  color: var(--u-white-a70);
   text-decoration: none;
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 500;
-  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.3s var(--u-ease-smooth);
 }
 
 .footer-contact:hover {
-  color: #fff;
+  color: var(--u-color-white);
 }
 
 .footer-contact-icon {
-  font-size: 18px;
+  font-size: var(--u-font-18);
   flex-shrink: 0;
 }
 
@@ -283,38 +283,38 @@ const contacts = {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--u-white-a10);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--u-white-a20);
   border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s var(--u-ease-smooth);
   cursor: pointer;
 }
 
 .footer-social-link:hover {
-  background: rgba(236, 72, 153, 0.2);
-  border-color: var(--ui-primary, #ec4899);
+  background: var(--u-pink-a20);
+  border-color: var(--ui-primary, var(--u-color-pink));
   transform: translateY(-2px);
 }
 
 .footer-social-icon {
   width: 20px;
   height: 20px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--u-white-a90);
   fill: currentColor;
   flex-shrink: 0;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--u-white-a10);
   padding-top: 20px;
   margin-top: 40px;
   text-align: center;
 }
 
 .footer-copyright {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--u-font-12);
+  color: var(--u-white-a50);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 500;
 }

@@ -54,31 +54,31 @@ const handleGoHome = () => {
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  padding: 2rem 1.5rem;
+  padding: 32px 24px;
 }
 
 .error-page__content {
   text-align: center;
-  max-width: 28rem;
+  max-width: 448px;
 }
 
 .error-page__code {
   font-family: 'Suisse Intl', sans-serif;
-  font-size: clamp(5rem, 20vw, 10rem);
+  font-size: var(--u-font-fluid-display-error);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
   color: #1d1d1f;
   opacity: 0.12;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .error-page__title {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .error-page__text {
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   color: #86868b;
 }
 
@@ -86,6 +86,6 @@ const handleGoHome = () => {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 16px;
 }
 </style>

@@ -3,7 +3,6 @@ Disallow: /api/
 Disallow: /teacher
 Disallow: /events
 Disallow: /distribution
-Disallow: /rent
 
 Sitemap: https://unicorn-studio.pro/sitemap.xml
 `

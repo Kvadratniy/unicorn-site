@@ -11,9 +11,7 @@ const props = withDefaults(
     /** URL картинки для мобильных (экономия трафика). Если задан — на мобильном показывается картинка вместо видео. */
     imageSrc?: string
     videoType?: string
-    showLoaderUntilReady?: boolean
     titleId?: string
-    badgeText?: string
     titleAccent: string
     titleLine2: string
     description: string
@@ -23,8 +21,6 @@ const props = withDefaults(
   }>(),
   {
     videoType: 'video/mp4',
-    showLoaderUntilReady: false,
-    badgeText: 'Unicorn Studio',
     tagRight: '40px',
     titleNowrap: false,
   }
@@ -101,7 +97,7 @@ watch(currentVideoSrc, () => {
         fetchpriority="high"
         width="600"
         height="1080"
-        sizes="100vw"
+        sizes="xs:100vw lg:100vw"
         format="webp"
       />
 
@@ -184,8 +180,8 @@ watch(currentVideoSrc, () => {
 $desktop: 1024px;
 $title-desktop: 900px;
 $small-mobile: 525px;
-$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-out: var(--u-ease-out);
+$ease-spring: var(--u-ease-spring);
 
 .hero {
   position: relative;
@@ -219,8 +215,8 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       background: linear-gradient(
         135deg,
         rgba(0, 0, 0, 0.65) 0%,
-        rgba(0, 0, 0, 0.4) 55%,
-        rgba(0, 0, 0, 0.6) 100%
+        var(--u-black-a40) 55%,
+        var(--u-black-a60) 100%
       );
     }
   }
@@ -296,24 +292,6 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
   }
 
-  &__badge {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px 10px 14px;
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 100px;
-    opacity: 0;
-    animation: fadeInUp 0.7s $ease-out forwards;
-    animation-delay: 0.2s;
-    backdrop-filter: blur(20px);
-
-    @media (min-width: $desktop) {
-      display: inline-flex;
-    }
-  }
-
   &__title {
     display: flex;
     flex-direction: column;
@@ -325,15 +303,15 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     max-width: 520px;
     margin: 0;
     font-family: 'Suisse Intl', sans-serif;
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--u-white-a85);
     opacity: 0;
     animation: fadeInUp 0.7s $ease-out forwards;
     animation-delay: 0.7s;
 
     @media (min-width: $desktop) {
-      font-size: 18px;
+      font-size: var(--u-font-18);
     }
   }
 
@@ -367,24 +345,6 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
   }
 
-  &__scroll {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    opacity: 0;
-    transform: translateX(-50%) !important;
-    animation: fadeInUp 0.6s $ease-out forwards;
-    animation-delay: 1.2s;
-
-    @media (max-width: $small-mobile) {
-      display: none;
-    }
-  }
 }
 
 .decor-glow {
@@ -399,7 +359,7 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     left: 10%;
     width: 520px;
     height: 520px;
-    background: linear-gradient(135deg, #fb7185, #c084fc);
+    background: linear-gradient(135deg, var(--u-color-rose), #c084fc);
     animation-delay: 0s;
   }
 
@@ -413,44 +373,22 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
-.badge {
-  &__dot {
-    width: 8px;
-    height: 8px;
-    background: #10b981;
-    border-radius: 50%;
-    animation: pulse 3s ease-in-out infinite;
-  }
-
-  &__text {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-
-    @media (min-width: $desktop) {
-      font-size: 13px;
-    }
-  }
-}
-
 .title {
   &__line {
     display: block;
     font-family: 'Druk Wide', sans-serif;
-    font-size: clamp(20px, 100vw, 32px);
+    font-size: var(--u-font-fluid-display-hero-tag);
     font-weight: 600;
     line-height: 1.2;
-    color: #fff;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    color: var(--u-color-white);
+    text-shadow: 0 4px 30px var(--u-black-a30);
     opacity: 0;
     animation:
       fadeInUp 0.8s $ease-out forwards,
       gradientShift 5s ease-in-out infinite;
 
     @media (min-width: $title-desktop) {
-      font-size: 60px;
+      font-size: var(--u-font-60);
       line-height: 1.06;
     }
 
@@ -462,16 +400,12 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       animation-delay: 0.35s;
     }
 
-    &--2 {
-      animation-delay: 0.45s;
-    }
-
     &--3 {
       animation-delay: 0.55s;
     }
 
     &--accent {
-      background: linear-gradient(135deg, #ffffff 100%, #ffffff 100%, #e339a2 100%);
+      background: linear-gradient(135deg, var(--u-color-white) 100%, var(--u-color-white) 100%, var(--u-color-magenta) 100%);
       background-clip: text;
       background-size: 200% 100%;
       -webkit-background-clip: text;
@@ -488,12 +422,12 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 0;
     padding: 0;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: var(--u-white-a95);
+    border: 1px solid var(--u-black-a06);
     border-radius: 20px;
     box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.08),
-      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      0 25px 60px var(--u-black-a08),
+      0 0 0 1px var(--u-white-a50) inset;
     backdrop-filter: blur(24px);
 
     &::before {
@@ -552,7 +486,7 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       background: linear-gradient(
         180deg,
         transparent,
-        rgba(0, 0, 0, 0.08),
+        var(--u-black-a08),
         transparent
       );
       transform: translateY(-50%);
@@ -568,50 +502,22 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   &__value {
-    font-size: 32px;
+    font-size: var(--u-font-32);
     font-weight: 800;
     line-height: 1;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--u-color-gray-900) 0%, #374151 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   &__label {
-    font-size: 10px;
+    font-size: var(--u-font-10);
     font-weight: 600;
     color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-  }
-}
-
-.scroll {
-  &__mouse {
-    display: flex;
-    justify-content: center;
-    width: 24px;
-    height: 40px;
-    padding-top: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-  }
-
-  &__wheel {
-    width: 3px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 2px;
-    animation: scrollWheel 2s ease-in-out infinite;
-  }
-
-  &__text {
-    font-size: 10px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 2px;
   }
 }
 
@@ -636,18 +542,6 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.2);
-  }
-}
-
 @keyframes gradientShift {
   0%,
   100% {
@@ -655,17 +549,6 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   50% {
     background-position: 100% 50%;
-  }
-}
-
-@keyframes scrollWheel {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(12px);
   }
 }
 
@@ -697,20 +580,16 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__badge,
   .title__line,
   .hero__text,
   .hero__actions,
   .hero__tag,
-  .tag__stat,
-  .hero__scroll {
+  .tag__stat {
     animation: none;
     opacity: 1;
   }
 
-  .decor-glow,
-  .badge__dot,
-  .scroll__wheel {
+  .decor-glow {
     animation: none;
   }
 

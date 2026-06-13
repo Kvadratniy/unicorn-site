@@ -20,8 +20,8 @@ const {
 } = await useDistribution('distribution-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/distribution/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/distribution`
 
 const serviceSchema = computed(() =>
   createDistributionServiceSchema({
@@ -106,7 +106,7 @@ useHead({
   flex-direction: column;
   gap: 26px;
   padding-bottom: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--u-font-montserrat);
 
   &__content {
     display: flex;
@@ -133,7 +133,7 @@ useHead({
   &__eyebrow {
     margin: 0;
     color: #be185d;
-    font-size: 12px;
+    font-size: var(--u-font-12);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -142,17 +142,17 @@ useHead({
   &__title {
     margin: 0;
     font-family: 'Suisse Intl', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    font-size: var(--u-font-fluid-display-page);
     font-weight: 600;
     line-height: 1.17;
     letter-spacing: -0.023em;
-    color: #111827;
+    color: var(--u-color-gray-900);
   }
 
   &__subtitle {
     margin: 0;
-    color: #4b5563;
-    font-size: 16px;
+    color: var(--u-text-body);
+    font-size: var(--u-font-16);
     line-height: 1.6;
   }
 
@@ -167,15 +167,15 @@ useHead({
   display: grid;
   gap: 12px;
   padding: 22px 20px;
-  border: 1px solid rgb(17 24 39 / 0.08);
+  border: 1px solid var(--u-gray-900-a08);
   border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 10px 28px rgb(15 23 42 / 0.04);
+  background: var(--u-color-white);
+  box-shadow: 0 10px 28px var(--u-slate-a04);
 
   &__title {
     margin: 0;
-    color: #111827;
-    font-size: 23px;
+    color: var(--u-color-gray-900);
+    font-size: var(--u-font-23);
     line-height: 1.2;
     letter-spacing: -0.02em;
     font-family: 'Suisse Intl', sans-serif;
@@ -184,7 +184,7 @@ useHead({
   &__subtitle {
     margin: 0;
     color: #be185d;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     font-weight: 600;
     line-height: 1.4;
   }
@@ -192,7 +192,7 @@ useHead({
   &__description {
     margin: 0;
     color: #374151;
-    font-size: 15px;
+    font-size: var(--u-font-15);
     line-height: 1.58;
   }
 
@@ -208,7 +208,7 @@ useHead({
     position: relative;
     padding-left: 16px;
     color: #1f2937;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     line-height: 1.46;
 
     &::before {
@@ -225,8 +225,8 @@ useHead({
 
   &__price {
     margin: 6px 0 0;
-    color: #111827;
-    font-size: 14px;
+    color: var(--u-color-gray-900);
+    font-size: var(--u-font-14);
     font-weight: 600;
   }
 }
@@ -260,7 +260,7 @@ useHead({
     padding: 18px;
 
     &__title {
-      font-size: 20px;
+      font-size: var(--u-font-20);
     }
   }
 }

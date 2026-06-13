@@ -17,32 +17,22 @@ export default defineNuxtConfig({
   routeRules: {
     // Для SSR не выполняем глобальный pre-render страниц.
     '/**': { prerender: false },
-    '/teacher': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-    '/teacher/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+    // SWR-кэш для индексируемых страниц: робот всегда получает быстрый
+    // отрендеренный HTML, а один удачный рендер переживает кратковременные
+    // сбои/рестарты бэкенда (Strapi). Ревалидация идёт в фоне.
+    '/': { swr: 600 },
+    '/studio': { swr: 600 },
+    '/vocal': { swr: 600 },
+    '/piano': { swr: 600 },
+    '/guitar': { swr: 600 },
+    '/contacts': { swr: 600 },
+    '/news': { swr: 600 },
+    '/news/**': { swr: 600 },
     '/events': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-    '/events/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
     '/distribution': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-    '/distribution/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
     '/rent': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-    '/rent/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/strapi'],
-  strapi: {
-    url: publicStrapiBaseUrl,
-    // Keep browser-side Strapi token empty; server-side token lives in runtimeConfig.strapi.
-    token: '',
-    prefix: '/api',
-    admin: '/admin',
-    version: 'v5',
-    cookie: {},
-    cookieName: 'strapi_jwt',
-  },
-  hooks: {
-    'nitro:config'(nitroConfig) {
-      // Extra hardening: keep public runtime payload lean.
-      void nitroConfig
-    },
-  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   image: {
     // Используем ipx провайдер (автоматически переключается на ipxStatic при nuxt generate)
     provider: 'ipx',
@@ -50,6 +40,10 @@ export default defineNuxtConfig({
     quality: 80,
     // Формат по умолчанию
     format: ['webp'],
+    // Разрешаем IPX проксировать удалённые изображения Strapi через Nuxt-сервер.
+    // Без этого браузер делает прямые запросы к api.unicorn-studio.pro, которые
+    // блокируются на уровне TCP с российских IP (ERR_TIMED_OUT).
+    domains: ['api.unicorn-studio.pro'],
   },
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['vue'] },
@@ -64,24 +58,37 @@ export default defineNuxtConfig({
         url: publicStrapiBaseUrl,
       },
       siteUrl,
-      site: {
-        url: siteUrl,
-      },
       yandexMapsApiKey: process.env.NUXT_PUBLIC_YANDEX_MAPS_API_KEY,
       yandexMetrikaId: process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID || '',
     },
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/tokens.css', '~/assets/css/main.css'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: { lang: 'ru' },
-      titleTemplate: '%s | Unicorn Studio',
+      titleTemplate: '%s | Ставрополь',
       title: 'Unicorn Studio',
       link: [
+        // Preload критических начертаний Montserrat (используются в шапке на первом экране),
+        // чтобы уменьшить CLS/мерцание текста. crossorigin обязателен для шрифтов.
+        {
+          rel: 'preload',
+          as: 'font',
+          type: 'font/ttf',
+          href: '/fonts/Montserrat/Montserrat-Regular.ttf',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'preload',
+          as: 'font',
+          type: 'font/ttf',
+          href: '/fonts/Montserrat/Montserrat-Medium.ttf',
+          crossorigin: 'anonymous',
+        },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon/favicon.svg' },
-        { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon/favicon-96x96.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png' },
         { rel: 'manifest', href: '/favicon/site.webmanifest' },
       ],
@@ -98,33 +105,10 @@ export default defineNuxtConfig({
       style: [
         {
           innerHTML:
-            'html,body{background-color:#f3f4f6;min-height:100vh}#__nuxt{min-height:100vh}',
+            'html,body{background-color:#fdfcf8;min-height:100vh}#__nuxt{min-height:100vh}',
           tagPriority: 'high',
         },
       ],
-      // Yandex.Metrika counter
-      ...(process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID && {
-        script: [
-          {
-            type: 'text/javascript',
-            innerHTML: `
-(function(m,e,t,r,i,k,a){
-  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();
-  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID}', 'ym');
-ym(${process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-            `.trim(),
-            tagPriority: 'high',
-          },
-        ],
-        noscript: [
-          {
-            innerHTML: `<div><img src="https://mc.yandex.ru/watch/${process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div>`,
-          },
-        ],
-      }),
     },
   },
 })

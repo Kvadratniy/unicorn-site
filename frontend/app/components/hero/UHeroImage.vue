@@ -46,10 +46,11 @@ const { open: openContactModal } = useContactModal()
           class="hero-image__img"
           :width="props.imageWidth"
           :height="props.imageHeight"
+          fit="inside"
           fetchpriority="high"
           loading="eager"
           decoding="async"
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="xs:100vw lg:60vw"
           format="webp"
         />
       </div>
@@ -85,7 +86,7 @@ $desktop: 1024px;
   padding: 20px 0;
   // background: linear-gradient(
   //   180deg,
-  //   #fff 0%,
+  //   var(--u-color-white) 0%,
   //   rgba(255, 255, 255, 0.92) 45%,
   //   rgba(236, 72, 153, 0.16) 100%
   // );
@@ -94,10 +95,10 @@ $desktop: 1024px;
     padding: 0;
     background: linear-gradient(
       90deg,
-      rgba(236, 72, 153, 0.1) 0%,
+      var(--u-pink-a10) 0%,
       rgba(236, 72, 153, 0.05) 24%,
-      #fff 40%,
-      #fff 100%
+      var(--u-color-white) 40%,
+      var(--u-color-white) 100%
     );
   }
 
@@ -155,21 +156,21 @@ $desktop: 1024px;
   &__text {
     max-width: 630px;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-15);
     line-height: 1.7;
     color: #374151;
 
     @media (min-width: $desktop) {
-      font-size: 16px;
+      font-size: var(--u-font-16);
     }
   }
 
   &__caption {
     max-width: 480px;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-14);
     line-height: 1.5;
     color: #6b7280;
   }
@@ -210,14 +211,14 @@ $desktop: 1024px;
   &__line {
     display: block;
     font-family: 'Druk Wide', sans-serif;
-    font-size: clamp(24px, 6vw, 54px);
+    font-size: var(--u-font-fluid-display-hero-image);
     font-weight: 600;
     line-height: 1.1;
-    color: #111827;
+    color: var(--u-color-gray-900);
     text-shadow: none;
 
     &--accent {
-      background: linear-gradient(135deg, #be185d 0%, #ec4899 100%);
+      background: linear-gradient(135deg, var(--u-color-pink-deep) 0%, var(--u-color-pink) 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

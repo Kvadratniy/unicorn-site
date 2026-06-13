@@ -41,8 +41,8 @@
 
   &__title {
     color: #b84eb9;
-    font-family: 'Montserrat';
-    font-size: 14px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-14);
     font-weight: 500;
     letter-spacing: -0.03em;
   }
@@ -50,16 +50,16 @@
   &__subtitle {
     margin-top: 3px;
     color: #1b1b1b;
-    font-size: 10px;
+    font-size: var(--u-font-10);
     font-weight: 300;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-	font-family: 'Montserrat';
+	font-family: var(--u-font-montserrat);
   }
 
   @media (max-width: 640px) {
     &__title {
-      font-size: 14px;
+      font-size: var(--u-font-14);
     }
 
     &__subtitle {

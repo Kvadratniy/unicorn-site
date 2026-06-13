@@ -5,14 +5,14 @@ const { getNewsArticles } = useNews()
 const { data: articles, pending } = await useAsyncData('news-list', getNewsArticles)
 
 usePageSeo({
-  title: 'Новости — Unicorn Studio',
+  title: 'Новости',
   description:
     'Статьи и заметки студии: вокал, инструменты, запись и практические советы для занятий и сессий в студии.',
 })
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/news/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/news`
 
 const newsCollectionSchema = computed(() =>
   createNewsCollectionSchema({
@@ -126,8 +126,8 @@ useHead({
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #fff;
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+    background: var(--u-color-white);
+    box-shadow: 0 1px 2px var(--u-slate-a05);
     padding: 32px 16px;
     border-radius: 16px;
   }
@@ -150,7 +150,7 @@ useHead({
       right: -40px;
       width: 176px;
       height: 176px;
-      background: rgb(244 114 182 / 0.45);
+      background: var(--u-pink-light-a45);
     }
 
     &--left {
@@ -158,7 +158,7 @@ useHead({
       left: -24px;
       width: 160px;
       height: 160px;
-      background: rgb(196 181 253 / 0.45);
+      background: var(--u-purple-light-a45);
     }
   }
 
@@ -170,7 +170,7 @@ useHead({
     background: #fdf2f8;
     padding: 4px 12px;
     color: #be185d;
-    font-size: 12px;
+    font-size: var(--u-font-12);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -180,7 +180,7 @@ useHead({
     margin: 0;
     text-wrap: balance;
     color: #171717;
-    font-size: 30px;
+    font-size: var(--u-font-30);
     font-weight: 600;
     line-height: 1.12;
     letter-spacing: -0.02em;
@@ -191,7 +191,7 @@ useHead({
     max-width: 768px;
     text-wrap: pretty;
     color: #525252;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     line-height: 1.6;
   }
 
@@ -213,16 +213,16 @@ useHead({
   &__skeleton-card {
     height: 288px;
     animation: pulse 1.5s ease-in-out infinite;
-    border: 1px solid rgb(229 229 229 / 0.8);
+    border: 1px solid var(--u-gray-a80);
     border-radius: 16px;
-    background: #fff;
+    background: var(--u-color-white);
   }
 
   &__empty {
     margin-top: 32px;
     border: 1px dashed #d4d4d8;
     border-radius: 16px;
-    background: rgb(255 255 255 / 0.75);
+    background: var(--u-white-a75);
     padding: 32px;
     text-align: center;
   }
@@ -230,7 +230,7 @@ useHead({
   &__empty-title {
     margin: 0;
     color: #171717;
-    font-size: 22px;
+    font-size: var(--u-font-22);
     font-weight: 600;
     letter-spacing: -0.02em;
   }
@@ -239,7 +239,7 @@ useHead({
     margin: 12px auto 0;
     max-width: 576px;
     color: #525252;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     line-height: 1.6;
   }
 
@@ -250,10 +250,10 @@ useHead({
     justify-content: center;
     border: 1px solid #e5e5e5;
     border-radius: 12px;
-    background: #fff;
+    background: var(--u-color-white);
     padding: 8px 16px;
     color: #262626;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     font-weight: 500;
     text-decoration: none;
     transition: border-color 0.2s ease, background-color 0.2s ease;
@@ -277,17 +277,17 @@ useHead({
   display: block;
   height: 100%;
   overflow: hidden;
-  border: 1px solid rgb(229 229 229 / 0.9);
+  border: 1px solid var(--u-gray-a90);
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+  background: var(--u-color-white);
+  box-shadow: 0 1px 2px var(--u-slate-a05);
   text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
     border-color: #fbcfe8;
-    box-shadow: 0 8px 20px rgb(15 23 42 / 0.08);
+    box-shadow: 0 8px 20px var(--u-slate-a08);
   }
 
   &__media {
@@ -314,7 +314,7 @@ useHead({
     bottom: 0;
     left: 0;
     height: 80px;
-    background: linear-gradient(to top, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.1), transparent);
+    background: linear-gradient(to top, var(--u-black-a35), var(--u-black-a10), transparent);
   }
 
   &__meta {
@@ -325,10 +325,10 @@ useHead({
     align-items: center;
     gap: 8px;
     border-radius: 999px;
-    background: rgb(0 0 0 / 0.5);
+    background: var(--u-black-a50);
     padding: 4px 10px;
-    color: #fff;
-    font-size: 11px;
+    color: var(--u-color-white);
+    font-size: var(--u-font-11);
     font-weight: 500;
     backdrop-filter: blur(4px);
   }
@@ -347,7 +347,7 @@ useHead({
   &__title {
     margin: 0;
     color: #171717;
-    font-size: 18px;
+    font-size: var(--u-font-18);
     font-weight: 600;
     line-height: 1.35;
     display: -webkit-box;
@@ -365,7 +365,7 @@ useHead({
   &__subtitle {
     margin: 8px 0 0;
     color: #525252;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     line-height: 1.6;
     display: -webkit-box;
     line-clamp: 3;
@@ -378,7 +378,7 @@ useHead({
     margin-top: auto;
     padding-top: 16px;
     color: #be185d;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     font-weight: 500;
   }
 }
@@ -400,11 +400,11 @@ useHead({
     }
 
     &__hero-title {
-      font-size: 36px;
+      font-size: var(--u-font-36);
     }
 
     &__hero-subtitle {
-      font-size: 16px;
+      font-size: var(--u-font-16);
     }
 
     &__content {
@@ -439,11 +439,15 @@ useHead({
     }
 
     &__hero-title {
-      font-size: 46px;
+      font-size: var(--u-font-46);
     }
 
     &__content {
       padding: 0 20px;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 }

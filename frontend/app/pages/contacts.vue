@@ -2,7 +2,7 @@
 import { createLocalBusinessSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Контакты',
+  title: 'Контакты студии Юникорн',
   description:
     'Unicorn Studio, Ставрополь: адрес 50 лет ВЛКСМ д. 93, телефон +7 (906) 464-94-96, почта. График работы пн–вс 10:00–22:00. Как добраться.',
 })
@@ -27,8 +27,8 @@ useHead({
 
 <template>
   <div class="contacts-page-min-height">
-    <UBaseWrapper aria-labelledby="contacts-title" class="contacts-section pt-10">
-      <h1 class="contacts-title lg:pt-20 pt-4">Контакты</h1>
+    <UBaseWrapper aria-labelledby="contacts-title" class="contacts-section">
+      <h1 id="contacts-title" class="contacts-title">Контакты</h1>
 
       <div class="contacts-info">
       <!-- Адрес -->
@@ -83,24 +83,24 @@ useHead({
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.contacts-page {
-  width: 100%;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 140px 20px 80px;
-  box-sizing: border-box;
+  padding-top: 40px;
 }
 
 .contacts-title {
-  font-size: 56px;
+  font-size: var(--u-font-56);
   font-weight: 700;
   color: #000;
   margin-bottom: 64px;
+  padding-top: 16px;
   font-family: 'Druk Wide', sans-serif;
   letter-spacing: -1px;
   line-height: 1.1;
+}
+
+@media (min-width: 1024px) {
+  .contacts-title {
+    padding-top: 80px;
+  }
 }
 
 .contacts-info {
@@ -116,7 +116,7 @@ useHead({
 }
 
 .contacts-column-title {
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 700;
   color: #000;
   margin-bottom: 16px;
@@ -125,7 +125,7 @@ useHead({
 }
 
 .contacts-column-text {
-  font-size: 16px;
+  font-size: var(--u-font-16);
   line-height: 1.6;
   color: #404040;
   margin-bottom: 16px;
@@ -137,31 +137,6 @@ useHead({
   height: 1px;
   background-color: #e5e5e5;
   margin-bottom: 16px;
-}
-
-.contacts-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border: 1px solid #d4d4d4;
-  background: transparent;
-  color: #404040;
-  font-size: 14px;
-  font-family: 'Suisse Intl', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: fit-content;
-}
-
-.contacts-button:hover {
-  border-color: #000;
-  color: #000;
-}
-
-.contacts-button-icon {
-  color: #808080;
-  flex-shrink: 0;
 }
 
 .contacts-phone-list,
@@ -180,14 +155,14 @@ useHead({
 
 .contacts-phone-label,
 .contacts-schedule-label {
-  font-size: 14px;
+  font-size: var(--u-font-14);
   color: #808080;
   font-family: 'Suisse Intl', sans-serif;
 }
 
 .contacts-phone-number,
 .contacts-schedule-time {
-  font-size: 16px;
+  font-size: var(--u-font-16);
   font-weight: 600;
   color: #000;
   text-decoration: none;
@@ -198,17 +173,7 @@ useHead({
   color: #404040;
 }
 
-.contacts-map {
-  width: 100%;
-  margin-top: 48px;
-}
-
 @media (max-width: 1024px) {
-  .contacts-page {
-    padding-top: 120px;
-    padding-bottom: 64px;
-  }
-
   .contacts-info {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -216,28 +181,19 @@ useHead({
 }
 
 @media (max-width: 768px) {
-  .contacts-page {
-    padding-top: 100px;
-    padding-inline: 12px;
-  }
-
   .contacts-title {
-    font-size: 36px;
+    font-size: var(--u-font-36);
     margin-bottom: 32px;
   }
 
   .contacts-info {
     margin-bottom: 48px;
   }
-
-  .contacts-map {
-    margin-top: 32px;
-  }
 }
 
 @media (max-width: 480px) {
   .contacts-title {
-    font-size: 28px;
+    font-size: var(--u-font-28);
     line-height: 1.15;
   }
 }

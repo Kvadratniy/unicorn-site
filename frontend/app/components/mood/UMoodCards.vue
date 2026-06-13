@@ -118,19 +118,19 @@ $sm: 640px;
     left: 18px;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    color: #fff;
+    gap: 4px;
+    color: var(--u-color-white);
   }
 
   &__tag {
-    font-size: clamp(1.4rem, 6vw, 1rem);
+    font-size: var(--u-font-fluid-display-card-tag);
     font-weight: 500;
     line-height: 0.98;
     letter-spacing: -0.04em;
   }
 
   &__title {
-    font-size: 13px;
+    font-size: var(--u-font-13);
     line-height: 1.35;
     color: rgb(255 255 255 / 82%);
   }

@@ -200,7 +200,7 @@ onBeforeUnmount(() => {
 
 .u-menu-panel {
   width: min(750px, calc(100vw - 32px));
-  background-color: #ffffff;
+  background-color: var(--u-color-white);
   border-radius: 14px;
   border: 1px solid rgba(38, 32, 42, 0.12);
   padding: 28px 22px;
@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
   gap: 4px;
   margin-bottom: 14px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(38, 32, 42, 0.08);
+  border-bottom: 1px solid var(--u-ink-a08);
 }
 
 .u-menu-panel__eyebrow,
@@ -246,8 +246,8 @@ onBeforeUnmount(() => {
 }
 
 .u-menu-panel__eyebrow {
-  color: #c93686;
-  font-size: 10px;
+  color: var(--u-color-accent);
+  font-size: var(--u-font-10);
   font-weight: 700;
   letter-spacing: 1.3px;
   line-height: 10px;
@@ -257,7 +257,7 @@ onBeforeUnmount(() => {
 .u-menu-panel__lead {
   max-width: 360px;
   color: #706977;
-  font-size: 11px;
+  font-size: var(--u-font-11);
   line-height: 16px;
   text-transform: none;
 }

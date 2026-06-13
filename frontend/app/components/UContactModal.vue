@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { vMaska } from 'maska/vue'
-
 type Props = {
   isOpen: boolean
 }
@@ -52,42 +50,13 @@ const handleBackdropClick = (e: MouseEvent) => {
   }
 }
 
-// Форма
-const phoneNumber = ref('')
-const isSubmitting = ref(false)
-const phoneMaskOptions = { mask: '+7 (###) ###-##-##' }
-
-const phoneDigitsOnly = computed(() => phoneNumber.value.replace(/\D/g, ''))
-const isPhoneFilled = computed(() => phoneDigitsOnly.value.length === 11)
-
-const handleSubmit = async () => {
-  if (!isPhoneFilled.value || isSubmitting.value) return
-  
-  isSubmitting.value = true
-  // Здесь будет отправка формы
-  console.log('Отправка номера:', phoneNumber.value)
-  
-  // Симуляция отправки
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  
-  isSubmitting.value = false
-  phoneNumber.value = ''
-  closeModal()
-}
-
-// Контактные данные
 const phone = '+7 (906) 464-94-96'
-const email = 'studio.unicorn.stv@gmail.com'
 const address = 'Ставрополь, ул. 50 лет ВЛКСМ 93, 5 этаж'
 
-// Ссылки на соцсети
 const socialLinks = {
   whatsapp: 'https://wa.me/79064649496',
   telegram: 'https://t.me/+79064649496',
   max: 'https://max.ru/u/f9LHodD0cOJqtwO9DMr_9wejvhGTZo-_v0zi8fEeWerMyz9nOjWLvm8IJdo',
-  vkMessenger: 'https://vk.me/unicorn_studio',
-  vk: 'https://vk.com/1unicornstudio',
-  instagram: 'https://www.instagram.com/1unicorn.studio/',
 }
 
 // Яндекс Навигатор
@@ -211,8 +180,8 @@ const sendWhatsAppGoal = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  background: var(--u-black-a60);
   backdrop-filter: blur(8px);
   transition: background 0.35s ease, backdrop-filter 0.35s ease;
 }
@@ -223,13 +192,13 @@ const sendWhatsAppGoal = () => {
   max-width: 440px;
   max-height: 90vh;
   overflow-y: auto;
-  padding: 2rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a08);
   border-radius: 24px;
   box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    0 25px 50px -12px var(--u-black-a25),
+    0 0 0 1px var(--u-white-a10) inset;
   scroll-behavior: smooth;
 }
 
@@ -239,11 +208,7 @@ const sendWhatsAppGoal = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:  0 0 1.25rem;
-}
-
-.modal-sheet-handle {
-  display: none;
+  padding:  0 0 20px;
 }
 
 .modal-close {
@@ -266,7 +231,7 @@ const sendWhatsAppGoal = () => {
 }
 
 .modal-title {
-  font-size: 1.5rem;
+  font-size: var(--u-font-24);
   font-weight: 700;
   color: #171717;
   letter-spacing: -0.02em;
@@ -276,14 +241,14 @@ const sendWhatsAppGoal = () => {
 .modal-phone-button {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
+  gap: 14px;
   width: 100%;
-  padding: 0.875rem 1rem;
+  padding: 14px 16px;
   background: #22c55e;
   border-radius: 12px;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 1.5rem;
+  transition: all 0.3s var(--u-ease-standard);
+  margin-bottom: 24px;
 }
 
 .modal-phone-button:hover {
@@ -300,117 +265,64 @@ const sendWhatsAppGoal = () => {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--u-white-a20);
   border-radius: 50%;
-  color: #fff;
+  color: var(--u-color-white);
   flex-shrink: 0;
 }
 
 .modal-phone-content {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
 
 .modal-phone-name {
-  font-size: 1rem;
+  font-size: var(--u-font-16);
   font-weight: 600;
-  color: #fff;
+  color: var(--u-color-white);
   line-height: 1.2;
 }
 
 .modal-phone-number {
-  font-size: 0.9375rem;
+  font-size: var(--u-font-15);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--u-white-a90);
   line-height: 1.2;
-}
-
-/* Form */
-.modal-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.modal-input {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: #f5f5f5;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  font-size: 0.9375rem;
-  color: #171717;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-input:focus {
-  outline: none;
-  border-color: rgba(0, 0, 0, 0.3);
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-}
-
-.modal-input::placeholder {
-  color: #a3a3a3;
-}
-
-.modal-submit {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: #171717;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.25s ease, transform 0.2s ease;
-}
-
-.modal-submit:hover:not(:disabled) {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.modal-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 /* Messengers */
 .modal-messengers {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  margin-bottom: 1.5rem;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
 .modal-messenger {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  padding: 0.75rem 1rem;
+  gap: 14px;
+  padding: 12px 16px;
   border-radius: 14px;
   text-decoration: none;
   background: #f5f5f5;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--u-black-a06);
+  transition: all 0.3s var(--u-ease-standard);
 }
 
 .modal-messenger:hover {
   background: #ebebeb;
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: var(--u-black-a10);
+  box-shadow: 0 4px 12px var(--u-black-a06);
   transform: translateY(-1px);
 }
 
 .modal-messenger:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px var(--u-black-a04);
 }
 
 .modal-messenger-icon {
@@ -420,9 +332,9 @@ const sendWhatsAppGoal = () => {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  color: #fff;
+  color: var(--u-color-white);
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--u-ease-standard);
 }
 
 .modal-messenger:hover .modal-messenger-icon {
@@ -436,20 +348,20 @@ const sendWhatsAppGoal = () => {
 .modal-messenger-content {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: 2px;
   flex: 1;
   min-width: 0;
 }
 
 .modal-messenger-name {
-  font-size: 0.9375rem;
+  font-size: var(--u-font-15);
   font-weight: 600;
   color: #171717;
   line-height: 1.2;
 }
 
 .modal-messenger-desc {
-  font-size: 0.8125rem;
+  font-size: var(--u-font-13);
   font-weight: 400;
   color: #737373;
   line-height: 1.2;
@@ -458,7 +370,7 @@ const sendWhatsAppGoal = () => {
 .modal-messenger-arrow {
   flex-shrink: 0;
   color: #a3a3a3;
-  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.25s ease, transform 0.3s var(--u-ease-standard);
 }
 
 .modal-messenger:hover .modal-messenger-arrow {
@@ -476,13 +388,8 @@ const sendWhatsAppGoal = () => {
   box-shadow: 0 4px 12px rgba(0, 136, 204, 0.35);
 }
 
-.modal-messenger--vk .modal-messenger-icon {
-  background: #0077FF;
-  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.35);
-}
-
 .modal-messenger--max .modal-messenger-icon {
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #6366F1 0%, var(--u-color-purple) 100%);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 
@@ -490,58 +397,27 @@ const sendWhatsAppGoal = () => {
 .modal-footer {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--u-black-a08);
 }
 
 .modal-footer-section {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .modal-footer-title {
-  font-size: 0.8125rem;
+  font-size: var(--u-font-13);
   font-weight: 600;
   color: #a3a3a3;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.modal-social-links {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.modal-social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.modal-social-link:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.modal-social-link--vk {
-  background: #0077FF;
-}
-
-.modal-social-link--instagram {
-  background: #E4405F;
-}
-
 .modal-address {
-  font-size: 0.9375rem;
+  font-size: var(--u-font-15);
   color: #525252;
   text-decoration: none;
   transition: color 0.25s ease;
@@ -555,12 +431,12 @@ const sendWhatsAppGoal = () => {
 /* Transition */
 .modal-enter-active,
 .modal-leave-active {
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.35s var(--u-ease-standard);
 }
 
 .modal-enter-active .modal-content,
 .modal-leave-active .modal-content {
-  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s var(--u-ease-emphasized), opacity 0.35s var(--u-ease-standard);
 }
 
 .modal-enter-from,
@@ -591,8 +467,8 @@ const sendWhatsAppGoal = () => {
     max-height: 80vh;
     border-radius: 24px 24px 0 0;
     padding: 0;
-    padding-top: 0.5rem;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+    padding-top: 8px;
+    box-shadow: 0 -4px 24px var(--u-black-a15);
     overflow: hidden;
   }
 
@@ -602,36 +478,26 @@ const sendWhatsAppGoal = () => {
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    padding: 0 1.25rem calc(1.75rem + env(safe-area-inset-bottom, 0px));
+    padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
   }
 
   .modal-header {
-    padding-left: 1.25rem;
+    padding-left: 20px;
     flex-shrink: 0;
-    padding: 1.25rem;
-  }
-
-  .modal-sheet-handle {
-    display: block;
-    width: 36px;
-    height: 4px;
-    margin: 0.75rem auto 0;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    flex-shrink: 0;
+    padding: 20px;
   }
 
   .modal-close {
-    top: 0.75rem;
-    right: 1rem;
+    top: 12px;
+    right: 16px;
   }
 
   .modal-title {
-    font-size: 1.375rem;
+    font-size: var(--u-font-22);
   }
 
   .modal-messenger {
-    padding: 0.625rem 0.875rem;
+    padding: 10px 14px;
   }
 
   .modal-messenger-icon {
@@ -649,7 +515,7 @@ const sendWhatsAppGoal = () => {
 @media (max-width: 640px) {
   .modal-enter-active .modal-content,
   .modal-leave-active .modal-content {
-    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.45s var(--u-ease-emphasized), opacity 0.35s var(--u-ease-standard);
   }
 
   .modal-enter-from .modal-content,

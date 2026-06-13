@@ -113,8 +113,8 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
 .gift-pattern {
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--u-pink-a15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--u-purple-a15) 0%, transparent 50%);
 }
 
 .gift-pattern::before {
@@ -122,8 +122,8 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(var(--u-white-a02) 1px, transparent 1px),
+    linear-gradient(90deg, var(--u-white-a02) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -131,11 +131,11 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   z-index: 10;
   max-width: 1200px;
-  padding: 0 1.5rem;
+  padding: 0 24px;
   margin: 0 auto;
 
   @media (min-width: $lg) {
-    padding: 0 2.5rem;
+    padding: 0 40px;
   }
 }
 
@@ -148,7 +148,7 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   @media (min-width: $lg) {
     flex-direction: row;
     justify-content: space-between;
-    gap: 5rem;
+    gap: 80px;
   }
 }
 
@@ -177,15 +177,15 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   justify-content: space-between;
   width: 100%;
   height: 200px;
-  padding: 1.75rem;
+  padding: 28px;
   overflow: hidden;
   background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--u-white-a10);
   border-radius: 20px;
   box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-    0 0 80px rgba(236, 72, 153, 0.15);
+    0 30px 60px var(--u-black-a40),
+    0 0 0 1px var(--u-white-a05) inset,
+    0 0 80px var(--u-pink-a15);
   transform: rotateY(-5deg) rotateX(5deg);
   transition: transform 0.5s $ease-out;
 
@@ -195,7 +195,7 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
   @media (min-width: $lg) {
     height: 260px;
-    padding: 2.25rem;
+    padding: 36px;
     border-radius: 24px;
   }
 }
@@ -209,9 +209,9 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   background: linear-gradient(
     45deg,
     transparent 40%,
-    rgba(255, 255, 255, 0.03) 45%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.03) 55%,
+    var(--u-white-a03) 45%,
+    var(--u-white-a05) 50%,
+    var(--u-white-a03) 55%,
     transparent 60%
   );
   animation: gift-shine 8s ease-in-out infinite;
@@ -223,75 +223,75 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .gift-cert-logo {
-  font-size: 1.25rem;
+  font-size: var(--u-font-20);
   font-weight: 800;
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  background: var(--u-gradient-brand);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   @media (min-width: $lg) {
-    font-size: 1.5rem;
+    font-size: var(--u-font-24);
   }
 }
 
 .gift-cert-label {
-  font-size: 10px;
+  font-size: var(--u-font-10);
   font-weight: 700;
   color: rgb(255 255 255 / 40%);
   letter-spacing: 0.3em;
 
   @media (min-width: $lg) {
-    font-size: 11px;
+    font-size: var(--u-font-11);
   }
 }
 
 .gift-cert-amount {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .amount-currency {
-  font-size: 28px;
+  font-size: var(--u-font-28);
   font-weight: 300;
   color: rgb(255 255 255 / 50%);
 
   @media (min-width: $lg) {
-    font-size: 2.25rem;
+    font-size: var(--u-font-36);
   }
 }
 
 .amount-value {
   font-family: 'Druk Wide', sans-serif;
-  font-size: 3rem;
+  font-size: var(--u-font-48);
   font-weight: 800;
-  color: #fff;
+  color: var(--u-color-white);
   letter-spacing: -0.025em;
 
   @media (min-width: $lg) {
-    font-size: 64px;
+    font-size: var(--u-font-64);
   }
 }
 
 .gift-cert-validity {
-  font-size: 11px;
+  font-size: var(--u-font-11);
   font-weight: 500;
   color: rgb(255 255 255 / 40%);
 
   @media (min-width: $lg) {
-    font-size: 0.75rem;
+    font-size: var(--u-font-12);
   }
 }
 
 .gift-cert-code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 11px;
+  font-size: var(--u-font-11);
   font-weight: 600;
   color: rgb(255 255 255 / 30%);
 
   @media (min-width: $lg) {
-    font-size: 0.75rem;
+    font-size: var(--u-font-12);
   }
 }
 
@@ -306,17 +306,17 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .gift-title {
-  margin: 0 0 1.5rem;
+  margin: 0 0 24px;
   font-family: 'Druk Wide', sans-serif;
-  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  font-size: var(--u-font-fluid-display-gift);
   font-weight: 800;
   line-height: 1;
-  color: #fff;
+  color: var(--u-color-white);
   letter-spacing: -0.025em;
 }
 
 .gift-title-accent {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  background: var(--u-gradient-brand);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -325,28 +325,28 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 .gift-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.75rem;
+  gap: 8px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  font-size: var(--u-font-12);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
-  background: rgba(236, 72, 153, 0.15);
+  background: var(--u-pink-a15);
   border: 1px solid;
   border-radius: 9999px;
-  border-color: rgba(236, 72, 153, 0.3);
-  color: #ec4899;
+  border-color: var(--u-pink-a30);
+  color: var(--u-color-pink);
 }
 
 .gift-description {
-  margin: 0 0 2.5rem;
-  font-size: 1rem;
+  margin: 0 0 40px;
+  font-size: var(--u-font-16);
   line-height: 1.625;
   color: rgb(255 255 255 / 60%);
 
   @media (min-width: $lg) {
-    font-size: 1.125rem;
+    font-size: var(--u-font-18);
   }
 }
 
@@ -354,30 +354,30 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: 16px;
+  margin-bottom: 40px;
 
   @media (min-width: $lg) {
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: 24px;
   }
 }
 
 .gift-feature {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--u-white-a05);
   border: 1px solid;
-  border-radius: 1rem;
-  border-color: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border-color: var(--u-white-a08);
   transition: all 0.3s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--u-white-a08);
     border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-0.125rem);
+    transform: translateY(-2px);
   }
 }
 
@@ -386,29 +386,29 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  font-size: 1.125rem;
+  width: 44px;
+  height: 44px;
+  font-size: var(--u-font-18);
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
-  border-radius: 0.75rem;
+  color: var(--u-color-white);
+  background: linear-gradient(135deg, var(--u-pink-a20), rgba(139, 92, 246, 0.2));
+  border-radius: 12px;
 }
 
 .gift-feature-text {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: 2px;
 }
 
 .gift-feature-value {
-  font-size: 1rem;
+  font-size: var(--u-font-16);
   font-weight: 700;
-  color: #fff;
+  color: var(--u-color-white);
 }
 
 .gift-feature-label {
-  font-size: 0.75rem;
+  font-size: var(--u-font-12);
   font-weight: 500;
   color: rgb(255 255 255 / 50%);
 }
@@ -417,34 +417,34 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media (min-width: $lg) {
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 24px;
   }
 }
 
 .gift-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 18px 2.25rem;
-  font-size: 1rem;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: var(--u-font-16);
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: var(--u-color-white);
+  background: var(--u-gradient-brand);
   border: 0;
   border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 8px 32px var(--u-pink-a30);
   transition: all 0.3s;
 
   &:hover {
-    box-shadow: 0 16px 48px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 16px 48px var(--u-pink-a40);
     transform: translateY(-4px);
 
     .gift-btn-icon {
-      transform: translateX(0.25rem);
+      transform: translateX(4px);
     }
   }
 }
@@ -455,9 +455,9 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
 .gift-float {
   position: absolute;
-  font-size: 32px;
+  font-size: var(--u-font-32);
   animation: gift-float 6s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 10px 20px var(--u-black-a30));
 }
 
 .gift-float-1 {
@@ -485,18 +485,18 @@ $ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 .gift-float-3 {
   top: 50%;
   right: -30px;
-  font-size: 28px;
+  font-size: var(--u-font-28);
   animation-delay: -4s;
 
   @media (min-width: $lg) {
     right: -50px;
-    font-size: 36px;
+    font-size: var(--u-font-36);
   }
 }
 
 @media (min-width: $lg) {
   .gift-float {
-    font-size: 40px;
+    font-size: var(--u-font-40);
   }
 }
 

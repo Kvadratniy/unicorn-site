@@ -1,0 +1,205 @@
+/* Глобальные дизайн-токены проекта.
+   Подключаются раньше main.css в nuxt.config (css: [...]).
+   Используются через var(--u-...) внутри scoped-стилей компонентов,
+   т.к. CSS custom properties наследуются и «пробивают» scoped-границы. */
+
+:root {
+  /* ── Цвета: бренд ── */
+  --u-color-accent: #c93686;
+  --u-color-blue: #3b82f6;
+  --u-color-magenta: #e339a2;
+  --u-color-magenta-deep: #c91d7a;
+  --u-color-pink: #ec4899;
+  --u-color-pink-deep: #be185d;
+  --u-color-pink-light: #f472b6;
+  --u-color-purple: #8b5cf6;
+  --u-color-rose: #fb7185;
+
+  /* ── Цвета: текст ── */
+  --u-text-body: #4b5563;
+  --u-text-muted: #64748b;
+  --u-text-nav-muted: #8b8590;
+  --u-text-primary: #1d1d1f;
+  --u-text-secondary: #86868b;
+
+  /* ── Цвета: поверхности ── */
+  --u-bg-base: #fdfcf8;
+  --u-color-gray-900: #111827;
+  --u-color-white: #ffffff;
+
+  /* ── Типографика: семейство ── */
+  --u-font-montserrat: 'Montserrat', sans-serif;
+
+  /* ── Типографика: шкала (px) ── */
+  --u-font-9: 9px;
+  --u-font-10: 10px;
+  --u-font-11: 11px;
+  --u-font-12: 12px;
+  --u-font-13: 13px;
+  --u-font-14: 14px;
+  --u-font-15: 15px;
+  --u-font-16: 16px;
+  --u-font-17: 17px;
+  --u-font-18: 18px;
+  --u-font-19: 19px;
+  --u-font-20: 20px;
+  --u-font-21: 21px;
+  --u-font-22: 22px;
+  --u-font-23: 23px;
+  --u-font-24: 24px;
+  --u-font-28: 28px;
+  --u-font-30: 30px;
+  --u-font-32: 32px;
+  --u-font-36: 36px;
+  --u-font-38: 38px;
+  --u-font-40: 40px;
+  --u-font-46: 46px;
+  --u-font-48: 48px;
+  --u-font-56: 56px;
+  --u-font-60: 60px;
+  --u-font-64: 64px;
+  --u-font-72: 72px;
+  --u-font-88: 88px;
+
+  /* ── Типографика: fluid (clamp) ── */
+  --u-font-fluid-display-card-tag: clamp(22.4px, 6vw, 16px);
+  --u-font-fluid-display-error: clamp(80px, 20vw, 160px);
+  --u-font-fluid-display-gift: clamp(36px, 8vw, 56px);
+  --u-font-fluid-display-hero-image: clamp(24px, 6vw, 54px);
+  --u-font-fluid-display-hero-tag: clamp(20px, 100vw, 32px);
+  --u-font-fluid-display-intro: clamp(28.8px, 3.2vw, 40px);
+  --u-font-fluid-display-lg: clamp(44px, 5vw, 51.2px);
+  --u-font-fluid-display-mood: clamp(32px, 10vw, 68.16px);
+  --u-font-fluid-display-page: clamp(28.8px, 3vw, 36.8px);
+  --u-font-fluid-display-xl: clamp(44px, 5vw, 60.8px);
+
+  /* ── Градиенты ── */
+  --u-gradient-brand: linear-gradient(135deg, #ec4899, #8b5cf6);
+
+  /* ── Easing ── */
+  --u-ease-emphasized: cubic-bezier(0.32, 0.72, 0, 1);
+  --u-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --u-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --u-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --u-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Прозрачности: accent (#c93686) ── */
+  --u-accent-a18: rgba(201, 54, 134, 0.18);
+  --u-accent-a20: rgba(201, 54, 134, 0.2);
+
+  /* ── Прозрачности: article / mood ── */
+  --u-article-ink-a08: rgba(36, 31, 27, 0.08);
+  --u-article-ink-a20: rgba(36, 31, 27, 0.2);
+  --u-article-ink-a70: rgba(36, 31, 27, 0.7);
+  --u-article-ink-a72: rgba(36, 31, 27, 0.72);
+  --u-article-ink-a75: rgba(36, 31, 27, 0.75);
+  --u-article-surface: rgba(132, 112, 187, 0.291);
+
+  /* ── Прозрачности: black ── */
+  --u-black-a00: rgba(0, 0, 0, 0);
+  --u-black-a04: rgba(0, 0, 0, 0.04);
+  --u-black-a05: rgba(0, 0, 0, 0.05);
+  --u-black-a06: rgba(0, 0, 0, 0.06);
+  --u-black-a08: rgba(0, 0, 0, 0.08);
+  --u-black-a10: rgba(0, 0, 0, 0.1);
+  --u-black-a12: rgba(0, 0, 0, 0.12);
+  --u-black-a15: rgba(0, 0, 0, 0.15);
+  --u-black-a20: rgba(0, 0, 0, 0.2);
+  --u-black-a25: rgba(0, 0, 0, 0.25);
+  --u-black-a30: rgba(0, 0, 0, 0.3);
+  --u-black-a35: rgba(0, 0, 0, 0.35);
+  --u-black-a40: rgba(0, 0, 0, 0.4);
+  --u-black-a50: rgba(0, 0, 0, 0.5);
+  --u-black-a60: rgba(0, 0, 0, 0.6);
+
+  /* ── Прозрачности: gray ── */
+  --u-gray-900-a08: rgba(17, 24, 39, 0.08);
+  --u-gray-900-a74: rgba(17, 24, 39, 0.74);
+  --u-gray-900-a92: rgba(17, 24, 39, 0.92);
+  --u-gray-a80: rgba(229, 229, 229, 0.8);
+  --u-gray-a90: rgba(229, 229, 229, 0.9);
+
+  /* ── Прозрачности: headline / nav ink ── */
+  --u-headline-ink-a12: rgba(51, 45, 54, 0.12);
+  --u-ink-a07: rgba(38, 32, 42, 0.07);
+  --u-ink-a08: rgba(38, 32, 42, 0.08);
+
+  /* ── Прозрачности: neutral ── */
+  --u-neutral-a08: rgba(16, 16, 16, 0.08);
+  --u-neutral-a60: rgba(23, 23, 23, 0.6);
+
+  /* ── Прозрачности: orange ── */
+  --u-orange-a25: rgba(249, 115, 22, 0.25);
+
+  /* ── Прозрачности: pink (#ec4899) ── */
+  --u-pink-a06: rgba(236, 72, 153, 0.06);
+  --u-pink-a08: rgba(236, 72, 153, 0.08);
+  --u-pink-a10: rgba(236, 72, 153, 0.1);
+  --u-pink-a12: rgba(236, 72, 153, 0.12);
+  --u-pink-a14: rgba(236, 72, 153, 0.14);
+  --u-pink-a15: rgba(236, 72, 153, 0.15);
+  --u-pink-a18: rgba(236, 72, 153, 0.18);
+  --u-pink-a20: rgba(236, 72, 153, 0.2);
+  --u-pink-a22: rgba(236, 72, 153, 0.22);
+  --u-pink-a24: rgba(236, 72, 153, 0.24);
+  --u-pink-a25: rgba(236, 72, 153, 0.25);
+  --u-pink-a26: rgba(236, 72, 153, 0.26);
+  --u-pink-a28: rgba(236, 72, 153, 0.28);
+  --u-pink-a30: rgba(236, 72, 153, 0.3);
+  --u-pink-a32: rgba(236, 72, 153, 0.32);
+  --u-pink-a35: rgba(236, 72, 153, 0.35);
+  --u-pink-a40: rgba(236, 72, 153, 0.4);
+
+  /* ── Прозрачности: pink variants ── */
+  --u-pink-100-a58: rgba(252, 231, 243, 0.58);
+  --u-pink-600-a15: rgba(219, 39, 119, 0.15);
+  --u-pink-deep-a10: rgba(190, 24, 93, 0.1);
+  --u-pink-deep-a70: rgba(190, 24, 93, 0.7);
+  --u-pink-deep-a75: rgba(190, 24, 93, 0.75);
+  --u-pink-deep-a80: rgba(190, 24, 93, 0.8);
+  --u-pink-light-a28: rgba(244, 114, 182, 0.28);
+  --u-pink-light-a45: rgba(244, 114, 182, 0.45);
+
+  /* ── Прозрачности: purple ── */
+  --u-purple-a08: rgba(139, 92, 246, 0.08);
+  --u-purple-a15: rgba(139, 92, 246, 0.15);
+  --u-purple-a20: rgba(139, 92, 246, 0.2);
+  --u-purple-light-a45: rgba(196, 181, 253, 0.45);
+
+  /* ── Прозрачности: rose ── */
+  --u-rose-a22: rgba(251, 113, 133, 0.22);
+  --u-rose-a32: rgba(251, 113, 133, 0.32);
+
+  /* ── Прозрачности: slate ── */
+  --u-slate-a04: rgba(15, 23, 42, 0.04);
+  --u-slate-a05: rgba(15, 23, 42, 0.05);
+  --u-slate-a07: rgba(15, 23, 42, 0.07);
+  --u-slate-a08: rgba(15, 23, 42, 0.08);
+
+  /* ── Прозрачности: warm ink ── */
+  --u-warm-ink-a08: rgba(49, 40, 32, 0.08);
+  --u-warm-ink-a12: rgba(49, 40, 32, 0.12);
+  --u-warm-ink-a16: rgba(49, 40, 32, 0.16);
+  --u-warm-ink-a18: rgba(17, 15, 13, 0.18);
+
+  /* ── Прозрачности: white ── */
+  --u-white-a02: rgba(255, 255, 255, 0.02);
+  --u-white-a03: rgba(255, 255, 255, 0.03);
+  --u-white-a05: rgba(255, 255, 255, 0.05);
+  --u-white-a08: rgba(255, 255, 255, 0.08);
+  --u-white-a10: rgba(255, 255, 255, 0.1);
+  --u-white-a12: rgba(255, 255, 255, 0.12);
+  --u-white-a14: rgba(255, 255, 255, 0.14);
+  --u-white-a20: rgba(255, 255, 255, 0.2);
+  --u-white-a28: rgba(255, 255, 255, 0.28);
+  --u-white-a38: rgba(255, 255, 255, 0.38);
+  --u-white-a50: rgba(255, 255, 255, 0.5);
+  --u-white-a55: rgba(255, 255, 255, 0.55);
+  --u-white-a70: rgba(255, 255, 255, 0.7);
+  --u-white-a75: rgba(255, 255, 255, 0.75);
+  --u-white-a80: rgba(255, 255, 255, 0.8);
+  --u-white-a82: rgba(255, 255, 255, 0.82);
+  --u-white-a85: rgba(255, 255, 255, 0.85);
+  --u-white-a90: rgba(255, 255, 255, 0.9);
+  --u-white-a95: rgba(255, 255, 255, 0.95);
+}

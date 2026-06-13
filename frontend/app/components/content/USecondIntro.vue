@@ -37,11 +37,17 @@ const props = defineProps<{
       </div>
 
       <div class="intro__visual">
-        <img
+        <NuxtImg
           :src="props.imageSrc"
           :alt="props.imageAlt"
           class="intro__image"
+          width="420"
+          height="420"
+          fit="inside"
           loading="lazy"
+          decoding="async"
+          sizes="xs:70vw lg:420px"
+          format="webp"
         />
       </div>
     </div>
@@ -71,7 +77,7 @@ const props = defineProps<{
     align-items: center;
     justify-content: center;
     border-radius: 16px;
-    background: #fff;
+    background: var(--u-color-white);
     min-height: 260px;
   }
 
@@ -84,9 +90,9 @@ const props = defineProps<{
 
   &__title {
     margin: 0;
-    color: #111827;
+    color: var(--u-color-gray-900);
     font-family: 'Suisse Intl', sans-serif;
-    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-size: var(--u-font-fluid-display-intro);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.024em;
@@ -94,9 +100,9 @@ const props = defineProps<{
 
   &__lead {
     margin: 0;
-    color: #4b5563;
-    font-family: 'Montserrat';
-    font-size: 16px;
+    color: var(--u-text-body);
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-16);
     line-height: 1.65;
   }
 
@@ -115,8 +121,8 @@ const props = defineProps<{
   padding: 16px 18px;
   border-radius: 14px;
   box-shadow:
-    0 10px 24px rgb(190 24 93 / 0.1),
-    0 1px 0 rgb(255 255 255 / 0.8) inset;
+    0 10px 24px var(--u-pink-deep-a10),
+    0 1px 0 var(--u-white-a80) inset;
 
   &::before {
     content: '';
@@ -125,22 +131,22 @@ const props = defineProps<{
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, #be185d, #ec4899);
+    background: linear-gradient(90deg, var(--u-color-pink-deep), var(--u-color-pink));
   }
 
   &__title {
     margin: 0;
     color: #831843;
     font-family: 'Suisse Intl', sans-serif;
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.3;
   }
 
   &__text {
     margin: 0;
-    color: #4b5563;
-    font-family: 'Montserrat';
-    font-size: 13px;
+    color: var(--u-text-body);
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-13);
     line-height: 1.4;
   }
 }

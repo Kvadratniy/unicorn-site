@@ -16,7 +16,7 @@ export type ArticleSlide = {
 
 const DEFAULT_TITLE_1 = 'Музыкальная студия'
 const DEFAULT_TITLE_2 = 'ЮНИКОРН'
-const DEFAULT_SURFACE = 'rgba(132, 112, 187, 0.291)'
+const DEFAULT_SURFACE = 'var(--u-article-surface)'
 const DEFAULT_SLIDE_IMAGE = '/images/1.png'
 const DEFAULT_SLIDE: ArticleSlide = { body: '', directions: [] }
 
@@ -199,18 +199,17 @@ $sm: 640px;
 $lg: 1024px;
 
 .u-article-content {
-  --u-article-border: rgb(36 31 27 / 0.08);
-  --u-article-surface: rgba(132, 112, 187, 0.291);
-  --u-article-shadow: rgb(49 40 32 / 0.08);
-  --u-article-header-foreground: rgb(36 31 27 / 0.7);
-  --u-article-divider: rgb(36 31 27 / 0.2);
+  --u-article-border: var(--u-article-ink-a08);
+  --u-article-shadow: var(--u-warm-ink-a08);
+  --u-article-header-foreground: var(--u-article-ink-a70);
+  --u-article-divider: var(--u-article-ink-a20);
   --u-article-nav-border: rgba(36, 31, 27, 0);
-  --u-article-nav-bg: rgb(255 255 255 / 0.55);
-  --u-article-nav-fg: rgb(36 31 27 / 0.75);
+  --u-article-nav-bg: var(--u-white-a55);
+  --u-article-nav-fg: var(--u-article-ink-a75);
   --u-article-nav-bg-hover: rgba(196, 131, 224, 0.55);
   --u-article-heading: #13110f;
   --u-article-accent: #d24ade9c;
-  --u-article-body-text: rgb(36 31 27 / 0.72);
+  --u-article-body-text: var(--u-article-ink-a72);
 
   position: relative;
   overflow: hidden;
@@ -235,13 +234,13 @@ $lg: 1024px;
 .u-article-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.75rem;
+  gap: 12px;
+  padding: 16px 28px;
   color: var(--u-article-header-foreground);
 }
 
 .u-article-eyebrow {
-  font-size: 10px;
+  font-size: var(--u-font-10);
   font-weight: 700;
   text-transform: uppercase;
   white-space: nowrap;
@@ -265,7 +264,7 @@ $lg: 1024px;
   display: flex;
   flex-shrink: 0;
   justify-content: flex-end;
-  gap: 0.25rem;
+  gap: 4px;
 
   @media (min-width: $sm) {
     margin-left: auto;
@@ -276,8 +275,8 @@ $lg: 1024px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   border-color: var(--u-article-nav-border);
   border-style: solid;
   border-width: 1px;
@@ -310,8 +309,8 @@ $lg: 1024px;
 
 .u-article-title {
   margin: 0;
-  padding-right: 1.75rem;
-  padding-left: 1.75rem;
+  padding-right: 28px;
+  padding-left: 28px;
 }
 
 .u-article-title-line1,
@@ -322,41 +321,41 @@ $lg: 1024px;
 }
 
 .u-article-title-line1 {
-  font-size: 38px;
+  font-size: var(--u-font-38);
   font-weight: 500;
   color: var(--u-article-heading);
 }
 
 .u-article-title-line2 {
   font-family: 'Druk Wide', sans-serif;
-  font-size: clamp(2rem, 10vw, 4.26rem);
+  font-size: var(--u-font-fluid-display-mood);
   font-weight: 800;
   color: var(--u-article-accent);
 }
 
 .u-article-body {
-  max-width: 34rem;
-  margin: 0.5rem 0 0;
-  padding-right: 1.75rem;
-  padding-bottom: 1.25rem;
-  padding-left: 1.75rem;
-  font-size: 0.875rem;
+  max-width: 544px;
+  margin: 8px 0 0;
+  padding-right: 28px;
+  padding-bottom: 20px;
+  padding-left: 28px;
+  font-size: var(--u-font-14);
   line-height: 1.65;
   color: var(--u-article-body-text);
   white-space: pre-line;
 
   @media (min-width: $sm) {
-    font-size: 15px;
+    font-size: var(--u-font-15);
   }
 
   @media (min-width: $lg) {
-    font-size: 1rem;
+    font-size: var(--u-font-16);
   }
 }
 
 .u-article-image {
   margin-top: 20px;
-  padding-bottom: 0.75rem;
+  padding-bottom: 12px;
 }
 
 .article-carousel-enter-active,

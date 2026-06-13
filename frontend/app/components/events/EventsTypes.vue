@@ -102,19 +102,19 @@ const eventTypes: EventType[] = [
   flex-direction: column;
   border-radius: 20px;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
+  transition: all 0.3s var(--u-ease-standard);
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 60ms);
   cursor: pointer;
 }
 
 .type-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 16px 40px var(--u-black-a12);
+  border-color: var(--u-pink-a30);
 }
 
 .type-image-wrapper {
@@ -129,7 +129,7 @@ const eventTypes: EventType[] = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s var(--u-ease-standard);
 }
 
 .type-card:hover .type-image {
@@ -141,9 +141,9 @@ const eventTypes: EventType[] = [
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 60%,
-    rgba(0, 0, 0, 0.5) 100%
+    var(--u-black-a00) 0%,
+    var(--u-black-a20) 60%,
+    var(--u-black-a50) 100%
   );
   transition: opacity 0.3s ease;
 }
@@ -164,7 +164,7 @@ const eventTypes: EventType[] = [
 
 .type-title {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--u-font-17);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: #111;
@@ -175,12 +175,12 @@ const eventTypes: EventType[] = [
 
 @media (min-width: 1024px) {
   .type-title {
-    font-size: 18px;
+    font-size: var(--u-font-18);
   }
 }
 
 .type-card:hover .type-title {
-  color: #ec4899;
+  color: var(--u-color-pink);
 }
 
 @keyframes fadeInUp {

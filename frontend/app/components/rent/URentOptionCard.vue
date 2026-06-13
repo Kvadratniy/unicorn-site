@@ -12,11 +12,16 @@ const { option, index = 0 } = defineProps<{
     class="rent-card"
     :style="{ '--card-delay': `${index * 0.08}s` }"
   >
-    <img
+    <NuxtImg
       :src="option.imageSrc"
       :alt="option.imageAlt"
       class="rent-card__image"
+      width="600"
+      height="400"
       loading="lazy"
+      decoding="async"
+      sizes="xs:100vw lg:50vw"
+      format="webp"
     />
     <div class="rent-card__body">
       <div class="rent-card__top">
@@ -45,12 +50,12 @@ const { option, index = 0 } = defineProps<{
   display: grid;
   gap: 0;
   padding: 0;
-  border: 1px solid rgb(236 72 153 / 0.2);
+  border: 1px solid var(--u-pink-a20);
   border-radius: 24px;
   box-shadow:
-    0 1px 2px rgb(15 23 42 / 0.04),
-    0 12px 30px rgb(236 72 153 / 0.08);
-  font-family: 'Montserrat';
+    0 1px 2px var(--u-slate-a04),
+    0 12px 30px var(--u-pink-a08);
+  font-family: var(--u-font-montserrat);
   opacity: 0;
   transform: translateY(14px);
   animation: cardIn 0.55s ease forwards;
@@ -62,10 +67,10 @@ const { option, index = 0 } = defineProps<{
   overflow: hidden;
 
   &:hover {
-    border-color: rgb(236 72 153 / 0.32);
+    border-color: var(--u-pink-a32);
     box-shadow:
-      0 2px 6px rgb(15 23 42 / 0.07),
-      0 16px 34px rgb(236 72 153 / 0.12);
+      0 2px 6px var(--u-slate-a07),
+      0 16px 34px var(--u-pink-a12);
     transform: translateY(-4px);
   }
 
@@ -74,10 +79,10 @@ const { option, index = 0 } = defineProps<{
     margin: 0;
     padding: 7px 11px;
     border-radius: 999px;
-    background: rgb(236 72 153 / 0.1);
+    background: var(--u-pink-a10);
     color: #9d174d;
-    font-family: 'Montserrat';
-    font-size: 12px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-12);
     font-weight: 600;
     line-height: 1.2;
   }
@@ -105,8 +110,8 @@ const { option, index = 0 } = defineProps<{
   &__title {
     margin: 0;
     color: #3f2535;
-    font-family: 'Montserrat';
-    font-size: 21px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-21);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: -0.01em;
@@ -115,8 +120,8 @@ const { option, index = 0 } = defineProps<{
   &__subtitle {
     margin: 0;
     color: #7a425f;
-    font-family: 'Montserrat';
-    font-size: 15px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-15);
     font-weight: 500;
     line-height: 1.45;
   }
@@ -125,10 +130,10 @@ const { option, index = 0 } = defineProps<{
     margin: 0;
     padding: 12px 14px;
     border-radius: 12px;
-    background: rgb(252 231 243 / 0.58);
+    background: var(--u-pink-100-a58);
     color: #5f3b50;
-    font-family: 'Montserrat';
-    font-size: 14px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-14);
     font-weight: 500;
     line-height: 1.6;
   }
@@ -138,8 +143,8 @@ const { option, index = 0 } = defineProps<{
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgb(244 114 182 / 0.28) 15%,
-      rgb(244 114 182 / 0.28) 85%,
+      var(--u-pink-light-a28) 15%,
+      var(--u-pink-light-a28) 85%,
       transparent 100%
     );
   }
@@ -147,8 +152,8 @@ const { option, index = 0 } = defineProps<{
   &__benefits-title {
     margin: 0;
     color: #8b3d66;
-    font-family: 'Montserrat';
-    font-size: 13px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-13);
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -167,8 +172,8 @@ const { option, index = 0 } = defineProps<{
     margin: 0;
     padding-left: 18px;
     color: #5b4352;
-    font-family: 'Montserrat';
-    font-size: 14px;
+    font-family: var(--u-font-montserrat);
+    font-size: var(--u-font-14);
     font-weight: 500;
     line-height: 1.45;
 
@@ -180,7 +185,7 @@ const { option, index = 0 } = defineProps<{
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: radial-gradient(circle at center, #ec4899 45%, #fbcfe8 46%);
+      background: radial-gradient(circle at center, var(--u-color-pink) 45%, #fbcfe8 46%);
     }
   }
 }

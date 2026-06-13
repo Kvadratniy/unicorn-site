@@ -107,11 +107,11 @@ const isActiveLink = (to: string) => route.path === to
 
 <style scoped lang="scss">
 $nav-link-color: #3c3740;
-$nav-link-active-color: #c93686;
+$nav-link-active-color: var(--u-color-accent);
 $nav-link-hover-bg: #fbf6fc;
 $nav-link-active-bg: transparent;
 $nav-link-hover-border: rgba(201, 54, 134, 0.1);
-$nav-link-focus-ring: rgba(201, 54, 134, 0.2);
+$nav-link-focus-ring: var(--u-accent-a20);
 
 .u-nav {
   display: none;
@@ -139,8 +139,8 @@ $nav-link-focus-ring: rgba(201, 54, 134, 0.2);
   border: 1px solid transparent;
   border-radius: 9999px;
   color: $nav-link-color;
-  font-family: 'Montserrat';
-  font-size: 12px;
+  font-family: var(--u-font-montserrat);
+  font-size: var(--u-font-12);
   font-weight: 450;
   line-height: 14px;
   text-decoration: none;
@@ -206,7 +206,7 @@ $nav-link-focus-ring: rgba(201, 54, 134, 0.2);
   @media (min-width: 961px) and (max-width: 1180px) {
     min-height: 32px;
     padding-inline: 9px;
-    font-size: 11px;
+    font-size: var(--u-font-11);
     letter-spacing: 0.7px;
 
     &:deep(button) {

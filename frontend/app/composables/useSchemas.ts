@@ -35,7 +35,7 @@ type RentOptionItem = {
   title: string
   subtitle: string
   description: string
-  ctaLabel: string
+  price: string
 }
 
 type CreateRentServiceSchemaInput = {
@@ -49,7 +49,7 @@ type NewsListItem = {
   title: string
   subtitle: string
   heroImage: string
-  publishDate: string
+  publishedAt: string
 }
 
 type CreateNewsCollectionSchemaInput = {
@@ -67,7 +67,8 @@ type NewsArticleItem = {
   title: string
   subtitle: string
   heroImage: string
-  publishDate: string
+  publishedAt: string
+  updatedAt?: string
   category: string
   author?: NewsAuthorItem
 }
@@ -100,6 +101,13 @@ const COMPANY_CITY = 'Ставрополь'
 const COMPANY_COUNTRY = 'RU'
 const COMPANY_LAT = 45.000217
 const COMPANY_LNG = 41.9192
+
+const COMPANY_SAME_AS = [
+  'https://vk.com/1unicornstudio',
+  'https://t.me/posledniy_edinorog',
+  'https://www.instagram.com/1unicorn.studio/',
+  'https://yandex.ru/maps/org/yunikorn/161471835951/',
+]
 
 const COMMON_SERVICE_AUDIENCE = [
   { '@type': 'PeopleAudience' as const, audienceType: 'Дети' },
@@ -157,16 +165,19 @@ const createServiceCatalogFromServices = (
 ) => ({
   '@type': 'OfferCatalog',
   name: title,
-  itemListElement: services.map(item => ({
-    '@type': 'Offer',
-    priceCurrency: CURRENCY,
-    itemOffered: {
-      '@type': 'Service',
-      name: item.title,
-      description: item.description,
-      audience: COMMON_SERVICE_AUDIENCE,
-    },
-  })),
+  itemListElement: services.map(item => {
+    const priceValue = getPriceValue(item.priceFrom || '')
+    return {
+      '@type': 'Offer',
+      ...(priceValue ? { price: priceValue, priceCurrency: CURRENCY } : {}),
+      itemOffered: {
+        '@type': 'Service',
+        name: item.title,
+        description: item.description,
+        audience: COMMON_SERVICE_AUDIENCE,
+      },
+    }
+  }),
 })
 
 const createBaseServiceSchema = ({
@@ -202,9 +213,14 @@ const toIsoDate = (value: string): string | undefined => {
   return Number.isNaN(fromRu.getTime()) ? undefined : fromRu.toISOString()
 }
 
+const toAbsoluteUrl = (url: string, siteUrl: string): string | undefined => {
+  if (!url) return undefined
+  return url.startsWith('http') ? url : `${siteUrl}${url}`
+}
+
 export const createOrganizationSchema = (siteUrl: string) => ({
   '@context': SCHEMA_CONTEXT,
-  '@type': 'Organization',
+  '@type': ['Organization', 'LocalBusiness'],
   '@id': `${siteUrl}#organization`,
   name: COMPANY_NAME,
   legalName: COMPANY_NAME,
@@ -242,9 +258,9 @@ export const createOrganizationSchema = (siteUrl: string) => ({
         '@type': 'OfferCatalog',
         name: 'Обучение',
         itemListElement: [
-          { '@type': 'Offer', url: `${siteUrl}/vocal/`, itemOffered: { '@type': 'Service', name: 'Уроки вокала' } },
-          { '@type': 'Offer', url: `${siteUrl}/guitar/`, itemOffered: { '@type': 'Service', name: 'Уроки гитары' } },
-          { '@type': 'Offer', url: `${siteUrl}/piano/`, itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' } },
+          { '@type': 'Offer', url: `${siteUrl}/vocal`, itemOffered: { '@type': 'Service', name: 'Уроки вокала' } },
+          { '@type': 'Offer', url: `${siteUrl}/guitar`, itemOffered: { '@type': 'Service', name: 'Уроки гитары' } },
+          { '@type': 'Offer', url: `${siteUrl}/piano`, itemOffered: { '@type': 'Service', name: 'Уроки фортепиано' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Уроки музыкального продюсирования' } },
         ],
       },
@@ -252,12 +268,12 @@ export const createOrganizationSchema = (siteUrl: string) => ({
         '@type': 'OfferCatalog',
         name: 'Студийные услуги',
         itemListElement: [
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Звукозапись' } },
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Аранжировка' } },
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Сведение' } },
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Мастеринг' } },
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Коррекция вокала' } },
-          { '@type': 'Offer', url: `${siteUrl}/studio/`, itemOffered: { '@type': 'Service', name: 'Саунд-дизайн' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Звукозапись' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Аранжировка' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Сведение' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Мастеринг' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Коррекция вокала' } },
+          { '@type': 'Offer', url: `${siteUrl}/studio`, itemOffered: { '@type': 'Service', name: 'Саунд-дизайн' } },
         ],
       },
     ],
@@ -265,8 +281,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
   makesOffer: [
     {
       '@type': 'Offer',
-      url: `${siteUrl}/studio/`,
-      priceCurrency: CURRENCY,
+      url: `${siteUrl}/studio`,
       itemOffered: {
         '@type': 'Service',
         name: 'Запись песни в Ставрополе',
@@ -274,8 +289,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
     },
     {
       '@type': 'Offer',
-      url: `${siteUrl}/vocal/`,
-      priceCurrency: CURRENCY,
+      url: `${siteUrl}/vocal`,
       itemOffered: {
         '@type': 'Service',
         name: 'Уроки вокала в Ставрополе',
@@ -291,7 +305,7 @@ export const createOrganizationSchema = (siteUrl: string) => ({
     'Уроки гитары',
     'Уроки фортепиано',
   ],
-  sameAs: ['https://vk.com/1unicornstudio'],
+  sameAs: COMPANY_SAME_AS,
 })
 
 type CourseMusicSchoolInput = {
@@ -310,7 +324,7 @@ const createCourseMusicSchoolSchema = ({
   serviceName,
 }: CourseMusicSchoolInput) => ({
   '@context': SCHEMA_CONTEXT,
-  '@type': 'MusicSchool',
+  '@type': ['EducationalOrganization', 'LocalBusiness'],
   '@id': `${pageUrl}#music-school`,
   name,
   url: pageUrl,
@@ -341,12 +355,11 @@ const createCourseMusicSchoolSchema = ({
       {
         '@type': 'Offer',
         url: pageUrl,
-        priceCurrency: CURRENCY,
         itemOffered: { '@type': 'Service', name: serviceName },
       },
     ],
   },
-  sameAs: ['https://vk.com/1unicornstudio'],
+  sameAs: COMPANY_SAME_AS,
 })
 
 export const createVocalMusicSchoolSchema = (siteUrl: string, pageUrl: string) =>
@@ -412,30 +425,26 @@ export const createStudioLocalBusinessSchema = (siteUrl: string, pageUrl: string
       {
         '@type': 'Offer',
         url: pageUrl,
-        priceCurrency: CURRENCY,
         itemOffered: { '@type': 'Service', name: 'Запись песни' },
       },
       {
         '@type': 'Offer',
         url: pageUrl,
-        priceCurrency: CURRENCY,
         itemOffered: { '@type': 'Service', name: 'Сведение' },
       },
       {
         '@type': 'Offer',
         url: pageUrl,
-        priceCurrency: CURRENCY,
         itemOffered: { '@type': 'Service', name: 'Мастеринг' },
       },
       {
         '@type': 'Offer',
         url: pageUrl,
-        priceCurrency: CURRENCY,
         itemOffered: { '@type': 'Service', name: 'Аранжировка' },
       },
     ],
   },
-  sameAs: ['https://vk.com/1unicornstudio'],
+  sameAs: COMPANY_SAME_AS,
 })
 
 export const createLocalBusinessSchema = (siteUrl: string) => ({
@@ -549,7 +558,6 @@ export const createDistributionServiceSchema = ({
     name: packagesTitle || 'Пакеты музыкальной дистрибуции',
     itemListElement: packages.map(pkg => ({
       '@type': 'Offer',
-      priceCurrency: CURRENCY,
       description: pkg.cta || undefined,
       itemOffered: {
         '@type': 'Service',
@@ -579,7 +587,7 @@ export const createRentServiceSchema = ({
     name: 'Форматы аренды',
     itemListElement: options.map(option => ({
       '@type': 'Offer',
-      description: option.ctaLabel || undefined,
+      description: option.price || undefined,
       itemOffered: {
         '@type': 'Service',
         name: option.title,
@@ -617,13 +625,13 @@ export const createNewsCollectionSchema = ({
     itemListElement: articles.map((article, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: `${siteUrl}/news/${article.id}/`,
+      url: `${siteUrl}/news/${article.id}`,
       item: {
         '@type': 'Article',
         headline: article.title,
         description: article.subtitle || undefined,
-        image: article.heroImage || undefined,
-        datePublished: toIsoDate(article.publishDate),
+        image: toAbsoluteUrl(article.heroImage, siteUrl),
+        datePublished: toIsoDate(article.publishedAt),
       },
     })),
   },
@@ -641,10 +649,10 @@ export const createNewsArticleSchema = ({
   url: pageUrl,
   headline: article.title,
   description: article.subtitle || undefined,
-  image: article.heroImage || undefined,
+  image: toAbsoluteUrl(article.heroImage, siteUrl),
   articleSection: article.category || undefined,
-  datePublished: toIsoDate(article.publishDate),
-  dateModified: toIsoDate(article.publishDate),
+  datePublished: toIsoDate(article.publishedAt),
+  dateModified: toIsoDate(article.updatedAt || article.publishedAt),
   author: article.author?.name
     ? {
         '@type': 'Person',

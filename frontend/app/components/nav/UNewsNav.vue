@@ -45,13 +45,13 @@ const emit = defineEmits<{
   min-width: 0;
   height: 100%;
   padding-left: 16px;
-  border-left: 1px solid rgba(38, 32, 42, 0.08);
+  border-left: 1px solid var(--u-ink-a08);
 }
 
 .u-menu-studio-title {
   margin: 0 0 8px;
-  color: #8b8590;
-  font-size: 9px;
+  color: var(--u-text-nav-muted);
+  font-size: var(--u-font-9);
   font-weight: 700;
   letter-spacing: 1.1px;
   line-height: 9px;
@@ -67,8 +67,8 @@ const emit = defineEmits<{
 
 .u-menu-studio-empty {
   margin: 0;
-  color: #8b8590;
-  font-size: 11px;
+  color: var(--u-text-nav-muted);
+  font-size: var(--u-font-11);
   line-height: 15px;
 }
 
@@ -93,11 +93,11 @@ const emit = defineEmits<{
 .u-menu-studio-link:hover,
 .u-menu-studio-link:focus-visible {
   background-color: #faf8fb;
-  color: #c93686;
+  color: var(--u-color-accent);
 }
 
 .u-menu-studio-link:focus-visible {
-  outline: 2px solid rgba(201, 54, 134, 0.2);
+  outline: 2px solid var(--u-accent-a20);
   outline-offset: 2px;
 }
 
@@ -119,7 +119,7 @@ const emit = defineEmits<{
   overflow: hidden;
   text-overflow: ellipsis;
   color: inherit;
-  font-size: 11px;
+  font-size: var(--u-font-11);
   font-weight: 500;
   line-height: 15px;
   white-space: nowrap;
@@ -136,14 +136,14 @@ const emit = defineEmits<{
 
 .u-menu-studio-link:hover .u-menu-studio-link-arrow,
 .u-menu-studio-link:focus-visible .u-menu-studio-link-arrow {
-  color: #c93686;
+  color: var(--u-color-accent);
   transform: translateX(2px);
 }
 
 @media (max-width: 860px) {
   .u-menu-studio-explore {
     padding: 14px 0 0;
-    border-top: 1px solid rgba(38, 32, 42, 0.08);
+    border-top: 1px solid var(--u-ink-a08);
     border-left: 0;
   }
 }

@@ -95,7 +95,7 @@ const videos: VideoItem[] = [
 
 .video-item {
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 80ms);
 }
 
@@ -106,13 +106,13 @@ const videos: VideoItem[] = [
   border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px var(--u-black-a08);
+  transition: all 0.3s var(--u-ease-standard);
 }
 
 .video-wrapper:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 32px var(--u-black-a15);
 }
 
 .video-element {
@@ -128,7 +128,7 @@ const videos: VideoItem[] = [
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--u-black-a30);
   opacity: 1;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -139,7 +139,7 @@ const videos: VideoItem[] = [
 }
 
 .video-wrapper:hover .video-play-overlay {
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--u-black-a40);
 }
 
 .play-button {
@@ -148,10 +148,10 @@ const videos: VideoItem[] = [
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--u-white-a95);
   border-radius: 50%;
-  color: #ec4899;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: var(--u-color-pink);
+  box-shadow: 0 8px 24px var(--u-black-a20);
   transition: all 0.3s ease;
 }
 
@@ -164,8 +164,8 @@ const videos: VideoItem[] = [
 
 .video-wrapper:hover .play-button {
   transform: scale(1.1);
-  background: #fff;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  background: var(--u-color-white);
+  box-shadow: 0 12px 32px var(--u-black-a30);
 }
 
 .play-button svg {

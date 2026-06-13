@@ -38,7 +38,8 @@ const props = defineProps<{
     <NuxtImg
       :src="props.imageSrc"
       :alt="props.imageAlt"
-      format="webp"
+      width="800"
+      sizes="sm:100vw md:800px"
       class="mood-hero__article-image"
     />
   </article>
@@ -47,11 +48,10 @@ const props = defineProps<{
 <style scoped lang="scss">
 .mood-hero {
   &__article {
-    --u-article-surface: rgba(132, 112, 187, 0.291);
     position: relative;
     overflow: hidden;
     background-color: var(--u-article-surface);
-    border: 1px solid rgb(36 31 27 / 0.08);
+    border: 1px solid var(--u-article-ink-a08);
     border-radius: 28px;
     transition: background-color 0.22s ease;
 
@@ -66,13 +66,13 @@ const props = defineProps<{
   &__article-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.75rem;
-    color: rgb(36 31 27 / 0.7);
+    gap: 12px;
+    padding: 16px 28px;
+    color: var(--u-article-ink-a70);
   }
 
   &__article-eyebrow {
-    font-size: 10px;
+    font-size: var(--u-font-10);
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
@@ -82,13 +82,13 @@ const props = defineProps<{
   &__article-header-divider {
     flex: 1;
     height: 1px;
-    background-color: rgb(36 31 27 / 0.2);
+    background-color: var(--u-article-ink-a20);
   }
 
   &__article-title {
     margin: 0;
-    padding-right: 1.75rem;
-    padding-left: 1.75rem;
+    padding-right: 28px;
+    padding-left: 28px;
   }
 
   &__article-title-line1,
@@ -99,41 +99,41 @@ const props = defineProps<{
   }
 
   &__article-title-line1 {
-    font-size: 38px;
+    font-size: var(--u-font-38);
     font-weight: 500;
     color: #13110f;
   }
 
   &__article-title-line2 {
     font-family: 'Druk Wide', sans-serif;
-    font-size: clamp(2rem, 10vw, 4.26rem);
+    font-size: var(--u-font-fluid-display-mood);
     font-weight: 800;
     color: #d24ade9c;
   }
 
   &__article-body {
-    max-width: 34rem;
-    margin: 0.5rem 0 0;
-    padding-right: 1.75rem;
-    padding-bottom: 1.25rem;
-    padding-left: 1.75rem;
-    font-size: 0.875rem;
+    max-width: 544px;
+    margin: 8px 0 0;
+    padding-right: 28px;
+    padding-bottom: 20px;
+    padding-left: 28px;
+    font-size: var(--u-font-14);
     line-height: 1.65;
-    color: rgb(36 31 27 / 0.72);
+    color: var(--u-article-ink-a72);
     white-space: pre-line;
 
     @media (min-width: 640px) {
-      font-size: 15px;
+      font-size: var(--u-font-15);
     }
 
     @media (min-width: 1024px) {
-      font-size: 1rem;
+      font-size: var(--u-font-16);
     }
   }
 
   &__article-image {
     margin-top: 20px;
-    padding-bottom: 0.75rem;
+    padding-bottom: 12px;
     width: 100%;
   }
 }

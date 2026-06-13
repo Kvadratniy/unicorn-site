@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
   images: () => [],
   reverseLayout: false,
   theme: 'vocal',
-  sectionBackground: '#ffffff',
+  sectionBackground: 'var(--u-color-white)',
 })
 
 const sectionRef = ref<HTMLElement>()
@@ -196,7 +196,7 @@ onUnmounted(() => {
 
 .title {
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.8s var(--u-ease-smooth);
 }
 
 .section.is-visible .title {
@@ -208,15 +208,15 @@ onUnmounted(() => {
 .lead {
   margin: 28px 0 0 3px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 17px;
+  font-size: var(--u-font-17);
   font-weight: 400;
   line-height: 1.47;
   letter-spacing: -0.011em;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   max-width: 62ch;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.8s var(--u-ease-smooth);
 }
 
 @media (min-width: 1024px) {
@@ -240,15 +240,15 @@ onUnmounted(() => {
 
 @media (min-width: 1024px) {
   .lead {
-    font-size: 19px;
+    font-size: var(--u-font-19);
     line-height: 1.52;
   }
 }
 
 .lead+.lead {
   margin-top: 50px;
-  font-size: 16px;
-  color: #86868b;
+  font-size: var(--u-font-16);
+  color: var(--u-text-secondary);
 }
 
 .cards {
@@ -266,15 +266,15 @@ onUnmounted(() => {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--u-white-a85);
+  border: 1px solid var(--u-black-a06);
   border-radius: 18px;
   padding: 16px 16px 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 24px var(--u-black-a04);
   backdrop-filter: blur(10px);
   opacity: 0;
   transform: translateY(30px) scale(0.95);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.7s var(--u-ease-smooth);
 }
 
 .section.is-visible .card-1 {
@@ -297,8 +297,8 @@ onUnmounted(() => {
 
 .card:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 32px var(--u-black-a08);
+  border-color: var(--u-black-a10);
 }
 
 .card__head {
@@ -309,8 +309,8 @@ onUnmounted(() => {
 
 /* Theme-specific dot colors */
 .theme-vocal .card__dot {
-  background: linear-gradient(135deg, #fb7185, #8b5cf6);
-  box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.08);
+  background: linear-gradient(135deg, var(--u-color-rose), var(--u-color-purple));
+  box-shadow: 0 0 0 6px var(--u-purple-a08);
 }
 
 .theme-piano .card__dot {
@@ -327,7 +327,7 @@ onUnmounted(() => {
   width: 9px;
   height: 9px;
   border-radius: 999px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s var(--u-ease-spring);
 }
 
 .card:hover .card__dot {
@@ -337,20 +337,20 @@ onUnmounted(() => {
 .card__title {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 14px;
+  font-size: var(--u-font-14);
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
 }
 
 .card__text {
   margin: 10px 0 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 13px;
+  font-size: var(--u-font-13);
   font-weight: 400;
   line-height: 1.47;
   letter-spacing: -0.006em;
-  color: #86868b;
+  color: var(--u-text-secondary);
 }
 
 .visual {
@@ -358,7 +358,7 @@ onUnmounted(() => {
   justify-content: center;
   opacity: 0;
   transform: translateX(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 1s var(--u-ease-smooth);
 }
 
 .section.is-visible .visual {
@@ -383,7 +383,7 @@ onUnmounted(() => {
     radial-gradient(120% 120% at 100% 100%,
       rgba(59, 130, 246, 0.35),
       transparent 55%),
-    linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(17, 24, 39, 0.74));
+    linear-gradient(135deg, var(--u-gray-900-a92), var(--u-gray-900-a74));
 }
 
 .theme-piano .visual__frame {
@@ -407,7 +407,7 @@ onUnmounted(() => {
     radial-gradient(120% 120% at 100% 100%,
       rgba(239, 68, 68, 0.35),
       transparent 55%),
-    linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(17, 24, 39, 0.74));
+    linear-gradient(135deg, var(--u-gray-900-a92), var(--u-gray-900-a74));
 }
 
 .visual__frame {
@@ -420,8 +420,8 @@ onUnmounted(() => {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
   display: grid;
   place-items: center;
-  color: rgba(255, 255, 255, 0.9);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--u-white-a90);
+  transition: all 0.5s var(--u-ease-smooth);
 }
 
 .visual__frame:hover {
@@ -445,7 +445,7 @@ onUnmounted(() => {
       rgba(255, 255, 255, 0.16),
       transparent 45%,
       transparent 70%,
-      rgba(255, 255, 255, 0.14));
+      var(--u-white-a14));
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -482,18 +482,18 @@ onUnmounted(() => {
   bottom: 18px;
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--u-white-a10);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--u-white-a14);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 12px;
+  font-size: var(--u-font-12);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.8s var(--u-ease-smooth);
 }
 
 .section.is-visible .visual__label {
@@ -505,7 +505,7 @@ onUnmounted(() => {
 /* For slot content like SVG icons */
 :slotted(svg) {
   opacity: 0.95;
-  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 16px 40px var(--u-black-a35));
 }
 
 /* Accessibility */

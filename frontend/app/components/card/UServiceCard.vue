@@ -104,52 +104,52 @@ $service-card-body: rgb(64 64 64);
   display: flex;
   min-height: 0;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  border: 1px solid rgb(0 0 0 / 0.06);
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--u-black-a06);
   border-radius: 14px;
-  background: rgb(255 255 255 / 0.85);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.04);
+  background: var(--u-white-a85);
+  box-shadow: 0 4px 16px var(--u-black-a04);
   backdrop-filter: blur(10px);
   transition:
     border-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
 
   &:hover {
-    border-color: rgb(236 72 153 / 0.2);
-    box-shadow: 0 4px 24px rgb(236 72 153 / 0.08);
+    border-color: var(--u-pink-a20);
+    box-shadow: 0 4px 24px var(--u-pink-a08);
   }
 
   &__header {
     display: grid;
-    gap: 0.75rem;
+    gap: 12px;
   }
 
   &__meta-row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: 12px;
   }
 
   &__badges {
     display: flex;
-    min-height: 1.5rem;
+    min-height: 24px;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   &__new-badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.375rem;
+    padding: 4px 8px;
+    border-radius: 6px;
     background: linear-gradient(to bottom right, rgb(249 115 22), rgb(234 88 12));
-    color: #fff;
-    font-size: 11px;
+    color: var(--u-color-white);
+    font-size: var(--u-font-11);
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    box-shadow: 0 2px 8px rgb(249 115 22 / 0.25);
+    box-shadow: 0 2px 8px var(--u-orange-a25);
   }
 
   &__subtitle {
@@ -157,22 +157,22 @@ $service-card-body: rgb(64 64 64);
     border: 0;
     background: transparent;
     color: $service-card-muted;
-    font-size: 0.75rem;
+    font-size: var(--u-font-12);
   }
 
   &__price {
     @include center-flex;
 
-    height: 1.5rem;
+    height: 24px;
     flex-shrink: 0;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.5rem;
-    background: linear-gradient(to bottom right, rgb(236 72 153 / 0.1), rgb(219 39 119 / 0.15));
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom right, var(--u-pink-a10), var(--u-pink-600-a15));
   }
 
   &__price-text {
     color: $service-card-accent-dark;
-    font-size: 0.875rem;
+    font-size: var(--u-font-14);
     font-weight: 700;
     letter-spacing: -0.025em;
     white-space: nowrap;
@@ -181,7 +181,7 @@ $service-card-body: rgb(64 64 64);
   &__title {
     margin: 0;
     color: $service-card-text;
-    font-size: 1.25rem;
+    font-size: var(--u-font-20);
     font-weight: 700;
     line-height: 1.35;
     letter-spacing: -0.025em;
@@ -190,13 +190,13 @@ $service-card-body: rgb(64 64 64);
   &__description {
     margin: 0;
     color: $service-card-muted;
-    font-size: 0.875rem;
+    font-size: var(--u-font-14);
     line-height: 1.55;
   }
 
   &__bullets {
     display: grid;
-    gap: 0.5rem;
+    gap: 8px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -206,36 +206,36 @@ $service-card-body: rgb(64 64 64);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 0.625rem;
+    gap: 10px;
   }
 
   &__bullet-marker {
     color: $service-card-accent;
-    font-size: 0.875rem;
+    font-size: var(--u-font-14);
     font-weight: 600;
     line-height: 1;
   }
 
   &__bullet-text {
     color: $service-card-body;
-    font-size: 0.875rem;
+    font-size: var(--u-font-14);
     line-height: 1.5;
   }
 
   &__footer {
     margin-top: auto;
-    padding-top: 0.5rem;
+    padding-top: 8px;
   }
 
   &__button {
     @include center-flex(inline-flex);
 
-    padding: 0.75rem 1rem;
+    padding: 12px 16px;
     border: 2px solid $service-card-accent;
     border-radius: 10px;
     background: transparent;
     color: $service-card-accent-dark;
-    font-size: 0.875rem;
+    font-size: var(--u-font-14);
     font-weight: 600;
     text-decoration: none;
     transition:
@@ -245,8 +245,8 @@ $service-card-body: rgb(64 64 64);
 
     &:hover {
       background-color: $service-card-accent;
-      color: #fff;
-      box-shadow: 0 4px 16px rgb(236 72 153 / 0.35);
+      color: var(--u-color-white);
+      box-shadow: 0 4px 16px var(--u-pink-a35);
     }
   }
 

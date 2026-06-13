@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <UGridWrapper :title-id="titleId">
+  <UGridWrapper>
     <template #header>
       <UTitle
         :title-id="titleId"

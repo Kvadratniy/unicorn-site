@@ -58,6 +58,6 @@ const triggerId = (index: number) => `${idPrefix}-trigger-${index}`
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 10px;
 }
 </style>

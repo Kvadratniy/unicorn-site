@@ -207,9 +207,9 @@ $ease-default: cubic-bezier(0.4, 0, 0.2, 1);
 $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
 .catalog-message {
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  color: #64748b;
+  margin-bottom: 24px;
+  font-size: var(--u-font-14);
+  color: var(--u-text-muted);
 
   &--error {
     color: #ef4444;
@@ -232,21 +232,21 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 .categories {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 40px;
 }
 
 .category {
   &__header {
-    margin-bottom: 2.5rem;
-    padding-left: 0.125rem;
+    margin-bottom: 40px;
+    padding-left: 2px;
   }
 
   &__counter {
     display: flex;
     align-items: center;
-    gap: 0.375rem;
-    margin-bottom: 0.75rem;
-    font-size: 13px;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: var(--u-font-13);
     font-weight: 500;
     color: #94a3b8;
     font-variant-numeric: tabular-nums;
@@ -257,32 +257,32 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   &__title {
-    margin: 0 0 0.5rem;
-    font-size: 1.5rem;
+    margin: 0 0 8px;
+    font-size: var(--u-font-24);
     font-weight: 500;
     color: #1a1a1a;
     letter-spacing: -0.025em;
 
     @media (min-width: $lg) {
-      font-size: 32px;
+      font-size: var(--u-font-32);
       letter-spacing: -0.5px;
     }
   }
 
   &__description {
     margin: 0;
-    font-size: 15px;
+    font-size: var(--u-font-15);
     font-weight: 400;
-    color: #64748b;
+    color: var(--u-text-muted);
   }
 
   &__services {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
+    gap: 16px;
 
     @media (min-width: $sm) {
-      gap: 1.25rem;
+      gap: 20px;
     }
 
     @media (min-width: $md) {
@@ -303,22 +303,22 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   &:hover {
     .services-card {
       &.is-visible {
-        border-color: rgba(0, 0, 0, 0.1);
-        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+        border-color: var(--u-black-a10);
+        box-shadow: 0 20px 40px -12px var(--u-black-a10);
         transform: translateY(-4px) scale(1);
       }
 
       &__cta {
-        gap: 0.625rem;
-        color: #fff;
+        gap: 10px;
+        color: var(--u-color-white);
         background: #1a1a1a;
         border-color: #1a1a1a;
-        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 20px 40px -12px var(--u-black-a10);
       }
     }
 
     .card-arrow {
-      transform: translateX(0.125rem);
+      transform: translateX(2px);
     }
   }
 }
@@ -327,12 +327,12 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1.75rem;
+  padding: 28px;
   cursor: pointer;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px var(--u-black-a04);
   opacity: 0;
   transform: scale(0.7);
   transition:
@@ -342,7 +342,7 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow 0.4s $ease-default;
 
   @media (max-width: $md) {
-    padding: 1.5rem;
+    padding: 24px;
   }
 
   &.is-visible {
@@ -355,20 +355,20 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     display: block;
     margin-right: auto;
     margin-left: auto;
-    padding-bottom: 1rem;
+    padding-bottom: 16px;
   }
 
   &__header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.875rem;
+    gap: 16px;
+    margin-bottom: 14px;
   }
 
   &__title {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: var(--u-font-20);
     font-weight: 600;
     line-height: 1.375;
     color: #1a1a1a;
@@ -377,53 +377,53 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &__price {
     flex-shrink: 0;
-    padding: 0.25rem 0.625rem;
-    font-size: 0.875rem;
+    padding: 4px 10px;
+    font-size: var(--u-font-14);
     font-weight: 600;
-    color: #64748b;
+    color: var(--u-text-muted);
     white-space: nowrap;
     background: #f1f5f9;
-    border-radius: 0.375rem;
+    border-radius: 6px;
   }
 
   &__description {
     flex: 1;
-    margin: 0 0 1.25rem;
-    font-size: 0.875rem;
+    margin: 0 0 20px;
+    font-size: var(--u-font-14);
     line-height: 1.625;
-    color: #64748b;
+    color: var(--u-text-muted);
   }
 
   &__features {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.375rem;
-    margin-bottom: 1.5rem;
+    gap: 6px;
+    margin-bottom: 24px;
   }
 
   &__feature {
-    padding: 0.375rem 0.625rem;
-    font-size: 0.75rem;
+    padding: 6px 10px;
+    font-size: var(--u-font-12);
     font-weight: 500;
     color: #475569;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 0.375rem;
+    border-radius: 6px;
   }
 
   &__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
+    gap: 8px;
+    padding: 12px 20px;
+    font-size: var(--u-font-14);
     font-weight: 600;
     color: #1a1a1a;
     text-decoration: none;
     background: transparent;
     border: 1px solid #e2e8f0;
-    border-radius: 0.75rem;
+    border-radius: 12px;
     transition: all 0.3s;
   }
 }

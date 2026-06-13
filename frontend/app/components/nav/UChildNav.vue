@@ -49,112 +49,102 @@ const emit = defineEmits<{
     </ul>
   </section>
 </template>
-<style scoped>
-.u-menu-studio-feature-item {
-  display: grid;
-  min-height: 52px;
-  grid-template-columns: 16px minmax(0, 1fr) 14px;
-  gap: 10px;
-  align-items: start;
-  padding: 12px 12px;
-  color: inherit;
-  text-decoration: none;
-  transition:
-    background-color 0.18s ease,
-    color 0.18s ease;
-}
-
-.u-menu-studio-feature-item:hover,
-.u-menu-studio-feature-item:focus-visible,
-.u-menu-studio-feature-item-active {
-  background-color: #faf8fb;
-}
-
-.u-menu-studio-feature-item:focus-visible {
-  outline: 2px solid rgba(201, 54, 134, 0.2);
-  outline-offset: 2px;
-}
-
-.u-menu-studio-feature-index {
-  display: block;
-  padding-top: 1px;
-  color: #b6aeb9;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  line-height: 15px;
-  text-align: left;
-}
-
-.u-menu-studio-feature-copy {
-  min-width: 0;
-  overflow: hidden;
-}
-
-.u-menu-studio-feature-title,
-.u-menu-studio-feature-description {
-  display: block;
-}
-
-.u-menu-studio-feature-title {
-  overflow: hidden;
-  color: #26202a;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.1px;
-  line-height: 15px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.u-menu-studio-feature-description {
-  display: -webkit-box;
-  margin-top: 4px;
-  color: #756f7a;
-  width: 200px;
-  font-size: 10px;
-  line-height: 14px;
-  text-transform: none;
-}
-
-.u-menu-studio-feature-arrow {
-  width: 14px;
-  height: 14px;
-  margin-top: 1px;
-  color: #b8b0bd;
-  transition:
-    color 0.18s ease,
-    transform 0.18s ease;
-}
-
-.u-menu-studio-feature-item:hover .u-menu-studio-feature-arrow,
-.u-menu-studio-feature-item:focus-visible .u-menu-studio-feature-arrow {
-  color: #c93686;
-  transform: translateX(2px);
-}
-
-.u-menu-studio-title {
-  margin: 0 0 8px;
-  color: #8b8590;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.1px;
-  line-height: 9px;
-  text-transform: uppercase;
-}
+<style scoped lang="scss">
+$accent: var(--u-color-accent);
 
 .u-menu-studio-column {
   min-width: 0;
-}
 
-.u-menu-studio-list {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  .u-menu-studio-title {
+    margin: 0 0 8px;
+    color: var(--u-text-nav-muted);
+    font-size: var(--u-font-9);
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    line-height: 9px;
+    text-transform: uppercase;
+  }
 
-.u-menu-studio-list-item + .u-menu-studio-list-item {
-  border-top: 1px solid rgba(38, 32, 42, 0.07);
+  .u-menu-studio-list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-item + &-item {
+      border-top: 1px solid var(--u-ink-a07);
+    }
+  }
+
+  .u-menu-studio-feature-item {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr) 14px;
+    gap: 10px;
+    align-items: start;
+    min-height: 52px;
+    padding: 12px;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease;
+
+    &:hover,
+    &:focus-visible,
+    &.router-link-active {
+      background-color: #faf8fb;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--u-accent-a20);
+      outline-offset: 2px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      .u-menu-studio-feature-arrow {
+        color: $accent;
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  .u-menu-studio-feature-index {
+    display: block;
+    padding-top: 1px;
+    color: #b6aeb9;
+    font: 600 9px/15px inherit;
+    letter-spacing: 0.6px;
+  }
+
+  .u-menu-studio-feature-copy {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .u-menu-studio-feature-title {
+    display: block;
+    overflow: hidden;
+    color: #26202a;
+    font: 600 12px/15px inherit;
+    letter-spacing: -0.1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .u-menu-studio-feature-description {
+    display: -webkit-box;
+    width: 200px;
+    margin-top: 4px;
+    color: #756f7a;
+    font-size: var(--u-font-10);
+    line-height: 14px;
+  }
+
+  .u-menu-studio-feature-arrow {
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    color: #b8b0bd;
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
 }
 </style>

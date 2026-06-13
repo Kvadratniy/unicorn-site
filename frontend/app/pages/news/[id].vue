@@ -21,22 +21,16 @@ const { data: article } = await useAsyncData(
 )
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
+const siteUrl = config.public.siteUrl as string
 
-const pageUrl = computed(() => `${siteUrl}/news/${String(route.params.id ?? '')}/`)
+const pageUrl = computed(() => `${siteUrl}/news/${String(route.params.id ?? '')}`)
 
-watch(
-  () => article.value,
-  (a) => {
-    if (!a) return
-    usePageSeo({
-      title: a.title,
-      description: a.subtitle,
-      image: a.heroImage,
-    })
-  },
-  { immediate: true },
-)
+usePageSeo({
+  title: () => article.value?.title ?? 'Новость',
+  description: () => article.value?.subtitle ?? '',
+  image: () => article.value?.heroImage,
+  ogType: 'article',
+})
 
 const newsArticleSchema = computed(() => {
   if (!article.value) return null
@@ -68,9 +62,9 @@ const contentBlockTypes = newsContentBlockTypes
     <UBreadcrumbs class="mb-6 mt-2" />
     <article v-if="article" class="max-w-3xl ">
 
-      <header class="flex flex-col gap-4 sm:gap-5">
+      <header class="flex flex-col gap-4 sm:gap-5 pb-6">
         <h1
-          class="text-balance text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+          class="text-balance text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-[40px] lg:leading-tight">
           {{ article.title }}
         </h1>
         <p class="text-pretty text-base leading-relaxed text-neutral-600 sm:text-lg">
@@ -78,11 +72,9 @@ const contentBlockTypes = newsContentBlockTypes
         </p>
       </header>
 
-      <div class="mt-6 flex items-center justify-center overflow-hidden rounded-2xl ring-1 ring-neutral-200/60 sm:mt-8">
-        <NuxtImg :src="article.heroImage" :alt="article.title" width="1200"
-          class="w-full h-auto max-h-[min(820px,75vh)] w-auto max-w-full object-contain" sizes="sm:100vw md:768px"
+      <NuxtImg :src="article.heroImage" :alt="article.title" width="1200"
+          class="h-auto max-h-[min(420px,55vh)] w-auto max-w-full object-contain rounded-2xl" sizes="sm:100vw md:768px"
           format="webp" />
-      </div>
 
       <div class="space-y-6 pt-8 text-base leading-relaxed text-neutral-700 sm:pt-10">
         <template v-for="(block, index) in article.content" :key="index">

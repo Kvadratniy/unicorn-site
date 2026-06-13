@@ -32,11 +32,11 @@ const emit = defineEmits<{
 <style scoped lang="scss">
 $headline-contact-text: #332d36;
 $headline-contact-muted: #817783;
-$headline-contact-accent: #c93686;
-$headline-contact-border: rgba(51, 45, 54, 0.12);
+$headline-contact-accent: var(--u-color-accent);
+$headline-contact-border: var(--u-headline-ink-a12);
 $headline-contact-surface: #fbfafb;
 $headline-contact-hover: #f8f3f7;
-$headline-contact-focus: rgba(201, 54, 134, 0.18);
+$headline-contact-focus: var(--u-accent-a18);
 
 .u-headline-contact {
   display: none;
@@ -65,22 +65,22 @@ $headline-contact-focus: rgba(201, 54, 134, 0.18);
 
   &__address {
     color: $headline-contact-muted;
-    font-size: 10px;
+    font-size: var(--u-font-10);
     font-weight: 500;
     letter-spacing: 0.1px;
     line-height: 13px;
-    font-family: 'Montserrat';
+    font-family: var(--u-font-montserrat);
   }
 
   &__phone {
     color: $headline-contact-text;
-    font-size: 11px;
+    font-size: var(--u-font-11);
     font-weight: 600;
     letter-spacing: 0.1px;
     line-height: 14px;
     text-decoration: none;
     transition: color 180ms ease;
-    font-family: 'Montserrat';
+    font-family: var(--u-font-montserrat);
   
     &:hover,
     &:focus-visible {
@@ -105,7 +105,7 @@ $headline-contact-focus: rgba(201, 54, 134, 0.18);
     background-color: $headline-contact-surface;
     color: $headline-contact-text;
     cursor: pointer;
-    font-size: 12px;
+    font-size: var(--u-font-12);
     font-weight: 600;
     letter-spacing: 0.2px;
     line-height: 14px;
@@ -121,7 +121,7 @@ $headline-contact-focus: rgba(201, 54, 134, 0.18);
 
       .u-headline-contact__mark {
         background-color: $headline-contact-accent;
-        color: #fff;
+        color: var(--u-color-white);
       }
     }
 
@@ -142,7 +142,7 @@ $headline-contact-focus: rgba(201, 54, 134, 0.18);
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--u-color-white);
     color: $headline-contact-muted;
     transition:
       background-color 180ms ease,

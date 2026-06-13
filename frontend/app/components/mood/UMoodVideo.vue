@@ -67,8 +67,8 @@ $lg: 1024px;
 
 .u-article-video {
   --u-av-surface: #cfcbd7;
-  --u-av-shadow: rgb(49 40 32 / 0.12);
-  --u-av-shadow-hover: rgb(49 40 32 / 0.16);
+  --u-av-shadow: var(--u-warm-ink-a12);
+  --u-av-shadow-hover: var(--u-warm-ink-a16);
   --u-av-gradient: linear-gradient(
     180deg,
     rgba(17, 15, 13, 0.02) 0%,
@@ -76,15 +76,15 @@ $lg: 1024px;
     rgba(17, 15, 13, 0.45) 100%
   );
   --u-av-cta-solid-bg: rgba(179, 156, 242, 0.776);
-  --u-av-cta-solid-text: #ffffff;
-  --u-av-cta-solid-shadow-hover: rgb(17 15 13 / 0.18);
-  --u-av-cta-solid-icon-bg: #ffffff;
+  --u-av-cta-solid-text: var(--u-color-white);
+  --u-av-cta-solid-shadow-hover: var(--u-warm-ink-a18);
+  --u-av-cta-solid-icon-bg: var(--u-color-white);
   --u-av-cta-solid-icon-fg: #000000;
-  --u-av-cta-ghost-border: rgb(255 255 255 / 0.28);
-  --u-av-cta-ghost-bg: rgb(255 255 255 / 0.12);
-  --u-av-cta-ghost-text: #fff;
-  --u-av-cta-ghost-border-hover: rgb(255 255 255 / 0.38);
-  --u-av-cta-ghost-bg-hover: rgb(255 255 255 / 0.2);
+  --u-av-cta-ghost-border: var(--u-white-a28);
+  --u-av-cta-ghost-bg: var(--u-white-a12);
+  --u-av-cta-ghost-text: var(--u-color-white);
+  --u-av-cta-ghost-border-hover: var(--u-white-a38);
+  --u-av-cta-ghost-bg-hover: var(--u-white-a20);
 
   position: relative;
   grid-column-start: auto;

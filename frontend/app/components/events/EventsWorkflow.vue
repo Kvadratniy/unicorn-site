@@ -114,7 +114,7 @@ const steps: WorkflowStep[] = [
   gap: 24px;
   position: relative;
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 100ms);
 }
 
@@ -138,7 +138,7 @@ const steps: WorkflowStep[] = [
   width: 2px;
   background: linear-gradient(
     180deg,
-    rgba(236, 72, 153, 0.3) 0%,
+    var(--u-pink-a30) 0%,
     rgba(139, 92, 246, 0.3) 100%
   );
 }
@@ -163,9 +163,9 @@ const steps: WorkflowStep[] = [
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  background: var(--u-gradient-brand);
   border-radius: 50%;
-  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
+  box-shadow: 0 8px 24px var(--u-pink-a25);
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
@@ -179,22 +179,22 @@ const steps: WorkflowStep[] = [
 }
 
 .step-number span {
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 800;
-  color: #fff;
+  color: var(--u-color-white);
   font-family: 'Suisse Intl', sans-serif;
   font-variant-numeric: tabular-nums;
 }
 
 @media (min-width: 1024px) {
   .step-number span {
-    font-size: 20px;
+    font-size: var(--u-font-20);
   }
 }
 
 .workflow-step:hover .step-number {
   transform: scale(1.1);
-  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.35);
+  box-shadow: 0 12px 32px var(--u-pink-a35);
 }
 
 .step-content {
@@ -202,10 +202,10 @@ const steps: WorkflowStep[] = [
   flex-direction: column;
   gap: 12px;
   padding: 24px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
   border-radius: 20px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--u-ease-standard);
 }
 
 @media (min-width: 1024px) {
@@ -217,25 +217,25 @@ const steps: WorkflowStep[] = [
 
 .workflow-step:hover .step-content {
   background: #fafafa;
-  border-color: rgba(236, 72, 153, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--u-pink-a20);
+  box-shadow: 0 8px 24px var(--u-black-a06);
 }
 
 .step-icon {
-  font-size: 32px;
+  font-size: var(--u-font-32);
   line-height: 1;
   margin-bottom: 4px;
 }
 
 @media (min-width: 1024px) {
   .step-icon {
-    font-size: 36px;
+    font-size: var(--u-font-36);
   }
 }
 
 .step-title {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--u-font-20);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111;
@@ -245,22 +245,22 @@ const steps: WorkflowStep[] = [
 
 @media (min-width: 1024px) {
   .step-title {
-    font-size: 22px;
+    font-size: var(--u-font-22);
   }
 }
 
 .step-description {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   line-height: 1.65;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
 }
 
 @media (min-width: 1024px) {
   .step-description {
-    font-size: 16px;
+    font-size: var(--u-font-16);
     line-height: 1.7;
   }
 }

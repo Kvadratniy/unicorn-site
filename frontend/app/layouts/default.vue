@@ -8,7 +8,7 @@ const { isOpen: isContactModalOpen, close: closeContactModal } = useContactModal
     <UHeadline />
 
     <UBaseWrapper>
-      <NuxtPage />
+      <slot />
     </UBaseWrapper>
 
     <UGift />

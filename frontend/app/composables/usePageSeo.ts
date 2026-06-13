@@ -1,8 +1,11 @@
+import type { MaybeRefOrGetter } from 'vue'
+
 type PageSeoOptions = {
-  title: string
-  description: string
-  image?: string
+  title: MaybeRefOrGetter<string>
+  description: MaybeRefOrGetter<string>
+  image?: MaybeRefOrGetter<string | undefined>
   keywords?: string
+  ogType?: 'website' | 'article'
   noindex?: boolean
 }
 
@@ -11,27 +14,26 @@ export const usePageSeo = (options: PageSeoOptions) => {
   const route = useRoute()
   const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
 
-  const canonicalPath = route.path === '/'
-    ? '/'
-    : `${route.path.replace(/\/$/, '')}/`
-  const canonicalUrl = `${siteUrl}${canonicalPath === '/' ? '' : canonicalPath}`
-  const ogImage = options.image
-    ? (options.image.startsWith('http') ? options.image : `${siteUrl}${options.image}`)
-    : `${siteUrl}/images/logo/logo-4.png`
+  const canonicalUrl = computed(() => `${siteUrl}${route.path.replace(/\/$/, '')}`)
+  const ogImage = computed(() => {
+    const image = toValue(options.image)
+    if (!image) return `${siteUrl}/images/logo/logo-4.png`
+    return image.startsWith('http') ? image : `${siteUrl}${image}`
+  })
 
   useSeoMeta({
-    title: options.title,
-    description: options.description,
-    ogTitle: options.title,
-    ogDescription: options.description,
-    ogImage,
-    ogUrl: canonicalUrl,
-    ogType: 'website',
+    title: () => toValue(options.title),
+    description: () => toValue(options.description),
+    ogTitle: () => toValue(options.title),
+    ogDescription: () => toValue(options.description),
+    ogImage: () => ogImage.value,
+    ogUrl: () => canonicalUrl.value,
+    ogType: options.ogType ?? 'website',
     ogLocale: 'ru_RU',
     twitterCard: 'summary_large_image',
-    twitterTitle: options.title,
-    twitterDescription: options.description,
-    twitterImage: ogImage,
+    twitterTitle: () => toValue(options.title),
+    twitterDescription: () => toValue(options.description),
+    twitterImage: () => ogImage.value,
     ...(options.noindex && { robots: 'noindex, nofollow' }),
   })
 

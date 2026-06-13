@@ -106,10 +106,10 @@ const { open: openContactModal } = useContactModal()
 
 /* Number indicator */
 .item__number {
-  font-size: 56px;
+  font-size: var(--u-font-56);
   font-weight: 700;
   line-height: 1;
-  color: #ec4899;
+  color: var(--u-color-pink);
   opacity: 0.15;
   transition: all 0.3s ease;
   user-select: none;
@@ -117,13 +117,13 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 768px) {
   .item__number {
-    font-size: 72px;
+    font-size: var(--u-font-72);
   }
 }
 
 @media (min-width: 1024px) {
   .item__number {
-    font-size: 88px;
+    font-size: var(--u-font-88);
   }
 }
 
@@ -157,34 +157,34 @@ const { open: openContactModal } = useContactModal()
 /* Title */
 .item__title {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--u-font-20);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: #1d1d1f;
+  color: var(--u-text-primary);
   transition: color 0.3s ease;
 }
 
 @media (min-width: 768px) {
   .item__title {
-    font-size: 22px;
+    font-size: var(--u-font-22);
   }
 }
 
 @media (min-width: 1024px) {
   .item__title {
-    font-size: 24px;
+    font-size: var(--u-font-24);
   }
 }
 
 .item:hover .item__title {
-  color: #ec4899;
+  color: var(--u-color-pink);
 }
 
 /* Text */
 .item__text {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--u-font-16);
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: -0.01em;
@@ -194,14 +194,14 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 768px) {
   .item__text {
-    font-size: 17px;
+    font-size: var(--u-font-17);
     line-height: 1.65;
   }
 }
 
 @media (min-width: 1024px) {
   .item__text {
-    font-size: 18px;
+    font-size: var(--u-font-18);
     line-height: 1.7;
     letter-spacing: -0.015em;
   }
@@ -214,7 +214,7 @@ const { open: openContactModal } = useContactModal()
   left: 80px;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #ec4899 0%, rgba(236, 72, 153, 0.3) 30%, transparent 100%);
+  background: linear-gradient(90deg, var(--u-color-pink) 0%, var(--u-pink-a30) 30%, transparent 100%);
   opacity: 0.15;
   transition: opacity 0.3s ease;
 }
@@ -256,34 +256,34 @@ const { open: openContactModal } = useContactModal()
   min-width: 28px;
   padding: 14px 28px;
   border-radius: 980px;
-  font-size: 17px;
+  font-size: var(--u-font-17);
   font-weight: 500;
   line-height: 1.17;
   letter-spacing: -0.022em;
-  color: #fff;
+  color: var(--u-color-white);
   text-decoration: none;
-  background: linear-gradient(135deg, #ec4899, #f472b6);
+  background: linear-gradient(135deg, var(--u-color-pink), var(--u-color-pink-light));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 4px 20px var(--u-pink-a30);
 }
 
 @media (min-width: 768px) {
   .cta {
     padding: 16px 32px;
-    font-size: 19px;
+    font-size: var(--u-font-19);
   }
 }
 
 @media (min-width: 1024px) {
   .cta {
     padding: 18px 36px;
-    font-size: 21px;
+    font-size: var(--u-font-21);
   }
 }
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 8px 30px var(--u-pink-a40);
 }
 
 .cta:active {

@@ -74,7 +74,7 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 $faq-accent: rgb(236 72 153);
-$faq-open-border: rgb(139 92 246 / 0.2);
+$faq-open-border: var(--u-purple-a20);
 $faq-text: rgb(23 23 23);
 $faq-body: rgb(64 64 64);
 
@@ -90,17 +90,17 @@ $faq-body: rgb(64 64 64);
 
 .faq-item {
   overflow: hidden;
-  border: 1px solid rgb(0 0 0 / 0.06);
+  border: 1px solid var(--u-black-a06);
   border-radius: 14px;
-  background: rgb(255 255 255 / 0.85);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.04);
+  background: var(--u-white-a85);
+  box-shadow: 0 4px 16px var(--u-black-a04);
   backdrop-filter: blur(10px);
 
   @include interactive-transition;
 
   &--open {
     border-color: $faq-open-border;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.06);
+    box-shadow: 0 8px 24px var(--u-black-a06);
   }
 
   &__trigger {
@@ -108,13 +108,13 @@ $faq-body: rgb(64 64 64);
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 16px;
     padding: 18px 20px;
     border: 0;
     background: transparent;
     color: $faq-text;
     cursor: pointer;
-    font-size: 17px;
+    font-size: var(--u-font-17);
     font-weight: 700;
     letter-spacing: -0.025em;
     text-align: left;
@@ -137,13 +137,13 @@ $faq-body: rgb(64 64 64);
 
   &__icon {
     display: flex;
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background: rgb(236 72 153 / 0.1);
+    background: var(--u-pink-a10);
     color: $faq-accent;
 
     @include interactive-transition;
@@ -151,7 +151,7 @@ $faq-body: rgb(64 64 64);
 
   &--open &__icon {
     transform: rotate(45deg);
-    background: rgb(236 72 153 / 0.18);
+    background: var(--u-pink-a18);
   }
 
   &__panel {
@@ -172,10 +172,10 @@ $faq-body: rgb(64 64 64);
 
   &__answer {
     margin: 0;
-    padding: 1rem 1.25rem 18px;
-    border-top: 1px solid rgb(0 0 0 / 0.05);
+    padding: 16px 20px 18px;
+    border-top: 1px solid var(--u-black-a05);
     color: $faq-body;
-    font-size: 15px;
+    font-size: var(--u-font-15);
     line-height: 1.7;
   }
 }

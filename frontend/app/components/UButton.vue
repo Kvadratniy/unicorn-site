@@ -89,7 +89,7 @@ const handleClick = (e: Event) => {
   gap: 12px;
   padding: 18px;
   border-radius: 14px;
-  font-size: 15px;
+  font-size: var(--u-font-15);
   font-weight: 700;
   letter-spacing: 0.3px;
   text-decoration: none;
@@ -97,13 +97,13 @@ const handleClick = (e: Event) => {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.4s var(--u-ease-standard);
 }
 
 @media (min-width: 1024px) {
   .ui-button {
     padding: 20px 40px;
-    font-size: 16px;
+    font-size: var(--u-font-16);
   }
 }
 
@@ -115,24 +115,24 @@ const handleClick = (e: Event) => {
 .ui-button__icon {
   position: relative;
   z-index: 2;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--u-ease-standard);
   flex-shrink: 0;
 }
 
 /* Primary Variant - Filled Gradient */
 .ui-button--primary {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-  color: #fff;
-  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.25);
+  background: var(--u-gradient-brand);
+  color: var(--u-color-white);
+  box-shadow: 0 8px 32px var(--u-pink-a25);
 }
 
 .ui-button--primary::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  background: linear-gradient(135deg, var(--u-color-purple), var(--u-color-blue));
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.4s var(--u-ease-standard);
   z-index: 1;
 }
 
@@ -149,12 +149,12 @@ const handleClick = (e: Event) => {
     rgba(255, 255, 255, 0.3),
     transparent
   );
-  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.6s var(--u-ease-standard);
   z-index: 1;
 }
 
 .ui-button--primary:hover {
-  box-shadow: 0 20px 50px rgba(236, 72, 153, 0.35);
+  box-shadow: 0 20px 50px var(--u-pink-a35);
 }
 
 .ui-button--primary:hover::before {
@@ -170,23 +170,23 @@ const handleClick = (e: Event) => {
 }
 
 .ui-button--primary:focus-visible {
-  outline: 2px solid #ec4899;
+  outline: 2px solid var(--u-color-pink);
   outline-offset: 2px;
 }
 
 /* Hero Primary — стили из UHero (hero__btn--primary) */
 .ui-button--hero-primary {
-  background: linear-gradient(135deg, #fff 0%, #e339a2 45%, #c91d7a 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--u-color-white) 0%, var(--u-color-magenta) 45%, var(--u-color-magenta-deep) 100%);
+  color: var(--u-color-white);
   box-shadow: 0 8px 32px rgba(227, 57, 162, 0.22);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s var(--u-ease-standard);
 }
 
 .ui-button--hero-primary::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #e339a2, #c91d7a);
+  background: linear-gradient(135deg, var(--u-color-magenta), var(--u-color-magenta-deep));
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
@@ -205,18 +205,18 @@ const handleClick = (e: Event) => {
 }
 
 .ui-button--hero-primary:focus-visible {
-  outline: 2px solid #e339a2;
+  outline: 2px solid var(--u-color-magenta);
   outline-offset: 2px;
 }
 
 /* Ghost Variant - Semi-transparent */
 .ui-button--ghost {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: var(--u-white-a10);
+  color: var(--u-color-white);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px var(--u-black-a10);
+  transition: all 0.4s var(--u-ease-standard);
 }
 
 .ui-button--ghost::after {
@@ -229,17 +229,17 @@ const handleClick = (e: Event) => {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    var(--u-white-a20),
     transparent
   );
-  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.6s var(--u-ease-standard);
   z-index: 1;
 }
 
 .ui-button--ghost:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--u-white-a20);
   border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--u-black-a15);
 }
 
 .ui-button--ghost:hover::after {
@@ -251,7 +251,7 @@ const handleClick = (e: Event) => {
 }
 
 .ui-button--ghost:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid var(--u-white-a50);
   outline-offset: 2px;
 }
 

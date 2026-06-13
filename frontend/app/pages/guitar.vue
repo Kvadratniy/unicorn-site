@@ -3,9 +3,9 @@ import { useGuitar } from '~/composables/pages/useGuitar'
 import { createFaqPageSchema, createGuitarMusicSchoolSchema, createGuitarServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Уроки гитары в Ставрополе для детей и взрослых. Бесплатное пробное занятие!',
+  title: 'Уроки гитары в студии Юникорн',
   description:
-    'Школа гитары Юникорн в Ставрополе: индивидуальные занятия для детей от 9 лет и взрослых. Акустика, электрогитара, бас-гитара, укулеле. Бесплатное пробное занятие!',
+    'Уроки гитары в Ставрополе в студии Юникорн: индивидуальные занятия для детей от 9 лет и взрослых. Акустика, электрогитара, бас и укулеле. Бесплатное пробное занятие!',
   keywords:
     'уроки гитары ставрополь, школа гитары ставрополь, курсы гитары ставрополь, обучение гитаре ставрополь, гитара с нуля, гитара для начинающих, гитара для детей, гитара для взрослых, индивидуальные занятия гитарой, преподаватель гитары ставрополь, акустическая гитара, электрогитара, бас-гитара ставрополь, укулеле ставрополь, уроки укулеле, научиться играть на гитаре, пробное занятие гитара бесплатно',
 })
@@ -13,8 +13,8 @@ usePageSeo({
 const { hero, main, services, teachers, faq } = await useGuitar('guitar-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/guitar/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/guitar`
 
 const serviceSchema = computed(() =>
   createGuitarServiceSchema({

@@ -48,7 +48,7 @@ $lg: 1024px;
   display: inline-block;
   width: 100%;
   padding: 0;
-  margin-bottom: 1.25rem;
+  margin-bottom: 20px;
   overflow: hidden;
   cursor: pointer;
   break-inside: avoid;
@@ -71,7 +71,7 @@ $lg: 1024px;
     left: 0;
     height: 3px;
     content: '';
-    background: linear-gradient(to right, #ec4899, #f472b6, #ec4899);
+    background: linear-gradient(to right, var(--u-color-pink), var(--u-color-pink-light), var(--u-color-pink));
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -81,7 +81,7 @@ $lg: 1024px;
     box-shadow:
       0 4px 12px rgb(236 72 153 / 8%),
       0 20px 40px rgb(0 0 0 / 8%);
-    transform: translateY(-0.25rem);
+    transform: translateY(-4px);
 
     &::before {
       opacity: 1;
@@ -92,7 +92,7 @@ $lg: 1024px;
     }
 
     .client-card__title {
-      color: #be185d;
+      color: var(--u-color-pink-deep);
     }
 
     .client-card__description {
@@ -118,7 +118,7 @@ $lg: 1024px;
   &__image {
     width: 100%;
     height: 100%;
-    padding: 1.25rem;
+    padding: 20px;
     object-fit: contain;
     transition: transform 0.4s;
   }
@@ -136,8 +136,8 @@ $lg: 1024px;
   }
 
   &__title {
-    margin: 0 0 0.625rem;
-    font-size: 17px;
+    margin: 0 0 10px;
+    font-size: var(--u-font-17);
     font-weight: 600;
     line-height: 1.35;
     color: #0f172a;
@@ -145,18 +145,18 @@ $lg: 1024px;
     transition: color 0.15s;
 
     @media (min-width: $md) {
-      margin-bottom: 0.75rem;
-      font-size: 18px;
+      margin-bottom: 12px;
+      font-size: var(--u-font-18);
     }
 
     @media (min-width: $lg) {
-      font-size: 19px;
+      font-size: var(--u-font-19);
     }
   }
 
   &__description {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--u-font-14);
     line-height: 1.65;
     color: #475569;
     letter-spacing: -0.025em;
@@ -165,12 +165,12 @@ $lg: 1024px;
     transition: color 0.15s;
 
     @media (min-width: $md) {
-      font-size: 14.5px;
+      font-size: var(--u-font-15);
       line-height: 1.7;
     }
 
     @media (min-width: $lg) {
-      font-size: 15px;
+      font-size: var(--u-font-15);
       line-height: 1.7;
     }
   }

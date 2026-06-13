@@ -3,7 +3,7 @@ import { useRent } from '~/composables/pages/useRent'
 import { createRentServiceSchema } from '~/composables/useSchemas'
 
 usePageSeo({
-  title: 'Аренда вокального класса и студии звукозаписи в Ставрополе',
+  title: 'Аренда вокального класса и студии звукозаписи',
   description:
     'Аренда вокального класса и студии звукозаписи в Ставрополе. Почасовая аренда пространства для репетиций, записи и самостоятельной работы с материалом.',
   keywords:
@@ -15,8 +15,8 @@ const { open: openContactModal } = useContactModal()
 const { hero, intro, options: rentOptions } = await useRent('rent-content')
 
 const config = useRuntimeConfig()
-const siteUrl = (config.public.siteUrl || config.public.site?.url) as string
-const pageUrl = `${siteUrl}/rent/`
+const siteUrl = config.public.siteUrl as string
+const pageUrl = `${siteUrl}/rent`
 
 const serviceSchema = computed(() =>
   createRentServiceSchema({

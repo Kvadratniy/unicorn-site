@@ -91,7 +91,7 @@ const paragraphs = [
 
 .about-paragraph {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--u-font-16);
   line-height: 1.7;
   color: #475569;
   font-family: 'Suisse Intl', sans-serif;
@@ -100,7 +100,7 @@ const paragraphs = [
 
 @media (min-width: 1024px) {
   .about-paragraph {
-    font-size: 18px;
+    font-size: var(--u-font-18);
     line-height: 1.75;
   }
 }
@@ -131,13 +131,13 @@ const paragraphs = [
   align-items: center;
   gap: 16px;
   padding: 32px 24px;
-  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(135deg, var(--u-color-white) 0%, #fafafa 100%);
+  border: 1px solid var(--u-black-a06);
   border-radius: 20px;
   text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--u-ease-standard);
   opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeInUp 0.6s var(--u-ease-out) forwards;
   animation-delay: calc(var(--i, 0) * 100ms);
 }
 
@@ -150,8 +150,8 @@ const paragraphs = [
 
 .feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  border-color: rgba(236, 72, 153, 0.2);
+  box-shadow: 0 12px 32px var(--u-black-a08);
+  border-color: var(--u-pink-a20);
 }
 
 .feature-icon {
@@ -160,8 +160,8 @@ const paragraphs = [
   justify-content: center;
   width: 64px;
   height: 64px;
-  font-size: 32px;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+  font-size: var(--u-font-32);
+  background: linear-gradient(135deg, var(--u-pink-a10), rgba(139, 92, 246, 0.1));
   border-radius: 16px;
   transition: transform 0.3s ease;
 }
@@ -170,7 +170,7 @@ const paragraphs = [
   .feature-icon {
     width: 72px;
     height: 72px;
-    font-size: 36px;
+    font-size: var(--u-font-36);
   }
 }
 
@@ -180,7 +180,7 @@ const paragraphs = [
 
 .feature-title {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--u-font-18);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111;
@@ -189,22 +189,22 @@ const paragraphs = [
 
 @media (min-width: 1024px) {
   .feature-title {
-    font-size: 20px;
+    font-size: var(--u-font-20);
   }
 }
 
 .feature-description {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--u-font-14);
   line-height: 1.6;
-  color: #64748b;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
 }
 
 @media (min-width: 1024px) {
   .feature-description {
-    font-size: 15px;
+    font-size: var(--u-font-15);
     line-height: 1.65;
   }
 }

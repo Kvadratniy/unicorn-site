@@ -72,6 +72,7 @@ type StrapiArticleRaw = {
   MainImage?: { src?: StrapiMedia | null; alt?: string } | null
   Content?: StrapiDynamicBlock[]
   publishedAt?: string
+  updatedAt?: string
 }
 
 // ─── Catalog mappers ──────────────────────────────────────────────────────────
@@ -196,6 +197,8 @@ const mapArticle = (article: StrapiArticleRaw, strapiBaseUrl: string): NewsArtic
   },
   category: 'Новости',
   publishDate: formatPublishDate(article.publishedAt),
+  publishedAt: article.publishedAt || '',
+  updatedAt: article.updatedAt || article.publishedAt || '',
   readingTime: '5 мин',
   heroImage: normalizeArticleImage(article.MainImage?.src?.url, strapiBaseUrl),
   content: mapDynamicBlocks(article.Content),

@@ -114,12 +114,12 @@ watch(isMobileMenuOpen, lockPageScroll)
 
 <style scoped lang="scss">
 $headline-bar-border: rgb(240 240 240);
-$headline-bar-surface: #ffffff;
+$headline-bar-surface: var(--u-color-white);
 $headline-action-text: #332d36;
-$headline-action-border: rgba(51, 45, 54, 0.12);
+$headline-action-border: var(--u-headline-ink-a12);
 $headline-action-surface: #fbfafb;
 $headline-action-hover: #f8f3f7;
-$headline-action-focus: rgba(201, 54, 134, 0.18);
+$headline-action-focus: var(--u-accent-a18);
 $headline-mobile-breakpoint: 640px;
 $headline-desktop-breakpoint: 1000px;
 
@@ -127,10 +127,10 @@ $headline-desktop-breakpoint: 1000px;
   position: relative;
   z-index: 40;
   width: 100%;
-  padding: 1rem;
+  padding: 16px;
 
   @media (max-width: $headline-mobile-breakpoint) {
-    padding: 0.75rem;
+    padding: 12px;
   }
 
   &__bar {
@@ -139,16 +139,16 @@ $headline-desktop-breakpoint: 1000px;
     max-width: 1500px;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 1rem;
+    gap: 16px;
     margin: 0 auto;
-    padding: 0.625rem 0.875rem;
+    padding: 10px 14px;
     border: 2px solid $headline-bar-border;
-    border-radius: 1rem;
+    border-radius: 16px;
     background-color: $headline-bar-surface;
 
     @media (max-width: $headline-mobile-breakpoint) {
-      gap: 0.625rem;
-      padding-inline: 0.75rem;
+      gap: 10px;
+      padding-inline: 12px;
     }
   }
 

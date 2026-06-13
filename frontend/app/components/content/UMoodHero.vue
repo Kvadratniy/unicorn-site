@@ -135,10 +135,10 @@ const moodHeroBottomItems = computed((): MoodHeroBottomItem[] => {
 
   &__grid {
     display: grid;
-    gap: 0.875rem;
+    gap: 14px;
 
     @media (min-width: 640px) {
-      gap: 1rem;
+      gap: 16px;
     }
 
     @media (min-width: 1024px) {
@@ -158,11 +158,11 @@ const moodHeroBottomItems = computed((): MoodHeroBottomItem[] => {
 
   &__bottom {
     display: grid;
-    gap: 0.875rem;
+    gap: 14px;
 
     @media (min-width: 640px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 16px;
     }
 
     @media (min-width: 1024px) {
@@ -176,8 +176,8 @@ const moodHeroBottomItems = computed((): MoodHeroBottomItem[] => {
 .mood-hero-reveal {
   opacity: 0;
   transition:
-    opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1.7s var(--u-ease-out),
+    transform 1.7s var(--u-ease-out);
   will-change: opacity, transform;
 
   &--from-top {
