@@ -26,11 +26,11 @@ export default defineNuxtConfig({
     '/piano': { swr: 600 },
     '/guitar': { swr: 600 },
     '/contacts': { swr: 600 },
+    '/rent': { swr: 600 },
     '/news': { swr: 600 },
     '/news/**': { swr: 600 },
     '/events': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
     '/distribution': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
-    '/rent': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   image: {

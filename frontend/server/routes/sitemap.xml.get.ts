@@ -13,6 +13,7 @@ const staticRoutes: SitemapEntry[] = [
   { loc: '/vocal', priority: '0.9', changefreq: 'weekly' },
   { loc: '/piano', priority: '0.9', changefreq: 'weekly' },
   { loc: '/guitar', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/rent', priority: '0.8', changefreq: 'weekly' },
   { loc: '/contacts', priority: '0.6', changefreq: 'monthly' },
   { loc: '/news', priority: '0.5', changefreq: 'weekly' },
 ]
