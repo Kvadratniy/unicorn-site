@@ -4,7 +4,7 @@ export default defineEventHandler((event) => {
   const path = event.path.split('?')[0] || '/'
   const shouldSkip
     = path === '/'
-      || path.endsWith('/')
+      || !path.endsWith('/')
       || path.includes('.')
       || path.startsWith('/api/')
       || path.startsWith('/_nuxt/')
@@ -12,8 +12,9 @@ export default defineEventHandler((event) => {
 
   if (shouldSkip) return
 
+  const withoutSlash = path.slice(0, -1) || '/'
   const queryIndex = event.path.indexOf('?')
   const query = queryIndex === -1 ? '' : event.path.slice(queryIndex)
 
-  return sendRedirect(event, `${path}/${query}`, 301)
+  return sendRedirect(event, `${withoutSlash}${query}`, 301)
 })
