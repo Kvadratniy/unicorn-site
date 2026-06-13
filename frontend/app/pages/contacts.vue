@@ -11,6 +11,20 @@ const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl as string
 
 const localBusinessSchema = createLocalBusinessSchema(siteUrl)
+const { open: openContactModal } = useContactModal()
+
+const socialLinks = [
+  {
+    name: 'Telegram',
+    url: 'https://t.me/posledniy_edinorog',
+    ariaLabel: 'Telegram',
+  },
+  {
+    name: 'VKontakte',
+    url: 'https://vk.com/1unicornstudio',
+    ariaLabel: 'VKontakte',
+  },
+]
 
 useHead({
   link: [
@@ -26,175 +40,488 @@ useHead({
 </script>
 
 <template>
-  <div class="contacts-page-min-height">
-    <UBaseWrapper aria-labelledby="contacts-title" class="contacts-section">
-      <h1 id="contacts-title" class="contacts-title">Контакты</h1>
-
-      <div class="contacts-info">
-      <!-- Адрес -->
-      <div class="contacts-column">
-        <h2 class="contacts-column-title">Адрес</h2>
-        <p class="contacts-column-text">
-          Ставрополь, 50 лет ВЛКСМ д. 93, 5 этаж
+  <section class="contacts-page">
+    <header class="contacts-page__hero">
+      <div class="contacts-page__hero-glow contacts-page__hero-glow--right" />
+      <div class="contacts-page__hero-glow contacts-page__hero-glow--left" />
+      <div class="contacts-page__hero-inner">
+        <p class="contacts-page__hero-badge">
+          Unicorn Studio
         </p>
-        <div class="contacts-divider" />
+        <h1 id="contacts-title" class="contacts-page__hero-title">
+          Контакты
+        </h1>
+        <p class="contacts-page__hero-subtitle">
+          Адрес, телефон, почта и график работы: приходите в гости, звоните или пишите — поможем записаться на занятие или сессию.
+        </p>
       </div>
+    </header>
 
-      <!-- Телефоны -->
-      <div class="contacts-column">
-        <h2 class="contacts-column-title">Связаться</h2>
-        <div class="contacts-phone-list">
-          <div class="contacts-phone-item">
-            <span class="contacts-phone-label">Телефон</span>
-            <a href="tel:+78005454515" class="contacts-phone-number">+7 (906) 464-94-96</a>
-          </div>
-          <div class="contacts-phone-item">
-            <span class="contacts-phone-label">Почта</span>
-            <a href="mailto:studio.unicorn.stv@gmail.com" class="contacts-phone-number">✉️
-              studio.unicorn.stv@gmail.com</a>
-          </div>
-        </div>
+    <div class="contacts-page__content">
+      <div class="contacts-page__layout">
+        <div class="contacts-page__map">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?z=14&ol=biz&oid=161471835951"
+            frameborder="0"
+            title="Карта расположения Unicorn Studio"
+          />
         </div>
 
-        <!-- График работы -->
-        <div class="contacts-column">
-          <h2 class="contacts-column-title">График работы</h2>
-          <div class="contacts-schedule-list">
-            <div class="contacts-schedule-item">
-              <span class="contacts-schedule-label">пн-вс:</span>
-              <span class="contacts-schedule-time">10:00 — 22:00</span>
+        <div class="contacts-page__info">
+          <article class="contacts-card">
+            <div class="contacts-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 10.833a2.917 2.917 0 1 0 0-5.833 2.917 2.917 0 0 0 0 5.833Z" stroke="currentColor" stroke-width="1.5" />
+                <path d="M10 18.333c3.333-3.333 5.833-6.25 5.833-9.583a5.833 5.833 0 1 0-11.666 0c0 3.333 2.5 6.25 5.833 9.583Z" stroke="currentColor" stroke-width="1.5" />
+              </svg>
             </div>
+            <div class="contacts-card__body">
+              <h2 class="contacts-card__title">
+                Адрес
+              </h2>
+              <p class="contacts-card__text">
+                Ставрополь, 50 лет ВЛКСМ д. 93, 5 этаж
+              </p>
+            </div>
+          </article>
+
+          <article class="contacts-card">
+            <div class="contacts-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4.167 3.333h11.666c.92 0 1.667.746 1.667 1.667v10c0 .92-.746 1.667-1.667 1.667H4.167A1.667 1.667 0 0 1 2.5 15V5c0-.92.746-1.667 1.667-1.667Z" stroke="currentColor" stroke-width="1.5" />
+                <path d="m5 6.667 5 3.333 5-3.333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="contacts-card__body">
+              <h2 class="contacts-card__title">
+                Связаться
+              </h2>
+              <div class="contacts-card__rows">
+                <a href="tel:+79064649496" class="contacts-card__link">
+                  <span class="contacts-card__label">Телефон</span>
+                  <span class="contacts-card__value">+7 (906) 464-94-96</span>
+                </a>
+                <a href="mailto:studio.unicorn.stv@gmail.com" class="contacts-card__link">
+                  <span class="contacts-card__label">Почта</span>
+                  <span class="contacts-card__value">studio.unicorn.stv@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="contacts-card">
+            <div class="contacts-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M10 5.833V10l2.917 1.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="contacts-card__body">
+              <h2 class="contacts-card__title">
+                График работы
+              </h2>
+              <p class="contacts-card__text">
+                <span class="contacts-card__label">пн–вс</span>
+                <span class="contacts-card__value contacts-card__value--inline">10:00 — 22:00</span>
+              </p>
+            </div>
+          </article>
+
+          <div class="contacts-page__footer">
+            <div class="contacts-page__social">
+              <a
+                v-for="social in socialLinks"
+                :key="social.name"
+                :href="social.url"
+                :aria-label="social.ariaLabel"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contacts-page__social-link"
+              >
+                <svg
+                  v-if="social.name === 'Telegram'"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.13-.31-1.09-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  v-else
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.743c.372 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.814-.542 1.27-1.422 2.18-3.608 2.18-3.608.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>{{ social.name }}</span>
+              </a>
+            </div>
+
+            <button
+              type="button"
+              class="contacts-page__cta"
+              @click="openContactModal"
+            >
+              Записаться
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4.667 12.333 8 9 11.333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
-
-      <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=161471835951" height="600" frameborder="0"></iframe>
-    </UBaseWrapper>
-  </div>
+    </div>
+  </section>
 </template>
 
-<style scoped>
-.contacts-page-min-height {
-  display: flex;
-  flex-direction: column;
-}
+<style scoped lang="scss">
+.contacts-page {
+  width: 100%;
+  padding: 0 0 80px;
 
-.contacts-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-}
+  &__hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--u-color-white);
+    box-shadow: 0 1px 2px var(--u-slate-a05);
+    padding: 32px 16px;
+    border-radius: 16px;
+  }
 
-.contacts-title {
-  font-size: var(--u-font-56);
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 64px;
-  padding-top: 16px;
-  font-family: 'Druk Wide', sans-serif;
-  letter-spacing: -1px;
-  line-height: 1.1;
-}
+  &__hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 
-@media (min-width: 1024px) {
-  .contacts-title {
-    padding-top: 80px;
+  &__hero-glow {
+    pointer-events: none;
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(48px);
+
+    &--right {
+      top: -64px;
+      right: -40px;
+      width: 176px;
+      height: 176px;
+      background: var(--u-pink-light-a45);
+    }
+
+    &--left {
+      bottom: -56px;
+      left: -24px;
+      width: 160px;
+      height: 160px;
+      background: var(--u-purple-light-a45);
+    }
+  }
+
+  &__hero-badge {
+    display: inline-flex;
+    width: fit-content;
+    margin: 0 0 12px;
+    border-radius: 999px;
+    background: #fdf2f8;
+    padding: 4px 12px;
+    color: #be185d;
+    font-size: var(--u-font-12);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__hero-title {
+    margin: 0;
+    text-wrap: balance;
+    color: #171717;
+    font-size: var(--u-font-30);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  &__hero-subtitle {
+    margin: 16px 0 0;
+    max-width: 768px;
+    text-wrap: pretty;
+    color: #525252;
+    font-size: var(--u-font-14);
+    line-height: 1.6;
+  }
+
+  &__content {
+    margin: 0 auto;
+    padding-top: 32px;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  &__map {
+    overflow: hidden;
+    min-height: 480px;
+    border: 1px solid var(--u-gray-a90);
+    border-radius: 16px;
+    background: #f5f5f5;
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      border: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 100%;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 4px;
+  }
+
+  &__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--u-gray-a90);
+    border-radius: 999px;
+    background: var(--u-color-white);
+    color: #404040;
+    font-size: var(--u-font-13);
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      border-color: #fbcfe8;
+      background: #fdf2f8;
+      color: #be185d;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: 14px;
+    background: #171717;
+    color: var(--u-color-white);
+    cursor: pointer;
+    font-size: var(--u-font-15);
+    font-weight: 600;
+    font-family: var(--u-font-montserrat);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: #262626;
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
   }
 }
 
-.contacts-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-bottom: 64px;
-}
-
-.contacts-column {
+.contacts-card {
   display: flex;
-  flex-direction: column;
-}
-
-.contacts-column-title {
-  font-size: var(--u-font-18);
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 16px;
-  font-family: 'Druk Wide', sans-serif;
-  letter-spacing: -0.5px;
-}
-
-.contacts-column-text {
-  font-size: var(--u-font-16);
-  line-height: 1.6;
-  color: #404040;
-  margin-bottom: 16px;
-  font-family: 'Suisse Intl', sans-serif;
-}
-
-.contacts-divider {
-  width: 100%;
-  height: 1px;
-  background-color: #e5e5e5;
-  margin-bottom: 16px;
-}
-
-.contacts-phone-list,
-.contacts-schedule-list {
-  display: flex;
-  flex-direction: column;
   gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--u-gray-a90);
+  border-radius: 16px;
+  background: var(--u-color-white);
+  box-shadow: 0 1px 2px var(--u-slate-a05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #fbcfe8;
+    box-shadow: 0 4px 16px var(--u-pink-a08);
+  }
+
+  &__icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fdf2f8, #faf5ff);
+    color: #be185d;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    color: #737373;
+    font-size: var(--u-font-12);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--u-font-montserrat);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 0;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    & + & {
+      border-top: 1px solid #f5f5f5;
+    }
+
+    &:hover .contacts-card__value {
+      color: #be185d;
+    }
+  }
+
+  &__label {
+    color: #a3a3a3;
+    font-size: var(--u-font-12);
+    font-family: var(--u-font-montserrat);
+  }
+
+  &__value {
+    color: #171717;
+    font-size: var(--u-font-15);
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--u-font-montserrat);
+    word-break: break-word;
+
+    &--inline {
+      display: block;
+      margin-top: 2px;
+    }
+  }
+
+  &__text > &__value--inline {
+    font-size: var(--u-font-16);
+  }
 }
 
-.contacts-phone-item,
-.contacts-schedule-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+@media (min-width: 640px) {
+  .contacts-page {
+    &__hero {
+      padding: 40px 24px;
+    }
+
+    &__hero-title {
+      font-size: var(--u-font-36);
+    }
+
+    &__hero-subtitle {
+      font-size: var(--u-font-16);
+    }
+
+    &__content {
+      padding-top: 40px;
+    }
+  }
 }
 
-.contacts-phone-label,
-.contacts-schedule-label {
-  font-size: var(--u-font-14);
-  color: #808080;
-  font-family: 'Suisse Intl', sans-serif;
-}
+@media (min-width: 1024px) {
+  .contacts-page {
+    &__hero {
+      padding: 48px 32px;
+    }
 
-.contacts-phone-number,
-.contacts-schedule-time {
-  font-size: var(--u-font-16);
-  font-weight: 600;
-  color: #000;
-  text-decoration: none;
-  font-family: 'Suisse Intl', sans-serif;
-}
+    &__hero-title {
+      font-size: var(--u-font-46);
+    }
 
-.contacts-phone-number:hover {
-  color: #404040;
-}
+    &__content {
+      padding-top: 48px;
+    }
 
-@media (max-width: 1024px) {
-  .contacts-info {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    &__layout {
+      gap: 32px;
+    }
+
+    &__map,
+    &__map iframe {
+      min-height: 560px;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .contacts-title {
-    font-size: var(--u-font-36);
-    margin-bottom: 32px;
-  }
+  .contacts-page {
+    &__layout {
+      grid-template-columns: 1fr;
+    }
 
-  .contacts-info {
-    margin-bottom: 48px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contacts-title {
-    font-size: var(--u-font-28);
-    line-height: 1.15;
+    &__info {
+      order: -1;
+    }
   }
 }
 </style>
