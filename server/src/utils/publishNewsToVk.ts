@@ -59,13 +59,16 @@ export const publishNewsToVk = async ({
   const normalizedImageUrl = clean(imageUrl)
   const linkUrl = buildNewsUrl(siteUrl, normalizedSlug)
   const message = buildMessage(normalizedTitle, normalizedDescription, normalizedBody)
+  // Append the link to the text instead of passing it as a VK link attachment.
+  // A bare link attachment fails with error 100 (link_photo_sizing_rule) when the
+  // page has no properly sized og:image, which would block the entire post.
+  const messageWithLink = `${message}\n\n${linkUrl}`
 
   const result = await postToVkCommunity({
     accessToken,
     groupId,
-    message,
+    message: messageWithLink,
     imageUrl: normalizedImageUrl || undefined,
-    linkUrl,
   })
 
   return {
