@@ -11,10 +11,13 @@ export default {
    * This gives you an opportunity to extend code.
    */
   register({ strapi }: { strapi: Core.Strapi }) {
+    strapi.log.info('[VK] Blog publish middleware registered');
+
     strapi.documents.use(async (context, next) => {
       const result = await next();
 
       if (context.action === 'publish' && context.uid === BLOG_UID) {
+        strapi.log.info('[VK] Detected publish action for blog, scheduling post');
         const documentId = (context.params as { documentId?: string } | undefined)?.documentId;
         // Run posting after the publish transaction resolved; never block/break the publish.
         syncBlogToVk(documentId).catch((error) => {
