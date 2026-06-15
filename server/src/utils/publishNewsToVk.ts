@@ -4,6 +4,8 @@ type PublishNewsToVkInput = {
   title?: string | null
   description?: string | null
   slug?: string | null
+  imageUrl?: string | null
+  bodyText?: string | null
 }
 
 type PublishNewsToVkResult = {
@@ -17,15 +19,15 @@ const clean = (value: string | null | undefined): string => (typeof value === 's
 const buildNewsUrl = (siteUrl: string, slug: string): string =>
   `${siteUrl.replace(/\/$/, '')}/news/${encodeURIComponent(slug)}`
 
-const buildMessage = (title: string, description: string): string => {
-  if (!description) return title
-  return `${title}\n\n${description}`
-}
+const buildMessage = (title: string, description: string, bodyText: string): string =>
+  [title, description, bodyText].filter((part) => part.length > 0).join('\n\n')
 
 export const publishNewsToVk = async ({
   title,
   description,
   slug,
+  imageUrl,
+  bodyText,
 }: PublishNewsToVkInput): Promise<PublishNewsToVkResult> => {
   const enabled = clean(process.env.VK_POSTING_ENABLED).toLowerCase()
   if (enabled !== 'true') {
@@ -52,13 +54,16 @@ export const publishNewsToVk = async ({
   }
 
   const normalizedDescription = clean(description)
+  const normalizedBody = clean(bodyText)
+  const normalizedImageUrl = clean(imageUrl)
   const linkUrl = buildNewsUrl(siteUrl, normalizedSlug)
-  const message = buildMessage(normalizedTitle, normalizedDescription)
+  const message = buildMessage(normalizedTitle, normalizedDescription, normalizedBody)
 
   const result = await postToVkCommunity({
     accessToken,
     groupId,
     message,
+    imageUrl: normalizedImageUrl || undefined,
     linkUrl,
   })
 
