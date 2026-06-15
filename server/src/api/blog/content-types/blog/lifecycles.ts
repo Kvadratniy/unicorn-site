@@ -36,21 +36,17 @@ const handlePublishedNews = async (event: unknown): Promise<void> => {
 
     if (!publishResult.postId) return
 
-    if (record.id) {
-      await strapi.db.query('api::blog.blog').update({
-        where: { id: record.id },
-        data: {
-          vkPostId: publishResult.postId,
-        },
-      })
-    } else if (record.documentId) {
-      await strapi.documents('api::blog.blog').update({
-        documentId: record.documentId,
-        data: {
-          vkPostId: publishResult.postId,
-        },
-      })
+    if (!record.id) {
+      strapi.log.warn(`[VK] Blog ${record.documentId || 'unknown'} has no id, cannot persist vkPostId`)
+      return
     }
+
+    await strapi.db.query('api::blog.blog').update({
+      where: { id: record.id },
+      data: {
+        vkPostId: publishResult.postId,
+      },
+    })
 
     strapi.log.info(`[VK] Blog ${record.documentId || record.id} posted with id ${publishResult.postId}`)
   } catch (error) {

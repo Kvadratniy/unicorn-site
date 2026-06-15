@@ -12,6 +12,13 @@ type InstagramApiError = {
   }
 }
 
+const isInstagramApiError = (payload: unknown): payload is InstagramApiError =>
+  typeof payload === 'object' &&
+  payload !== null &&
+  'error' in payload &&
+  typeof (payload as { error?: unknown }).error === 'object' &&
+  (payload as { error?: unknown }).error !== null
+
 type InstagramCreateMediaResponse = {
   id: string
 }
@@ -92,8 +99,8 @@ const callInstagramApi = async <T>(
 
   const payload = (await response.json()) as T | InstagramApiError
 
-  if (!response.ok || ('error' in payload && payload.error)) {
-    const errorPayload = payload as InstagramApiError
+  if (!response.ok || isInstagramApiError(payload)) {
+    const errorPayload = isInstagramApiError(payload) ? payload : null
     const details = errorPayload.error
       ? `${errorPayload.error.code} ${errorPayload.error.message}`
       : `HTTP ${response.status}`

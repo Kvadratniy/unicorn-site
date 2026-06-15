@@ -14,7 +14,10 @@ export const usePageSeo = (options: PageSeoOptions) => {
   const route = useRoute()
   const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
 
-  const canonicalUrl = computed(() => `${siteUrl}${route.path.replace(/\/$/, '')}`)
+  const canonicalUrl = computed(() => {
+    const path = route.path.replace(/\/$/, '')
+    return path ? `${siteUrl}${path}` : `${siteUrl}/`
+  })
   const ogImage = computed(() => {
     const image = toValue(options.image)
     if (!image) return `${siteUrl}/images/logo/logo-4.png`
