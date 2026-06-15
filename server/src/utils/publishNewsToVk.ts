@@ -12,6 +12,7 @@ type PublishNewsToVkResult = {
   skipped: boolean
   reason?: string
   postId?: number
+  imageError?: string
 }
 
 const clean = (value: string | null | undefined): string => (typeof value === 'string' ? value.trim() : '')
@@ -70,5 +71,6 @@ export const publishNewsToVk = async ({
   return {
     skipped: false,
     postId: result.postId,
+    imageError: result.imageError,
   }
 }

@@ -145,6 +145,12 @@ const handlePublishedNews = async (event: unknown): Promise<void> => {
 
     if (!publishResult.postId) return
 
+    if (publishResult.imageError) {
+      strapi.log.warn(
+        `[VK] Blog ${record.documentId || record.id} posted without image: ${publishResult.imageError}`,
+      )
+    }
+
     if (!record.id) {
       strapi.log.warn(`[VK] Blog ${record.documentId || 'unknown'} has no id, cannot persist vkPostId`)
       return

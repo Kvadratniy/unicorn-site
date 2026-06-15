@@ -51,6 +51,11 @@ export type PostToVkCommunityInput = {
 export type PostToVkCommunityResult = {
   postId: number
   attachments: string[]
+  /**
+   * Set when the image was provided but could not be uploaded (e.g. group token
+   * cannot use photos.getWallUploadServer). The post is still published as text.
+   */
+  imageError?: string
 }
 
 type VkApiSuccess<T> = {
@@ -165,10 +170,17 @@ export const postToVkCommunity = async ({
   if (!message.trim()) throw new Error('VK message must not be empty')
 
   const attachments: string[] = []
+  let imageError: string | undefined
 
   if (imageUrl?.trim()) {
-    const photoAttachment = await uploadImageToVkWall(accessToken, groupId, imageUrl.trim(), apiVersion)
-    attachments.push(photoAttachment)
+    try {
+      const photoAttachment = await uploadImageToVkWall(accessToken, groupId, imageUrl.trim(), apiVersion)
+      attachments.push(photoAttachment)
+    } catch (error) {
+      // Image upload must not block the post itself (e.g. group token can't use
+      // photos.getWallUploadServer). Fall back to a text/link-only post.
+      imageError = error instanceof Error ? error.message : String(error)
+    }
   }
 
   if (linkUrl?.trim()) {
@@ -187,5 +199,6 @@ export const postToVkCommunity = async ({
   return {
     postId: post.post_id,
     attachments,
+    imageError,
   }
 }
