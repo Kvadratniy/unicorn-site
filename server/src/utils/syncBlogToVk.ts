@@ -155,9 +155,11 @@ export const syncBlogToVk = async (documentId: string | undefined): Promise<void
     }
 
     // Persist on the draft so re-publishing the same document does not repost.
+    // Cast keeps the build independent of generated content-type types.
     await strapi.documents(BLOG_UID).update({
       documentId,
-      data: { vkPostId: publishResult.postId },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data: { vkPostId: publishResult.postId } as any,
     })
 
     strapi.log.info(`[VK] Blog ${documentId} posted with id ${publishResult.postId}`)
