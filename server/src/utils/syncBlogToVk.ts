@@ -1,4 +1,4 @@
-import { publishNewsToVk } from '../../../../utils/publishNewsToVk'
+import { publishNewsToVk } from './publishNewsToVk'
 
 type StrapiMedia = {
   url?: string | null
@@ -20,7 +20,7 @@ type BlogContentBlock = {
   Items?: BlogListItem[] | null
 }
 
-type BlogRecord = {
+type BlogEntry = {
   id?: number
   documentId?: string
   title?: string | null
@@ -32,11 +32,7 @@ type BlogRecord = {
   Content?: BlogContentBlock[] | null
 }
 
-const maybeExtractRecord = (event: unknown): BlogRecord | null => {
-  const result = (event as { result?: BlogRecord } | undefined)?.result
-  if (!result || typeof result !== 'object') return null
-  return result
-}
+const BLOG_UID = 'api::blog.blog'
 
 const resolveStrapiBaseUrl = (): string => {
   const fromEnv = (process.env.STRAPI_URL || '').trim()
@@ -50,8 +46,8 @@ const resolveStrapiBaseUrl = (): string => {
   return `http://${host}:${port}`
 }
 
-const buildImageUrl = (record: BlogRecord): string | undefined => {
-  const url = record.MainImage?.src?.url?.trim()
+const buildImageUrl = (entry: BlogEntry): string | undefined => {
+  const url = entry.MainImage?.src?.url?.trim()
   if (!url) return undefined
   if (/^https?:\/\//i.test(url)) return url
   return `${resolveStrapiBaseUrl()}${url.startsWith('/') ? '' : '/'}${url}`
@@ -93,8 +89,8 @@ const extractBodyText = (blocks: BlogContentBlock[] | null | undefined): string 
   return parts.join('\n\n')
 }
 
-const fetchPopulatedBlog = async (documentId: string): Promise<BlogRecord | null> => {
-  const entity = await strapi.documents('api::blog.blog').findOne({
+const fetchPublishedBlog = async (documentId: string): Promise<BlogEntry | null> => {
+  const entity = await strapi.documents(BLOG_UID).findOne({
     documentId,
     status: 'published',
     populate: {
@@ -109,72 +105,64 @@ const fetchPopulatedBlog = async (documentId: string): Promise<BlogRecord | null
     },
   })
 
-  return (entity as BlogRecord | null) ?? null
+  return (entity as BlogEntry | null) ?? null
 }
 
-const handlePublishedNews = async (event: unknown): Promise<void> => {
-  const record = maybeExtractRecord(event)
-  if (!record) return
-  if (!record.publishedAt) return
-  if (record.vkPostId) return
+/**
+ * Posts a freshly published blog entry to the VK community wall.
+ * Triggered from the document service middleware on the `publish` action.
+ */
+export const syncBlogToVk = async (documentId: string | undefined): Promise<void> => {
+  if (!documentId) return
 
-  let source: BlogRecord = record
-  if (record.documentId) {
-    try {
-      const populated = await fetchPopulatedBlog(record.documentId)
-      if (populated) source = { ...populated, id: record.id ?? populated.id }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : String(error)
-      strapi.log.warn(`[VK] Failed to load blog ${record.documentId} content: ${message}`)
-    }
+  let entry: BlogEntry | null = null
+  try {
+    entry = await fetchPublishedBlog(documentId)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    strapi.log.error(`[VK] Failed to load published blog ${documentId}: ${message}`)
+    return
+  }
+
+  if (!entry) {
+    strapi.log.warn(`[VK] Published blog ${documentId} not found, skip posting`)
+    return
+  }
+
+  if (entry.vkPostId) {
+    strapi.log.info(`[VK] Blog ${documentId} already posted (vkPostId=${entry.vkPostId}), skip`)
+    return
   }
 
   try {
     const publishResult = await publishNewsToVk({
-      title: source.title,
-      description: source.description,
-      slug: source.slug,
-      imageUrl: buildImageUrl(source),
-      bodyText: extractBodyText(source.Content),
+      title: entry.title,
+      description: entry.description,
+      slug: entry.slug,
+      imageUrl: buildImageUrl(entry),
+      bodyText: extractBodyText(entry.Content),
     })
 
     if (publishResult.skipped) {
-      strapi.log.info(`[VK] Skip posting blog ${record.documentId || record.id}: ${publishResult.reason}`)
+      strapi.log.info(`[VK] Skip posting blog ${documentId}: ${publishResult.reason}`)
       return
     }
 
     if (!publishResult.postId) return
 
     if (publishResult.imageError) {
-      strapi.log.warn(
-        `[VK] Blog ${record.documentId || record.id} posted without image: ${publishResult.imageError}`,
-      )
+      strapi.log.warn(`[VK] Blog ${documentId} posted without image: ${publishResult.imageError}`)
     }
 
-    if (!record.id) {
-      strapi.log.warn(`[VK] Blog ${record.documentId || 'unknown'} has no id, cannot persist vkPostId`)
-      return
-    }
-
-    await strapi.db.query('api::blog.blog').update({
-      where: { id: record.id },
-      data: {
-        vkPostId: publishResult.postId,
-      },
+    // Persist on the draft so re-publishing the same document does not repost.
+    await strapi.documents(BLOG_UID).update({
+      documentId,
+      data: { vkPostId: publishResult.postId },
     })
 
-    strapi.log.info(`[VK] Blog ${record.documentId || record.id} posted with id ${publishResult.postId}`)
+    strapi.log.info(`[VK] Blog ${documentId} posted with id ${publishResult.postId}`)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
-    strapi.log.error(`[VK] Failed to post blog ${record.documentId || record.id}: ${message}`)
+    strapi.log.error(`[VK] Failed to post blog ${documentId}: ${message}`)
   }
-}
-
-export default {
-  async afterCreate(event: unknown) {
-    await handlePublishedNews(event)
-  },
-  async afterUpdate(event: unknown) {
-    await handlePublishedNews(event)
-  },
 }
