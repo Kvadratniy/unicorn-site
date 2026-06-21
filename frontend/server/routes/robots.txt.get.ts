@@ -2,7 +2,6 @@ const robots = `User-agent: *
 Disallow: /api/
 Disallow: /teacher
 Disallow: /events
-Disallow: /distribution
 
 Sitemap: https://unicorn-studio.pro/sitemap.xml
 `
