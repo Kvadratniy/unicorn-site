@@ -66,8 +66,8 @@ const props = defineProps<{
   &__article-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 28px;
+    gap: 14px;
+    padding: 20px 30px 12px;
     color: var(--u-article-ink-a70);
   }
 
@@ -76,50 +76,53 @@ const props = defineProps<{
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
+    color: var(--u-color-accent);
+    opacity: 0.72;
   }
 
   &__article-header-divider {
     flex: 1;
     height: 1px;
-    background-color: var(--u-article-ink-a20);
+    background: linear-gradient(90deg, var(--u-article-ink-a20), transparent);
   }
 
   &__article-title {
     margin: 0;
-    padding-right: 28px;
-    padding-left: 28px;
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   &__article-title-line1,
   &__article-title-line2 {
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.03em;
   }
 
   &__article-title-line1 {
     font-size: var(--u-font-38);
-    font-weight: 500;
-    color: #13110f;
+    font-weight: 600;
+    color: #1a1716;
   }
 
   &__article-title-line2 {
     font-family: 'Druk Wide', sans-serif;
     font-size: var(--u-font-fluid-display-mood);
     font-weight: 800;
-    color: #d24ade9c;
+    color: var(--u-color-accent);
+    opacity: 0.82;
   }
 
   &__article-body {
     max-width: 544px;
-    margin: 8px 0 0;
-    padding-right: 28px;
-    padding-bottom: 20px;
-    padding-left: 28px;
+    margin: 10px 0 0;
+    padding-right: 30px;
+    padding-bottom: 22px;
+    padding-left: 30px;
     font-size: var(--u-font-14);
-    line-height: 1.65;
-    color: var(--u-article-ink-a72);
+    line-height: 1.7;
+    color: var(--u-article-ink-a75);
     white-space: pre-line;
 
     @media (min-width: 640px) {
@@ -132,9 +135,14 @@ const props = defineProps<{
   }
 
   &__article-image {
-    margin-top: 20px;
-    padding-bottom: 12px;
+    margin-top: 16px;
+    padding-bottom: 0;
     width: 100%;
+    border-radius: 0 0 28px 28px;
+
+    @media (min-width: 1024px) {
+      border-radius: 0 0 30px 30px;
+    }
   }
 }
 </style>

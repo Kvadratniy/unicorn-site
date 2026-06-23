@@ -135,16 +135,16 @@ const moodHeroBottomItems = computed((): MoodHeroBottomItem[] => {
 
   &__grid {
     display: grid;
-    gap: 14px;
+    gap: 16px;
 
     @media (min-width: 640px) {
-      gap: 16px;
+      gap: 18px;
     }
 
     @media (min-width: 1024px) {
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 1fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 1fr);
       align-items: flex-start;
-      gap: 18px;
+      gap: 20px;
     }
   }
 
@@ -158,11 +158,11 @@ const moodHeroBottomItems = computed((): MoodHeroBottomItem[] => {
 
   &__bottom {
     display: grid;
-    gap: 14px;
+    gap: 16px;
 
     @media (min-width: 640px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
     @media (min-width: 1024px) {

@@ -77,9 +77,10 @@ $sm: 640px;
     position: relative;
     min-height: 180px;
     overflow: hidden;
-    background: #b8b7b1;
+    background: #a8a7a2;
     border-radius: 28px;
     max-height: 300px;
+    transition: transform 0.4s var(--u-ease-out);
 
     @media (min-width: $sm) {
       min-height: 210px;
@@ -95,10 +96,19 @@ $sm: 640px;
     }
   }
 
+  &--link:hover &__card {
+    transform: scale(1.015);
+  }
+
   &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s var(--u-ease-out);
+  }
+
+  &--link:hover &__image {
+    transform: scale(1.04);
   }
 
   &__overlay {
@@ -106,33 +116,33 @@ $sm: 640px;
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgb(17 15 13 / 5%),
-      rgb(17 15 13 / 52%)
+      rgb(17 15 13 / 0%) 30%,
+      rgb(17 15 13 / 58%)
     );
   }
 
   &__content {
     position: absolute;
-    right: 18px;
-    bottom: 18px;
-    left: 18px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     color: var(--u-color-white);
   }
 
   &__tag {
     font-size: var(--u-font-fluid-display-card-tag);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 0.98;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
   }
 
   &__title {
     font-size: var(--u-font-13);
-    line-height: 1.35;
-    color: rgb(255 255 255 / 82%);
+    line-height: 1.4;
+    color: rgb(255 255 255 / 85%);
   }
 }
 </style>

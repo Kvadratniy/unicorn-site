@@ -218,26 +218,26 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
 .section-title {
   opacity: 0;
-  transform: scale(0.9);
+  transform: translateY(12px);
   transition:
-    opacity 0.6s $ease-default,
-    transform 0.6s $ease-spring;
+    opacity 0.7s $ease-default,
+    transform 0.7s $ease-default;
 
   &.title-visible {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
 .categories {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 48px;
 }
 
 .category {
   &__header {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
     padding-left: 2px;
   }
 
@@ -245,22 +245,23 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 12px;
-    font-size: var(--u-font-13);
-    font-weight: 500;
-    color: #94a3b8;
+    margin-bottom: 14px;
+    font-size: var(--u-font-12);
+    font-weight: 600;
+    color: var(--u-color-accent);
+    opacity: 0.6;
     font-variant-numeric: tabular-nums;
   }
 
   &__counter-divider {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
   &__title {
     margin: 0 0 8px;
     font-size: var(--u-font-24);
-    font-weight: 500;
-    color: #1a1a1a;
+    font-weight: 600;
+    color: #1a1716;
     letter-spacing: -0.025em;
 
     @media (min-width: $lg) {
@@ -274,6 +275,7 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     font-size: var(--u-font-15);
     font-weight: 400;
     color: var(--u-text-muted);
+    line-height: 1.55;
   }
 
   &__services {
@@ -282,7 +284,7 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 16px;
 
     @media (min-width: $sm) {
-      gap: 20px;
+      gap: 18px;
     }
 
     @media (min-width: $md) {
@@ -304,21 +306,20 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     .services-card {
       &.is-visible {
         border-color: var(--u-black-a10);
-        box-shadow: 0 20px 40px -12px var(--u-black-a10);
-        transform: translateY(-4px) scale(1);
+        box-shadow: 0 16px 36px -10px var(--u-black-a10);
+        transform: translateY(-3px);
       }
 
       &__cta {
         gap: 10px;
         color: var(--u-color-white);
-        background: #1a1a1a;
-        border-color: #1a1a1a;
-        box-shadow: 0 20px 40px -12px var(--u-black-a10);
+        background: #1a1716;
+        border-color: #1a1716;
       }
     }
 
     .card-arrow {
-      transform: translateX(2px);
+      transform: translateX(3px);
     }
   }
 }
@@ -331,15 +332,15 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   background: var(--u-color-white);
   border: 1px solid var(--u-black-a06);
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 1px 3px var(--u-black-a04);
   opacity: 0;
-  transform: scale(0.7);
+  transform: translateY(16px);
   transition:
-    opacity 0.7s $ease-default,
-    transform 0.7s $ease-spring,
-    border-color 0.4s $ease-default,
-    box-shadow 0.4s $ease-default;
+    opacity 0.6s $ease-default,
+    transform 0.6s $ease-default,
+    border-color 0.35s $ease-default,
+    box-shadow 0.35s $ease-default;
 
   @media (max-width: $md) {
     padding: 24px;
@@ -347,8 +348,8 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &.is-visible {
     opacity: 1;
-    transform: scale(1);
-    transition-delay: calc(var(--i, 0) * 150ms);
+    transform: translateY(0);
+    transition-delay: calc(var(--i, 0) * 120ms);
   }
 
   &__image {
@@ -362,35 +363,35 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 14px;
+    gap: 14px;
+    margin-bottom: 12px;
   }
 
   &__title {
     margin: 0;
-    font-size: var(--u-font-20);
+    font-size: var(--u-font-19);
     font-weight: 600;
-    line-height: 1.375;
-    color: #1a1a1a;
+    line-height: 1.35;
+    color: #1a1716;
     letter-spacing: -0.3px;
   }
 
   &__price {
     flex-shrink: 0;
-    padding: 4px 10px;
-    font-size: var(--u-font-14);
+    padding: 5px 10px;
+    font-size: var(--u-font-13);
     font-weight: 600;
-    color: var(--u-text-muted);
+    color: var(--u-color-accent);
     white-space: nowrap;
-    background: #f1f5f9;
-    border-radius: 6px;
+    background: var(--u-pink-a06);
+    border-radius: 8px;
   }
 
   &__description {
     flex: 1;
     margin: 0 0 20px;
     font-size: var(--u-font-14);
-    line-height: 1.625;
+    line-height: 1.65;
     color: var(--u-text-muted);
   }
 
@@ -402,13 +403,13 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   &__feature {
-    padding: 6px 10px;
+    padding: 5px 10px;
     font-size: var(--u-font-12);
     font-weight: 500;
     color: #475569;
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
+    border: 1px solid #e8ecf1;
+    border-radius: 8px;
   }
 
   &__cta {
@@ -416,20 +417,24 @@ $ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 20px;
+    padding: 11px 20px;
     font-size: var(--u-font-14);
     font-weight: 600;
-    color: #1a1a1a;
+    color: #1a1716;
     text-decoration: none;
     background: transparent;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    transition: all 0.3s;
+    transition:
+      color 0.25s,
+      background 0.25s,
+      border-color 0.25s,
+      gap 0.25s;
   }
 }
 
 .card-arrow {
-  transition: transform 0.3s;
+  transition: transform 0.25s $ease-default;
 }
 
 @media (prefers-reduced-motion: reduce) {

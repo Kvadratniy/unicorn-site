@@ -66,14 +66,14 @@ const enforceMuted = () => {
 $lg: 1024px;
 
 .u-article-video {
-  --u-av-surface: #cfcbd7;
+  --u-av-surface: #c5c1ce;
   --u-av-shadow: var(--u-warm-ink-a12);
   --u-av-shadow-hover: var(--u-warm-ink-a16);
   --u-av-gradient: linear-gradient(
     180deg,
-    rgba(17, 15, 13, 0.02) 0%,
-    rgba(17, 15, 13, 0.1) 56%,
-    rgba(17, 15, 13, 0.45) 100%
+    rgba(17, 15, 13, 0) 0%,
+    rgba(17, 15, 13, 0.06) 50%,
+    rgba(17, 15, 13, 0.35) 100%
   );
   --u-av-cta-solid-bg: rgba(179, 156, 242, 0.776);
   --u-av-cta-solid-text: var(--u-color-white);

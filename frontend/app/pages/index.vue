@@ -21,8 +21,8 @@ const { moodHeroContent } = await useHome('home-page')
 </script>
 
 <template>
-  <div class="flex flex-col gap-10 pb-10">
+  <div class="flex flex-col gap-12 pb-12">
     <UMoodHero :content="moodHeroContent" />
-    <HomeCategories class="pt-[20px]"/>
+    <HomeCategories class="pt-[24px]"/>
   </div>
 </template>
