@@ -1,0 +1,47 @@
+---
+description: TypeScript conventions for Vue SFCs and server code — props, types, naming
+globs: {frontend,server}/**/*.{ts,vue}
+alwaysApply: false
+---
+
+# TypeScript (Vue.js)
+
+## Code Style and Structure
+
+- **Component Structure**: Single-file components (SFCs) with `.vue` extension and `<script setup lang="ts">`
+- **File Naming**: PascalCase with `U` prefix for components (e.g., `UButton.vue`, `UMoodHero.vue`)
+- **Directory Structure**: Components in `app/components/`, pages in `app/pages/`, composables in `app/composables/`
+
+## Naming Conventions
+
+- **Variables and Functions**: camelCase (e.g., `myVariable`, `handleClick`)
+- **Component Names**: PascalCase (e.g., `UButton`)
+- **Constants**: UPPER_SNAKE_CASE (e.g., `MAX_ITEMS`)
+
+## TypeScript Usage
+
+- **Type Annotations**: Annotate function parameters; return types when not obvious from context
+- **Props**: Use `defineProps<Props>()` with an `interface Props`, not `PropType`
+- **Interfaces and Types**: Prefer interfaces for object shapes, types for unions and intersections
+- **Generics**: Use generics for reusable and type-safe composables and utilities
+
+## Syntax and Formatting
+
+- **Indentation**: 2 spaces
+- **Semicolons**: Avoid unless necessary
+
+## Error Handling
+
+- **Try/Catch**: Use for async operations where errors need handling
+- **Runtime errors**: Nuxt uses `error.vue` at app level, not React-style error boundaries
+
+## UI and Styling
+
+- **Tailwind CSS**: Primary styling approach
+- **Scoped styles**: `<style scoped>` when Tailwind is insufficient
+- **Responsive Design**: Tailwind responsive utilities
+
+## Performance
+
+- **Memoization**: Use `computed` and `watch` for derived state
+- **Components**: Nuxt auto-imports from `app/components/` — no manual `defineAsyncComponent` unless needed

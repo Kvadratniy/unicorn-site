@@ -1,0 +1,40 @@
+---
+description: Core code quality — minimal diffs, early returns, naming, no drive-by refactors
+alwaysApply: true
+---
+
+# Code Quality
+
+Less code is better. Lines of code = debt.
+
+## Principles
+
+- **Simplicity**: Write straightforward code
+- **Readability**: Easy to read and understand
+- **Maintainability**: Easy to maintain and update
+- **Performance**: Keep in mind, but don't over-optimize at the cost of readability
+
+## Code Guidelines
+
+1. **Early Returns**: Avoid nested conditions
+2. **Conditional Classes**: Prefer conditional classes over ternary operators for class attributes
+3. **Descriptive Names**: Prefix event handlers with `handle` (e.g., `handleClick`, `handleKeyDown`)
+4. **Constants Over Functions**: Use `const` arrow functions; define types where applicable
+5. **DRY**: Don't repeat yourself, but don't abstract prematurely
+6. **Functional Style**: Prefer immutable patterns unless much more verbose
+
+## Minimal Code Changes
+
+- Only modify code related to the task at hand
+- Don't change unrelated files or existing comments
+- No drive-by cleanup unless explicitly asked
+- Code change = potential for bugs and technical debt
+
+## Comments
+
+- Code should be self-explanatory; comments only for non-obvious business logic
+- Use `TODO:` when existing code has a bug you can't fix in scope
+
+## Function Ordering
+
+Define composing functions before the functions they compose (e.g., menu above its button handlers).
