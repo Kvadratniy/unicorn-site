@@ -18,7 +18,7 @@
 .u-logo {
   display: flex;
   min-width: 0;
-  gap: 10px;
+  gap: 9px;
   color: inherit;
   text-decoration: none;
   align-items: center;
@@ -27,7 +27,7 @@
     width: 30px;
     height: 30px;
     flex-shrink: 0;
-    margin-left: 15px;
+    margin-left: 6px;
     object-fit: contain;
   }
 
@@ -36,25 +36,25 @@
     min-width: 0;
     flex-direction: column;
     line-height: 1;
-	gap: 2px;
+    gap: 1px;
   }
 
   &__title {
-    color: #b84eb9;
+    color: var(--u-color-accent);
     font-family: var(--u-font-montserrat);
-    font-size: var(--u-font-14);
-    font-weight: 500;
-    letter-spacing: -0.03em;
+    font-size: var(--u-font-15);
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   &__subtitle {
-    margin-top: 3px;
-    color: #1b1b1b;
-    font-size: var(--u-font-10);
-    font-weight: 300;
-    letter-spacing: 0.12em;
+    margin-top: 2px;
+    color: var(--u-text-nav-muted);
+    font-size: var(--u-font-9);
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-	font-family: var(--u-font-montserrat);
+    font-family: var(--u-font-montserrat);
   }
 
   @media (max-width: 640px) {

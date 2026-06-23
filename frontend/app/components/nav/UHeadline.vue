@@ -113,8 +113,8 @@ watch(isMobileMenuOpen, lockPageScroll)
 </template>
 
 <style scoped lang="scss">
-$headline-bar-border: rgb(240 240 240);
-$headline-bar-surface: var(--u-color-white);
+$headline-bar-border: rgba(36, 31, 27, 0.07);
+$headline-bar-surface: rgba(255, 255, 255, 0.92);
 $headline-action-text: #332d36;
 $headline-action-border: var(--u-headline-ink-a12);
 $headline-action-surface: #fbfafb;
@@ -127,10 +127,10 @@ $headline-desktop-breakpoint: 1000px;
   position: relative;
   z-index: 40;
   width: 100%;
-  padding: 16px;
+  padding: 14px 16px;
 
   @media (max-width: $headline-mobile-breakpoint) {
-    padding: 12px;
+    padding: 10px 12px;
   }
 
   &__bar {
@@ -141,14 +141,16 @@ $headline-desktop-breakpoint: 1000px;
     align-items: center;
     gap: 16px;
     margin: 0 auto;
-    padding: 10px 14px;
-    border: 2px solid $headline-bar-border;
-    border-radius: 16px;
+    padding: 8px 16px;
+    border: 1px solid $headline-bar-border;
+    border-radius: 14px;
     background-color: $headline-bar-surface;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
 
     @media (max-width: $headline-mobile-breakpoint) {
       gap: 10px;
-      padding-inline: 12px;
+      padding: 8px 12px;
     }
   }
 
@@ -156,11 +158,11 @@ $headline-desktop-breakpoint: 1000px;
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 8px;
+    gap: 10px;
 
     @media (min-width: $headline-desktop-breakpoint) {
-      padding-left: 12px;
-      border-left: 1px solid rgba(51, 45, 54, 0.08);
+      padding-left: 14px;
+      border-left: 1px solid rgba(51, 45, 54, 0.06);
     }
 
     :deep(.u-burger-button) {

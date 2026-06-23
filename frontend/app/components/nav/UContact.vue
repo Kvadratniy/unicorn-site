@@ -31,17 +31,17 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 $headline-contact-text: #332d36;
-$headline-contact-muted: #817783;
+$headline-contact-muted: #8b8590;
 $headline-contact-accent: var(--u-color-accent);
-$headline-contact-border: var(--u-headline-ink-a12);
-$headline-contact-surface: #fbfafb;
-$headline-contact-hover: #f8f3f7;
+$headline-contact-border: rgba(36, 31, 27, 0.08);
+$headline-contact-surface: #faf9fb;
+$headline-contact-hover: rgba(201, 54, 134, 0.06);
 $headline-contact-focus: var(--u-accent-a18);
 
 .u-headline-contact {
   display: none;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 
   @media (min-width: 1000px) {
     display: inline-flex;
@@ -68,7 +68,7 @@ $headline-contact-focus: var(--u-accent-a18);
     font-size: var(--u-font-10);
     font-weight: 500;
     letter-spacing: 0.1px;
-    line-height: 13px;
+    line-height: 14px;
     font-family: var(--u-font-montserrat);
   }
 
@@ -76,9 +76,10 @@ $headline-contact-focus: var(--u-accent-a18);
     color: $headline-contact-text;
     font-size: var(--u-font-11);
     font-weight: 600;
-    letter-spacing: 0.1px;
+    letter-spacing: 0.2px;
     line-height: 14px;
     text-decoration: none;
+    font-variant-numeric: tabular-nums;
     transition: color 180ms ease;
     font-family: var(--u-font-montserrat);
   
@@ -98,10 +99,10 @@ $headline-contact-focus: var(--u-accent-a18);
     min-height: 36px;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     padding: 5px 6px 5px 16px;
     border: 1px solid $headline-contact-border;
-    border-radius: 9999px;
+    border-radius: 10px;
     background-color: $headline-contact-surface;
     color: $headline-contact-text;
     cursor: pointer;
@@ -110,14 +111,16 @@ $headline-contact-focus: var(--u-accent-a18);
     letter-spacing: 0.2px;
     line-height: 14px;
     transition:
-      background-color 180ms ease,
-      border-color 180ms ease,
-      color 180ms ease;
+      background-color 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease,
+      box-shadow 200ms ease;
 
     &:hover {
-      border-color: rgba(201, 54, 134, 0.24);
+      border-color: rgba(201, 54, 134, 0.18);
       background-color: $headline-contact-hover;
       color: $headline-contact-accent;
+      box-shadow: 0 2px 8px rgba(201, 54, 134, 0.1);
 
       .u-headline-contact__mark {
         background-color: $headline-contact-accent;
@@ -141,12 +144,12 @@ $headline-contact-focus: var(--u-accent-a18);
     height: 24px;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 8px;
     background-color: var(--u-color-white);
     color: $headline-contact-muted;
     transition:
-      background-color 180ms ease,
-      color 180ms ease;
+      background-color 200ms ease,
+      color 200ms ease;
   }
 
   &__icon {

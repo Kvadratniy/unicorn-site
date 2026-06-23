@@ -108,9 +108,9 @@ const isActiveLink = (to: string) => route.path === to
 <style scoped lang="scss">
 $nav-link-color: #3c3740;
 $nav-link-active-color: var(--u-color-accent);
-$nav-link-hover-bg: #fbf6fc;
+$nav-link-hover-bg: rgba(201, 54, 134, 0.05);
 $nav-link-active-bg: transparent;
-$nav-link-hover-border: rgba(201, 54, 134, 0.1);
+$nav-link-hover-border: rgba(201, 54, 134, 0.08);
 $nav-link-focus-ring: var(--u-accent-a20);
 
 .u-nav {
@@ -118,14 +118,14 @@ $nav-link-focus-ring: var(--u-accent-a20);
   min-width: 0;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
 
   @media (min-width: 1000px) {
     display: flex;
   }
 
   @media (min-width: 1000px) and (max-width: 1180px) {
-    gap: 8px;
+    gap: 4px;
   }
 }
 
@@ -135,30 +135,30 @@ $nav-link-focus-ring: var(--u-accent-a20);
   min-height: 34px;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 7px 13px;
   border: 1px solid transparent;
-  border-radius: 9999px;
+  border-radius: 10px;
   color: $nav-link-color;
   font-family: var(--u-font-montserrat);
   font-size: var(--u-font-12);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 14px;
   text-decoration: none;
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.9px;
+  letter-spacing: 0.8px;
   transition:
-    background-color 220ms ease,
-    border-color 220ms ease,
-    color 220ms ease;
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
 
   &:deep(button) {
     all: unset;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: -8px -32px;
-    padding: 8px 32px;
+    margin: -7px -13px;
+    padding: 7px 13px;
     border-radius: inherit;
     color: inherit;
     cursor: pointer;
@@ -184,17 +184,18 @@ $nav-link-focus-ring: var(--u-accent-a20);
     border-color: transparent;
     color: $nav-link-active-color;
     background-color: $nav-link-active-bg;
-    font-weight: 500;
+    font-weight: 600;
 
     &::after {
       position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      right: 12px;
+      bottom: 2px;
+      left: 12px;
       height: 2px;
       border-radius: 9999px;
       background-color: currentcolor;
       content: '';
+      opacity: 0.6;
     }
   }
 
@@ -205,13 +206,13 @@ $nav-link-focus-ring: var(--u-accent-a20);
 
   @media (min-width: 961px) and (max-width: 1180px) {
     min-height: 32px;
-    padding-inline: 9px;
+    padding: 6px 9px;
     font-size: var(--u-font-11);
     letter-spacing: 0.7px;
 
     &:deep(button) {
-      margin-inline: -9px;
-      padding-inline: 9px;
+      margin: -6px -9px;
+      padding: 6px 9px;
     }
   }
 
