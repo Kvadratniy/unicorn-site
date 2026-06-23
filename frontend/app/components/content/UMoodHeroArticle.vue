@@ -115,7 +115,7 @@ const props = defineProps<{
   }
 
   &__article-body {
-    max-width: 544px;
+    max-width: 580px;
     margin: 10px 0 0;
     padding-right: 30px;
     padding-bottom: 22px;
@@ -137,11 +137,12 @@ const props = defineProps<{
   &__article-image {
     margin-top: 16px;
     padding-bottom: 0;
-    width: 100%;
-    border-radius: 0 0 28px 28px;
+    width: 85%;
+    margin: 0 0 0 auto ;
+    // border-radius: 0 0 28px 28px;
 
     @media (min-width: 1024px) {
-      border-radius: 0 0 30px 30px;
+      // border-radius: 0 0 30px 30px;
     }
   }
 }

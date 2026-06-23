@@ -81,17 +81,17 @@ const props = defineProps<{
 
   &__title {
     margin: 0;
-    color: var(--u-color-gray-900);
+    color: #1a1716;
     font-family: 'Montserrat', sans-serif;
     font-size: var(--u-font-fluid-display-intro);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.024em;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
   }
 
   &__lead {
     margin: 0;
-    color: var(--u-text-body);
+    color: var(--u-text-muted);
     font-size: var(--u-font-16);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.7;
@@ -118,10 +118,10 @@ const props = defineProps<{
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    border-radius: 16px;
+    border-radius: 18px;
     background: var(--u-color-white);
-    border: 1px solid var(--u-pink-a12);
-    box-shadow: 0 4px 16px var(--u-slate-a04);
+    border: 1px solid var(--u-black-a06);
+    box-shadow: 0 1px 3px var(--u-black-a04);
     transition:
       border-color 0.25s ease,
       box-shadow 0.25s ease;
@@ -133,13 +133,13 @@ const props = defineProps<{
       left: 0;
       right: 0;
       height: 2px;
-      background: var(--u-color-pink-light);
-      opacity: 0.65;
+      background: var(--u-color-accent);
+      opacity: 0.5;
     }
 
     &:hover {
-      border-color: var(--u-pink-a22);
-      box-shadow: 0 8px 22px var(--u-pink-a08);
+      border-color: var(--u-pink-a15);
+      box-shadow: 0 8px 24px var(--u-pink-a08);
     }
   }
 
@@ -156,20 +156,19 @@ const props = defineProps<{
     justify-content: center;
     width: fit-content;
     padding: 4px 9px;
-    border-radius: 999px;
-    background: var(--u-pink-a08);
-    color: var(--u-color-pink-deep);
+    border-radius: 8px;
+    background: var(--u-pink-a06);
+    color: var(--u-color-accent);
     font-family: 'Montserrat', sans-serif;
     font-size: var(--u-font-11);
     font-weight: 600;
     letter-spacing: 0.1em;
     line-height: 1;
-    opacity: 0.85;
   }
 
   &__card-title {
     margin: 0;
-    color: #8b3a62;
+    color: #1a1716;
     font-family: 'Montserrat', sans-serif;
     font-size: var(--u-font-17);
     font-weight: 600;
@@ -179,7 +178,7 @@ const props = defineProps<{
 
   &__card-text {
     margin: 0;
-    color: var(--u-text-body);
+    color: var(--u-text-muted);
     font-size: var(--u-font-15);
     line-height: 1.65;
     letter-spacing: 0.005em;

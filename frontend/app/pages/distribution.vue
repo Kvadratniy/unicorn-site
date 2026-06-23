@@ -85,14 +85,14 @@ useHead({
 .distribution-page {
   display: flex;
   flex-direction: column;
-  gap: 26px;
-  padding-bottom: 20px;
+  gap: 28px;
+  padding-bottom: 24px;
   font-family: var(--u-font-montserrat);
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 44px;
+    gap: 48px;
     padding: 4px 4px 0;
   }
 
@@ -103,10 +103,10 @@ useHead({
 
 @media (min-width: 900px) {
   .distribution-page {
-    gap: 30px;
+    gap: 32px;
 
     &__content {
-      gap: 56px;
+      gap: 60px;
       padding: 20px 20px 0;
     }
   }
@@ -114,10 +114,10 @@ useHead({
 
 @media (max-width: 640px) {
   .distribution-page {
-    gap: 22px;
+    gap: 24px;
 
     &__content {
-      gap: 36px;
+      gap: 40px;
     }
   }
 }
