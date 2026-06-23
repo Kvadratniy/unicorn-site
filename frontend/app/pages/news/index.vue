@@ -127,9 +127,9 @@ useHead({
     width: 100%;
     overflow: hidden;
     background: var(--u-color-white);
-    box-shadow: 0 1px 2px var(--u-slate-a05);
-    padding: 32px 16px;
-    border-radius: 16px;
+    border: 1px solid var(--u-black-a04);
+    border-radius: 20px;
+    padding: 36px 20px;
   }
 
   &__hero-inner {
@@ -143,21 +143,22 @@ useHead({
     pointer-events: none;
     position: absolute;
     border-radius: 9999px;
-    filter: blur(48px);
+    filter: blur(64px);
+    opacity: 0.7;
 
     &--right {
-      top: -64px;
-      right: -40px;
-      width: 176px;
-      height: 176px;
+      top: -72px;
+      right: -48px;
+      width: 200px;
+      height: 200px;
       background: var(--u-pink-light-a45);
     }
 
     &--left {
-      bottom: -56px;
-      left: -24px;
-      width: 160px;
-      height: 160px;
+      bottom: -64px;
+      left: -32px;
+      width: 180px;
+      height: 180px;
       background: var(--u-purple-light-a45);
     }
   }
@@ -165,34 +166,34 @@ useHead({
   &__hero-badge {
     display: inline-flex;
     width: fit-content;
-    margin: 0 0 12px;
-    border-radius: 999px;
-    background: #fdf2f8;
-    padding: 4px 12px;
-    color: #be185d;
-    font-size: var(--u-font-12);
+    margin: 0 0 14px;
+    border-radius: 8px;
+    background: var(--u-pink-a06);
+    padding: 5px 12px;
+    color: var(--u-color-accent);
+    font-size: var(--u-font-11);
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__hero-title {
     margin: 0;
     text-wrap: balance;
-    color: #171717;
+    color: #1a1716;
     font-size: var(--u-font-30);
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
 
   &__hero-subtitle {
-    margin: 16px 0 0;
-    max-width: 768px;
+    margin: 14px 0 0;
+    max-width: 700px;
     text-wrap: pretty;
-    color: #525252;
+    color: var(--u-text-muted);
     font-size: var(--u-font-14);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   &__content {
@@ -207,29 +208,29 @@ useHead({
   &__skeleton-grid {
     margin-top: 28px;
     display: grid;
-    gap: 16px;
+    gap: 18px;
   }
 
   &__skeleton-card {
     height: 288px;
-    animation: pulse 1.5s ease-in-out infinite;
-    border: 1px solid var(--u-gray-a80);
-    border-radius: 16px;
+    animation: pulse 1.8s ease-in-out infinite;
+    border: 1px solid var(--u-black-a06);
+    border-radius: 18px;
     background: var(--u-color-white);
   }
 
   &__empty {
     margin-top: 32px;
-    border: 1px dashed #d4d4d8;
-    border-radius: 16px;
-    background: var(--u-white-a75);
-    padding: 32px;
+    border: 1px dashed var(--u-black-a10);
+    border-radius: 18px;
+    background: var(--u-color-white);
+    padding: 36px;
     text-align: center;
   }
 
   &__empty-title {
     margin: 0;
-    color: #171717;
+    color: #1a1716;
     font-size: var(--u-font-22);
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -238,9 +239,9 @@ useHead({
   &__empty-text {
     margin: 12px auto 0;
     max-width: 576px;
-    color: #525252;
+    color: var(--u-text-muted);
     font-size: var(--u-font-14);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   &__empty-button {
@@ -248,26 +249,30 @@ useHead({
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
+    border: 1px solid var(--u-black-a08);
+    border-radius: 10px;
     background: var(--u-color-white);
-    padding: 8px 16px;
-    color: #262626;
+    padding: 9px 18px;
+    color: #1a1716;
     font-size: var(--u-font-14);
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:hover {
-      border-color: #d4d4d8;
+      border-color: var(--u-black-a12);
       background: #fafafa;
+      box-shadow: 0 2px 6px var(--u-black-a06);
     }
   }
 
   &__grid {
-    margin: 32px 0 0;
+    margin: 28px 0 0;
     display: grid;
-    gap: 16px;
+    gap: 18px;
     padding: 0;
     list-style: none;
   }
@@ -277,35 +282,38 @@ useHead({
   display: block;
   height: 100%;
   overflow: hidden;
-  border: 1px solid var(--u-gray-a90);
-  border-radius: 16px;
+  border: 1px solid var(--u-black-a06);
+  border-radius: 18px;
   background: var(--u-color-white);
-  box-shadow: 0 1px 2px var(--u-slate-a05);
+  box-shadow: 0 1px 3px var(--u-black-a04);
   text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.3s var(--u-ease-out),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    border-color: #fbcfe8;
-    box-shadow: 0 8px 20px var(--u-slate-a08);
+    transform: translateY(-3px);
+    border-color: var(--u-pink-a15);
+    box-shadow: 0 12px 28px -8px var(--u-black-a10);
   }
 
   &__media {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #f5f5f5;
+    background: #eee;
   }
 
   &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.45s var(--u-ease-out);
   }
 
   &:hover &__image {
-    transform: scale(1.02);
+    transform: scale(1.04);
   }
 
   &__overlay {
@@ -313,8 +321,8 @@ useHead({
     right: 0;
     bottom: 0;
     left: 0;
-    height: 80px;
-    background: linear-gradient(to top, var(--u-black-a35), var(--u-black-a10), transparent);
+    height: 88px;
+    background: linear-gradient(to top, var(--u-black-a40), var(--u-black-a08), transparent);
   }
 
   &__meta {
@@ -323,33 +331,35 @@ useHead({
     left: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    border-radius: 999px;
+    gap: 7px;
+    border-radius: 8px;
     background: var(--u-black-a50);
     padding: 4px 10px;
     color: var(--u-color-white);
     font-size: var(--u-font-11);
     font-weight: 500;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
   }
 
   &__dot {
-    opacity: 0.7;
+    opacity: 0.5;
+    font-size: 6px;
   }
 
   &__body {
     display: flex;
-    min-height: 176px;
+    min-height: 168px;
     flex-direction: column;
-    padding: 16px;
+    padding: 18px;
   }
 
   &__title {
     margin: 0;
-    color: #171717;
-    font-size: var(--u-font-18);
+    color: #1a1716;
+    font-size: var(--u-font-17);
     font-weight: 600;
     line-height: 1.35;
+    letter-spacing: -0.01em;
     display: -webkit-box;
     line-clamp: 2;
     -webkit-line-clamp: 2;
@@ -359,12 +369,12 @@ useHead({
   }
 
   &:hover &__title {
-    color: #be185d;
+    color: var(--u-color-accent);
   }
 
   &__subtitle {
     margin: 8px 0 0;
-    color: #525252;
+    color: var(--u-text-muted);
     font-size: var(--u-font-14);
     line-height: 1.6;
     display: -webkit-box;
@@ -376,10 +386,16 @@ useHead({
 
   &__action {
     margin-top: auto;
-    padding-top: 16px;
-    color: #be185d;
-    font-size: var(--u-font-14);
-    font-weight: 500;
+    padding-top: 14px;
+    color: var(--u-color-accent);
+    font-size: var(--u-font-13);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover &__action {
+    opacity: 0.8;
   }
 }
 
@@ -389,14 +405,14 @@ useHead({
     opacity: 1;
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.5;
   }
 }
 
 @media (min-width: 640px) {
   .news-page {
     &__hero {
-      padding: 40px 24px;
+      padding: 44px 28px;
     }
 
     &__hero-title {
@@ -404,7 +420,7 @@ useHead({
     }
 
     &__hero-subtitle {
-      font-size: var(--u-font-16);
+      font-size: var(--u-font-15);
     }
 
     &__content {
@@ -421,7 +437,7 @@ useHead({
     }
 
     &__empty {
-      padding: 40px;
+      padding: 44px;
     }
   }
 
@@ -435,7 +451,7 @@ useHead({
 @media (min-width: 1024px) {
   .news-page {
     &__hero {
-      padding: 48px 32px;
+      padding: 52px 36px;
     }
 
     &__hero-title {
