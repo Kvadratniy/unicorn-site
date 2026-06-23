@@ -88,7 +88,7 @@ useHead({
 
   &__grid {
     display: grid;
-    gap: 16px;
+    gap: 18px;
     grid-template-columns: 1fr;
   }
 }
@@ -96,7 +96,7 @@ useHead({
 @media (min-width: 1024px) {
   .rent-options__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 22px;
   }
 }
 </style>

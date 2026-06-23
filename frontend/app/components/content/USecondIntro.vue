@@ -76,8 +76,9 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
+    border-radius: 18px;
     background: var(--u-color-white);
+    border: 1px solid var(--u-black-a06);
     min-height: 260px;
   }
 
@@ -90,20 +91,20 @@ const props = defineProps<{
 
   &__title {
     margin: 0;
-    color: var(--u-color-gray-900);
+    color: #1a1716;
     font-family: 'Suisse Intl', sans-serif;
     font-size: var(--u-font-fluid-display-intro);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.024em;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
   }
 
   &__lead {
     margin: 0;
-    color: var(--u-text-body);
+    color: var(--u-text-muted);
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-16);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   &__highlights {
@@ -120,9 +121,11 @@ const props = defineProps<{
   gap: 6px;
   padding: 16px 18px;
   border-radius: 14px;
-  box-shadow:
-    0 10px 24px var(--u-pink-deep-a10),
-    0 1px 0 var(--u-white-a80) inset;
+  border: 1px solid var(--u-black-a06);
+  box-shadow: 0 1px 3px var(--u-black-a04);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &::before {
     content: '';
@@ -130,24 +133,31 @@ const props = defineProps<{
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--u-color-pink-deep), var(--u-color-pink));
+    height: 2px;
+    background: var(--u-color-accent);
+    opacity: 0.5;
+  }
+
+  &:hover {
+    border-color: var(--u-pink-a15);
+    box-shadow: 0 6px 18px var(--u-pink-a08);
   }
 
   &__title {
     margin: 0;
-    color: #831843;
+    color: #1a1716;
     font-family: 'Suisse Intl', sans-serif;
-    font-size: var(--u-font-16);
+    font-size: var(--u-font-15);
+    font-weight: 600;
     line-height: 1.3;
   }
 
   &__text {
     margin: 0;
-    color: var(--u-text-body);
+    color: var(--u-text-muted);
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-13);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 }
 

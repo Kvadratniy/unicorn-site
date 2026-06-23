@@ -50,40 +50,38 @@ const { option, index = 0 } = defineProps<{
   display: grid;
   gap: 0;
   padding: 0;
-  border-radius: 24px;
-  box-shadow:
-    0 1px 2px var(--u-slate-a04),
-    0 12px 30px var(--u-pink-a08);
+  border-radius: 20px;
+  border: 1px solid var(--u-black-a06);
+  box-shadow: 0 1px 3px var(--u-black-a04);
   font-family: var(--u-font-montserrat);
   opacity: 0;
   transform: translateY(14px);
   animation: cardIn 0.55s ease forwards;
   animation-delay: var(--card-delay);
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.3s var(--u-ease-out),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   overflow: hidden;
 
   &:hover {
-    border-color: var(--u-pink-a32);
-    box-shadow:
-      0 2px 6px var(--u-slate-a07),
-      0 16px 34px var(--u-pink-a12);
-    transform: translateY(-4px);
+    border-color: var(--u-pink-a15);
+    box-shadow: 0 12px 32px var(--u-black-a08);
+    transform: translateY(-3px);
   }
 
   &__tag {
     width: fit-content;
     margin: 0;
-    padding: 7px 11px;
-    border-radius: 999px;
-    background: var(--u-pink-a10);
-    color: #9d174d;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: var(--u-pink-a06);
+    color: var(--u-color-accent);
     font-family: var(--u-font-montserrat);
-    font-size: var(--u-font-12);
+    font-size: var(--u-font-11);
     font-weight: 600;
     line-height: 1.2;
+    letter-spacing: 0.02em;
   }
 
   &__image {
@@ -92,13 +90,13 @@ const { option, index = 0 } = defineProps<{
     height: clamp(180px, 20vw, 235px);
     object-fit: cover;
     object-position: center;
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   &__body {
     display: grid;
     gap: 14px;
-    padding: 18px 24px 22px;
+    padding: 18px 24px 24px;
   }
 
   &__top {
@@ -108,20 +106,20 @@ const { option, index = 0 } = defineProps<{
 
   &__title {
     margin: 0;
-    color: #3f2535;
+    color: #1a1716;
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-21);
     font-weight: 700;
     line-height: 1.25;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   &__subtitle {
     margin: 0;
-    color: #7a425f;
+    color: var(--u-color-accent);
     font-family: var(--u-font-montserrat);
-    font-size: var(--u-font-15);
-    font-weight: 500;
+    font-size: var(--u-font-14);
+    font-weight: 600;
     line-height: 1.45;
   }
 
@@ -129,8 +127,8 @@ const { option, index = 0 } = defineProps<{
     margin: 0;
     padding: 12px 14px;
     border-radius: 12px;
-    background: var(--u-pink-100-a58);
-    color: #5f3b50;
+    background: var(--u-pink-a06);
+    color: var(--u-text-body);
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-14);
     font-weight: 500;
@@ -139,22 +137,17 @@ const { option, index = 0 } = defineProps<{
 
   &__divider {
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--u-pink-light-a28) 15%,
-      var(--u-pink-light-a28) 85%,
-      transparent 100%
-    );
+    background: var(--u-black-a06);
   }
 
   &__benefits-title {
     margin: 0;
-    color: #8b3d66;
+    color: var(--u-color-accent);
+    opacity: 0.65;
     font-family: var(--u-font-montserrat);
-    font-size: var(--u-font-13);
+    font-size: var(--u-font-11);
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
@@ -169,22 +162,23 @@ const { option, index = 0 } = defineProps<{
   &__item {
     position: relative;
     margin: 0;
-    padding-left: 18px;
-    color: #5b4352;
+    padding-left: 16px;
+    color: var(--u-text-body);
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-14);
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.5;
 
     &::before {
       content: '';
       position: absolute;
       left: 0;
-      top: 5px;
-      width: 10px;
-      height: 10px;
+      top: 7px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: radial-gradient(circle at center, var(--u-color-pink) 45%, #fbcfe8 46%);
+      background: var(--u-color-accent);
+      opacity: 0.4;
     }
   }
 }

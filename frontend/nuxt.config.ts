@@ -105,7 +105,7 @@ export default defineNuxtConfig({
       style: [
         {
           innerHTML:
-            'html,body{background-color:#fdfcf8;min-height:100vh}#__nuxt{min-height:100vh}',
+            'html,body{background-color:#fafafa;min-height:100vh}#__nuxt{min-height:100vh}',
           tagPriority: 'high',
         },
       ],

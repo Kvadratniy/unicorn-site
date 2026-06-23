@@ -20,6 +20,6 @@ const { isOpen: isContactModalOpen, close: closeContactModal } = useContactModal
 
 <style scoped>
 .main-gradient {
-  background: #fdfcf8;
+  background: #fafafa;
 }
 </style>

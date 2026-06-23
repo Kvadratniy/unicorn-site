@@ -95,9 +95,9 @@ $desktop: 1024px;
     padding: 0;
     background: linear-gradient(
       90deg,
-      var(--u-pink-a10) 0%,
-      rgba(236, 72, 153, 0.05) 24%,
-      var(--u-color-white) 40%,
+      var(--u-pink-a06) 0%,
+      rgba(236, 72, 153, 0.03) 28%,
+      var(--u-color-white) 42%,
       var(--u-color-white) 100%
     );
   }
@@ -159,7 +159,7 @@ $desktop: 1024px;
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-15);
     line-height: 1.7;
-    color: #374151;
+    color: var(--u-text-muted);
 
     @media (min-width: $desktop) {
       font-size: var(--u-font-16);
@@ -172,7 +172,8 @@ $desktop: 1024px;
     font-family: var(--u-font-montserrat);
     font-size: var(--u-font-14);
     line-height: 1.5;
-    color: #6b7280;
+    color: var(--u-text-muted);
+    opacity: 0.8;
   }
 
   &__actions {
@@ -214,14 +215,12 @@ $desktop: 1024px;
     font-size: var(--u-font-fluid-display-hero-image);
     font-weight: 600;
     line-height: 1.1;
-    color: var(--u-color-gray-900);
+    color: #1a1716;
     text-shadow: none;
 
     &--accent {
-      background: linear-gradient(135deg, var(--u-color-pink-deep) 0%, var(--u-color-pink) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--u-color-accent);
+      -webkit-text-fill-color: var(--u-color-accent);
     }
   }
 }
