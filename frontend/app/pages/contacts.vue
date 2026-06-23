@@ -191,9 +191,9 @@ useHead({
     width: 100%;
     overflow: hidden;
     background: var(--u-color-white);
-    box-shadow: 0 1px 2px var(--u-slate-a05);
-    padding: 32px 16px;
-    border-radius: 16px;
+    border: 1px solid var(--u-black-a04);
+    border-radius: 20px;
+    padding: 36px 20px;
   }
 
   &__hero-inner {
@@ -207,21 +207,22 @@ useHead({
     pointer-events: none;
     position: absolute;
     border-radius: 9999px;
-    filter: blur(48px);
+    filter: blur(64px);
+    opacity: 0.7;
 
     &--right {
-      top: -64px;
-      right: -40px;
-      width: 176px;
-      height: 176px;
+      top: -72px;
+      right: -48px;
+      width: 200px;
+      height: 200px;
       background: var(--u-pink-light-a45);
     }
 
     &--left {
-      bottom: -56px;
-      left: -24px;
-      width: 160px;
-      height: 160px;
+      bottom: -64px;
+      left: -32px;
+      width: 180px;
+      height: 180px;
       background: var(--u-purple-light-a45);
     }
   }
@@ -229,34 +230,34 @@ useHead({
   &__hero-badge {
     display: inline-flex;
     width: fit-content;
-    margin: 0 0 12px;
-    border-radius: 999px;
-    background: #fdf2f8;
-    padding: 4px 12px;
-    color: #be185d;
-    font-size: var(--u-font-12);
+    margin: 0 0 14px;
+    border-radius: 8px;
+    background: var(--u-pink-a06);
+    padding: 5px 12px;
+    color: var(--u-color-accent);
+    font-size: var(--u-font-11);
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__hero-title {
     margin: 0;
     text-wrap: balance;
-    color: #171717;
+    color: #1a1716;
     font-size: var(--u-font-30);
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
 
   &__hero-subtitle {
-    margin: 16px 0 0;
-    max-width: 768px;
+    margin: 14px 0 0;
+    max-width: 700px;
     text-wrap: pretty;
-    color: #525252;
+    color: var(--u-text-muted);
     font-size: var(--u-font-14);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   &__content {
@@ -274,9 +275,9 @@ useHead({
   &__map {
     overflow: hidden;
     min-height: 480px;
-    border: 1px solid var(--u-gray-a90);
-    border-radius: 16px;
-    background: #f5f5f5;
+    border: 1px solid var(--u-black-a06);
+    border-radius: 18px;
+    background: #eee;
 
     iframe {
       display: block;
@@ -299,7 +300,7 @@ useHead({
     flex-direction: column;
     gap: 12px;
     margin-top: auto;
-    padding-top: 4px;
+    padding-top: 6px;
   }
 
   &__social {
@@ -313,14 +314,17 @@ useHead({
     align-items: center;
     gap: 8px;
     padding: 8px 14px;
-    border: 1px solid var(--u-gray-a90);
-    border-radius: 999px;
+    border: 1px solid var(--u-black-a06);
+    border-radius: 10px;
     background: var(--u-color-white);
     color: #404040;
     font-size: var(--u-font-13);
     font-weight: 500;
     text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
 
     svg {
       width: 16px;
@@ -329,9 +333,9 @@ useHead({
     }
 
     &:hover {
-      border-color: #fbcfe8;
-      background: #fdf2f8;
-      color: #be185d;
+      border-color: var(--u-pink-a18);
+      background: var(--u-pink-a06);
+      color: var(--u-color-accent);
     }
   }
 
@@ -343,21 +347,23 @@ useHead({
     width: 100%;
     padding: 14px 20px;
     border: 0;
-    border-radius: 14px;
-    background: #171717;
+    border-radius: 12px;
+    background: #1a1716;
     color: var(--u-color-white);
     cursor: pointer;
     font-size: var(--u-font-15);
     font-weight: 600;
     font-family: var(--u-font-montserrat);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition:
+      background-color 0.25s ease,
+      transform 0.15s ease;
 
     &:hover {
-      background: #262626;
+      background: #2a2523;
     }
 
     &:active {
-      transform: scale(0.99);
+      transform: scale(0.985);
     }
   }
 }
@@ -366,15 +372,17 @@ useHead({
   display: flex;
   gap: 16px;
   padding: 18px;
-  border: 1px solid var(--u-gray-a90);
+  border: 1px solid var(--u-black-a06);
   border-radius: 16px;
   background: var(--u-color-white);
-  box-shadow: 0 1px 2px var(--u-slate-a05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px var(--u-black-a04);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
-    border-color: #fbcfe8;
-    box-shadow: 0 4px 16px var(--u-pink-a08);
+    border-color: var(--u-pink-a15);
+    box-shadow: 0 6px 20px var(--u-pink-a08);
   }
 
   &__icon {
@@ -382,11 +390,11 @@ useHead({
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #fdf2f8, #faf5ff);
-    color: #be185d;
+    background: var(--u-pink-a06);
+    color: var(--u-color-accent);
   }
 
   &__body {
@@ -396,10 +404,10 @@ useHead({
 
   &__title {
     margin: 0 0 8px;
-    color: #737373;
-    font-size: var(--u-font-12);
+    color: var(--u-text-muted);
+    font-size: var(--u-font-11);
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-family: var(--u-font-montserrat);
   }
@@ -435,27 +443,28 @@ useHead({
     }
 
     & + & {
-      border-top: 1px solid #f5f5f5;
+      border-top: 1px solid var(--u-black-a04);
     }
 
     &:hover .contacts-card__value {
-      color: #be185d;
+      color: var(--u-color-accent);
     }
   }
 
   &__label {
-    color: #a3a3a3;
+    color: var(--u-text-muted);
     font-size: var(--u-font-12);
     font-family: var(--u-font-montserrat);
   }
 
   &__value {
-    color: #171717;
+    color: #1a1716;
     font-size: var(--u-font-15);
     font-weight: 600;
     line-height: 1.4;
     font-family: var(--u-font-montserrat);
     word-break: break-word;
+    transition: color 0.2s ease;
 
     &--inline {
       display: block;
@@ -471,7 +480,7 @@ useHead({
 @media (min-width: 640px) {
   .contacts-page {
     &__hero {
-      padding: 40px 24px;
+      padding: 44px 28px;
     }
 
     &__hero-title {
@@ -479,7 +488,7 @@ useHead({
     }
 
     &__hero-subtitle {
-      font-size: var(--u-font-16);
+      font-size: var(--u-font-15);
     }
 
     &__content {
@@ -491,7 +500,7 @@ useHead({
 @media (min-width: 1024px) {
   .contacts-page {
     &__hero {
-      padding: 48px 32px;
+      padding: 52px 36px;
     }
 
     &__hero-title {
@@ -503,7 +512,7 @@ useHead({
     }
 
     &__layout {
-      gap: 32px;
+      gap: 28px;
     }
 
     &__map,
