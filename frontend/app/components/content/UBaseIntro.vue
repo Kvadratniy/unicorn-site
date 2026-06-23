@@ -269,35 +269,39 @@ onUnmounted(() => {
   background: var(--u-white-a85);
   border: 1px solid var(--u-black-a06);
   border-radius: 18px;
-  padding: 16px 16px 14px;
-  box-shadow: 0 8px 24px var(--u-black-a04);
+  padding: 18px 18px 16px;
+  box-shadow: 0 2px 8px var(--u-black-a04);
   backdrop-filter: blur(10px);
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  transition: all 0.7s var(--u-ease-smooth);
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--u-ease-smooth),
+    transform 0.6s var(--u-ease-smooth),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .section.is-visible .card-1 {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.6s;
+  transform: translateY(0);
+  transition-delay: 0.5s;
 }
 
 .section.is-visible .card-2 {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.75s;
+  transform: translateY(0);
+  transition-delay: 0.62s;
 }
 
 .section.is-visible .card-3 {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.9s;
+  transform: translateY(0);
+  transition-delay: 0.74s;
 }
 
 .card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 32px var(--u-black-a08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px var(--u-black-a08);
   border-color: var(--u-black-a10);
 }
 
@@ -414,19 +418,21 @@ onUnmounted(() => {
   position: relative;
   width: min(420px, 100%);
   aspect-ratio: 4 / 5;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.16);
   display: grid;
   place-items: center;
   color: var(--u-white-a90);
-  transition: all 0.5s var(--u-ease-smooth);
+  transition:
+    transform 0.4s var(--u-ease-out),
+    box-shadow 0.4s var(--u-ease-out);
 }
 
 .visual__frame:hover {
-  transform: scale(1.02);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.22);
+  transform: scale(1.015);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
 }
 
 .visual__image {
@@ -477,13 +483,13 @@ onUnmounted(() => {
 }
 .visual__label {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
   padding: 12px 14px;
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--u-white-a10);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
   border: 1px solid var(--u-white-a14);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: var(--u-font-12);

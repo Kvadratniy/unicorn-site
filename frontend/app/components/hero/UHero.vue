@@ -214,9 +214,9 @@ $ease-spring: var(--u-ease-spring);
       content: '';
       background: linear-gradient(
         135deg,
-        rgba(0, 0, 0, 0.65) 0%,
-        var(--u-black-a40) 55%,
-        var(--u-black-a60) 100%
+        rgba(0, 0, 0, 0.6) 0%,
+        var(--u-black-a35) 50%,
+        var(--u-black-a50) 100%
       );
     }
   }
@@ -350,24 +350,24 @@ $ease-spring: var(--u-ease-spring);
 .decor-glow {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.18;
-  filter: blur(120px);
-  animation: float 14s ease-in-out infinite;
+  opacity: 0.14;
+  filter: blur(140px);
+  animation: float 16s ease-in-out infinite;
 
   &--1 {
-    top: -160px;
-    left: 10%;
-    width: 520px;
-    height: 520px;
+    top: -180px;
+    left: 8%;
+    width: 480px;
+    height: 480px;
     background: linear-gradient(135deg, var(--u-color-rose), #c084fc);
     animation-delay: 0s;
   }
 
   &--2 {
-    right: 28%;
-    bottom: -120px;
-    width: 420px;
-    height: 420px;
+    right: 24%;
+    bottom: -140px;
+    width: 400px;
+    height: 400px;
     background: linear-gradient(135deg, #60a5fa, #34d399);
     animation-delay: -5s;
   }
@@ -422,13 +422,13 @@ $ease-spring: var(--u-ease-spring);
     gap: 0;
     padding: 0;
     overflow: hidden;
-    background: var(--u-white-a95);
+    background: var(--u-white-a90);
     border: 1px solid var(--u-black-a06);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
-      0 25px 60px var(--u-black-a08),
+      0 20px 50px var(--u-black-a10),
       0 0 0 1px var(--u-white-a50) inset;
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(20px);
 
     &::before {
       position: absolute;
@@ -469,8 +469,8 @@ $ease-spring: var(--u-ease-spring);
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 20px 24px;
+    gap: 5px;
+    padding: 18px 22px;
     text-align: center;
     opacity: 0;
     animation: fadeInUp 0.5s $ease-out forwards;
@@ -502,22 +502,19 @@ $ease-spring: var(--u-ease-spring);
   }
 
   &__value {
-    font-size: var(--u-font-32);
+    font-size: var(--u-font-30);
     font-weight: 800;
     line-height: 1;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, var(--u-color-gray-900) 0%, #374151 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    color: #1a1716;
   }
 
   &__label {
     font-size: var(--u-font-10);
     font-weight: 600;
-    color: #94a3b8;
+    color: var(--u-text-muted);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
   }
 }
 

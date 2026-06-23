@@ -18,25 +18,25 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding-bottom: 20px;
+  gap: 28px;
+  padding-bottom: 24px;
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 44px;
     padding: 4px 4px 0;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 56px;
   }
   &__intro {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 28px;
   }
 }
 
@@ -45,10 +45,10 @@
     padding: 20px 20px 0;
   }
   .page__info {
-    gap: 80px;
+    gap: 88px;
   }
   .page__intro {
-    gap: 25px;
+    gap: 24px;
   }
 }
 </style>

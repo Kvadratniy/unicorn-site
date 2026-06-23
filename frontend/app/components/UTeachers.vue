@@ -121,10 +121,10 @@ const initials = (name: string) =>
   gap: 20px;
   align-items: flex-start;
   opacity: 0;
-  transform: scale(0.7);
+  transform: translateY(16px);
   transition:
-    opacity 0.7s var(--u-ease-standard),
-    transform 0.7s var(--u-ease-spring);
+    opacity 0.6s var(--u-ease-standard),
+    transform 0.6s var(--u-ease-standard);
 
   @media (min-width: 640px) {
     gap: 24px;
@@ -132,12 +132,8 @@ const initials = (name: string) =>
 
   &.is-visible {
     opacity: 1;
-    transform: scale(1);
-    transition-delay: calc(var(--i, 0) * 150ms);
-
-    &:hover {
-      opacity: 0.85;
-    }
+    transform: translateY(0);
+    transition-delay: calc(var(--i, 0) * 120ms);
   }
 
   &__avatar {
@@ -148,14 +144,14 @@ const initials = (name: string) =>
     width: 130px;
     height: 130px;
     overflow: hidden;
-    background: linear-gradient(to bottom right, rgb(0 0 0 / 4%), rgb(0 0 0 / 2%));
+    background: linear-gradient(to bottom right, rgb(0 0 0 / 3%), rgb(0 0 0 / 1%));
     border-radius: 20px;
-    box-shadow: 0 4px 16px rgb(0 0 0 / 6%);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
 
     @media (min-width: 640px) {
       width: 180px;
       height: 180px;
-      border-radius: 24px;
+      border-radius: 22px;
     }
   }
 
@@ -206,11 +202,12 @@ const initials = (name: string) =>
   }
 
   &__role {
-    font-size: var(--u-font-13);
-    font-weight: 500;
+    font-size: var(--u-font-12);
+    font-weight: 600;
     line-height: 1.4;
-    color: var(--u-text-secondary);
-    letter-spacing: 0.025em;
+    color: var(--u-color-accent);
+    opacity: 0.65;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
