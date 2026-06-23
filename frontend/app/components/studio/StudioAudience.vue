@@ -101,7 +101,7 @@ const { open: openContactModal } = useContactModal()
 }
 
 .item:hover {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* Number indicator */
@@ -109,9 +109,9 @@ const { open: openContactModal } = useContactModal()
   font-size: var(--u-font-56);
   font-weight: 700;
   line-height: 1;
-  color: var(--u-color-pink);
-  opacity: 0.15;
-  transition: all 0.3s ease;
+  color: var(--u-color-accent);
+  opacity: 0.12;
+  transition: opacity 0.3s ease;
   user-select: none;
 }
 
@@ -128,8 +128,7 @@ const { open: openContactModal } = useContactModal()
 }
 
 .item:hover .item__number {
-  opacity: 0.3;
-  transform: scale(1.05);
+  opacity: 0.25;
 }
 
 /* Content */
@@ -178,7 +177,7 @@ const { open: openContactModal } = useContactModal()
 }
 
 .item:hover .item__title {
-  color: var(--u-color-pink);
+  color: var(--u-color-accent);
 }
 
 /* Text */
@@ -188,7 +187,7 @@ const { open: openContactModal } = useContactModal()
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: -0.01em;
-  color: #6e6e73;
+  color: var(--u-text-muted);
   max-width: 720px;
 }
 
@@ -214,8 +213,8 @@ const { open: openContactModal } = useContactModal()
   left: 80px;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, var(--u-color-pink) 0%, var(--u-pink-a30) 30%, transparent 100%);
-  opacity: 0.15;
+  background: linear-gradient(90deg, var(--u-color-accent) 0%, var(--u-pink-a30) 30%, transparent 100%);
+  opacity: 0.12;
   transition: opacity 0.3s ease;
 }
 
@@ -247,7 +246,7 @@ const { open: openContactModal } = useContactModal()
   padding-bottom: 40px;
 }
 
-/* Button with pink gradient */
+/* Button */
 .cta {
   display: inline-flex;
   align-items: center;
@@ -255,35 +254,36 @@ const { open: openContactModal } = useContactModal()
   gap: 8px;
   min-width: 28px;
   padding: 14px 28px;
-  border-radius: 980px;
-  font-size: var(--u-font-17);
-  font-weight: 500;
+  border-radius: 14px;
+  font-size: var(--u-font-16);
+  font-weight: 600;
   line-height: 1.17;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.01em;
   color: var(--u-color-white);
   text-decoration: none;
-  background: linear-gradient(135deg, var(--u-color-pink), var(--u-color-pink-light));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px var(--u-pink-a30);
+  background: #1a1716;
+  transition:
+    transform 0.25s var(--u-ease-out),
+    background-color 0.25s ease;
 }
 
 @media (min-width: 768px) {
   .cta {
-    padding: 16px 32px;
-    font-size: var(--u-font-19);
+    padding: 15px 32px;
+    font-size: var(--u-font-17);
   }
 }
 
 @media (min-width: 1024px) {
   .cta {
-    padding: 18px 36px;
-    font-size: var(--u-font-21);
+    padding: 16px 36px;
+    font-size: var(--u-font-18);
   }
 }
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--u-pink-a40);
+  background: #2a2523;
 }
 
 .cta:active {
@@ -293,7 +293,7 @@ const { open: openContactModal } = useContactModal()
 .cta svg {
   width: 18px;
   height: 18px;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s var(--u-ease-out);
 }
 
 @media (min-width: 1024px) {
@@ -304,7 +304,7 @@ const { open: openContactModal } = useContactModal()
 }
 
 .cta:hover svg {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* Animations */

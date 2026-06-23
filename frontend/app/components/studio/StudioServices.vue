@@ -56,8 +56,8 @@ const { open: openContactModal } = useContactModal()
   display: flex;
   flex-direction: column;
   gap: 1px;
-  background: var(--u-black-a04);
-  border-radius: 16px;
+  background: var(--u-black-a06);
+  border-radius: 18px;
   overflow: hidden;
 }
 
@@ -96,23 +96,23 @@ const { open: openContactModal } = useContactModal()
 }
 
 .menu-item:hover {
-  background: #fcfcfc;
+  background: #fafafa;
 }
 
 .menu-item__num {
-  font-size: var(--u-font-13);
-  font-weight: 500;
+  font-size: var(--u-font-12);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
-  color: var(--u-black-a25);
+  color: var(--u-color-accent);
+  opacity: 0.4;
   font-family: 'Suisse Intl', sans-serif;
   padding-top: 2px;
 }
 
 @media (min-width: 1024px) {
   .menu-item__num {
-    font-size: var(--u-font-14);
-    color: var(--u-black-a30);
+    font-size: var(--u-font-13);
   }
 }
 
@@ -150,7 +150,7 @@ const { open: openContactModal } = useContactModal()
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.03em;
-  color: #111;
+  color: #1a1716;
   font-family: 'Suisse Intl', sans-serif;
 }
 
@@ -174,9 +174,9 @@ const { open: openContactModal } = useContactModal()
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--u-black-a50);
-  background: var(--u-black-a06);
-  border-radius: 4px;
+  color: var(--u-color-accent);
+  background: var(--u-pink-a06);
+  border-radius: 6px;
   font-family: 'Suisse Intl', sans-serif;
 }
 
@@ -193,7 +193,7 @@ const { open: openContactModal } = useContactModal()
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
-  color: #111;
+  color: #1a1716;
   font-family: 'Suisse Intl', sans-serif;
   white-space: nowrap;
 }
@@ -207,8 +207,8 @@ const { open: openContactModal } = useContactModal()
 .menu-item__desc {
   margin: 0;
   font-size: var(--u-font-15);
-  line-height: 1.6;
-  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.65;
+  color: var(--u-text-muted);
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   max-width: 56ch;
@@ -323,17 +323,19 @@ const { open: openContactModal } = useContactModal()
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 18px 36px;
+  gap: 10px;
+  padding: 16px 32px;
   border-radius: 14px;
   font-size: var(--u-font-15);
-  font-weight: 700;
-  letter-spacing: 0.3px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   color: var(--u-color-white);
   text-decoration: none;
   background: linear-gradient(135deg, var(--u-color-rose), var(--u-color-purple));
-  box-shadow: 0 8px 32px var(--u-rose-a22);
-  transition: all 0.4s var(--u-ease-standard);
+  box-shadow: 0 6px 24px var(--u-rose-a22);
+  transition:
+    transform 0.3s var(--u-ease-out),
+    box-shadow 0.3s var(--u-ease-out);
   position: relative;
   overflow: hidden;
   font-family: 'Suisse Intl', sans-serif;
@@ -341,7 +343,7 @@ const { open: openContactModal } = useContactModal()
 
 @media (min-width: 1024px) {
   .cta {
-    padding: 20px 40px;
+    padding: 18px 36px;
     font-size: var(--u-font-16);
   }
 }
@@ -352,12 +354,12 @@ const { open: openContactModal } = useContactModal()
   inset: 0;
   background: linear-gradient(135deg, var(--u-color-purple), var(--u-color-blue));
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
 }
 
 .cta:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 50px var(--u-rose-a32);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px var(--u-rose-a32);
 }
 
 .cta:hover::before {
@@ -365,11 +367,11 @@ const { open: openContactModal } = useContactModal()
 }
 
 .cta svg {
-  transition: transform 0.3s ease;
+  transition: transform 0.25s var(--u-ease-out);
 }
 
 .cta:hover svg {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 .cta span,

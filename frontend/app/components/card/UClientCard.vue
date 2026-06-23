@@ -52,47 +52,42 @@ $lg: 1024px;
   overflow: hidden;
   cursor: pointer;
   break-inside: avoid;
-  background: rgb(255 255 255 / 90%);
-  border: 1px solid rgb(0 0 0 / 6%);
-  border-radius: 20px;
-  box-shadow:
-    0 1px 3px rgb(0 0 0 / 4%),
-    0 8px 24px rgb(0 0 0 / 4%);
+  background: var(--u-color-white);
+  border: 1px solid var(--u-black-a06);
+  border-radius: 18px;
+  box-shadow: 0 1px 3px var(--u-black-a04);
   transition:
-    transform 0.3s ease-in-out,
-    border-color 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
-  backdrop-filter: blur(10px);
+    transform 0.3s var(--u-ease-out),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
   &::before {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    height: 3px;
+    height: 2px;
     content: '';
-    background: linear-gradient(to right, var(--u-color-pink), var(--u-color-pink-light), var(--u-color-pink));
+    background: linear-gradient(to right, var(--u-color-accent), var(--u-color-pink-light));
     opacity: 0;
     transition: opacity 0.3s;
   }
 
   &:hover {
-    border-color: rgb(236 72 153 / 15%);
-    box-shadow:
-      0 4px 12px rgb(236 72 153 / 8%),
-      0 20px 40px rgb(0 0 0 / 8%);
-    transform: translateY(-4px);
+    border-color: var(--u-pink-a15);
+    box-shadow: 0 10px 28px var(--u-black-a08);
+    transform: translateY(-3px);
 
     &::before {
       opacity: 1;
     }
 
     .client-card__image {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     .client-card__title {
-      color: var(--u-color-pink-deep);
+      color: var(--u-color-accent);
     }
 
     .client-card__description {
@@ -140,9 +135,9 @@ $lg: 1024px;
     font-size: var(--u-font-17);
     font-weight: 600;
     line-height: 1.35;
-    color: #0f172a;
-    letter-spacing: -0.025em;
-    transition: color 0.15s;
+    color: #1a1716;
+    letter-spacing: -0.02em;
+    transition: color 0.2s ease;
 
     @media (min-width: $md) {
       margin-bottom: 12px;
@@ -158,11 +153,9 @@ $lg: 1024px;
     margin: 0;
     font-size: var(--u-font-14);
     line-height: 1.65;
-    color: #475569;
-    letter-spacing: -0.025em;
-    -webkit-font-smoothing: antialiased;
-    font-feature-settings: 'liga' 1, 'calt' 1;
-    transition: color 0.15s;
+    color: var(--u-text-muted);
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
 
     @media (min-width: $md) {
       font-size: var(--u-font-15);
