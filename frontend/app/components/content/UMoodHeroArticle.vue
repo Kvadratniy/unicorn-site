@@ -137,7 +137,7 @@ const props = defineProps<{
   &__article-image {
     margin-top: 16px;
     padding-bottom: 0;
-    width: 85%;
+    width: 95%;
     margin: 0 0 0 auto ;
     // border-radius: 0 0 28px 28px;
 

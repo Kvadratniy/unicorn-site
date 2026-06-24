@@ -35,11 +35,9 @@ const burgerLineClass = 'u-burger-button__line'
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--burger-button-border, var(--u-neutral-a08));
   border-radius: 9999px;
   padding: 0;
-  border-color: var(--burger-button-border, var(--u-neutral-a08));
-  background-color: var(--burger-button-bg, var(--u-white-a82));
+  background-color: var(--u-white-a82);
 
   &__line {
     display: block;

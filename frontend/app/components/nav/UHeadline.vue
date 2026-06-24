@@ -134,6 +134,7 @@ $headline-desktop-breakpoint: 1000px;
   }
 
   &__bar {
+    position: relative;
     display: grid;
     width: 100%;
     max-width: 1500px;
@@ -145,8 +146,18 @@ $headline-desktop-breakpoint: 1000px;
     border: 1px solid $headline-bar-border;
     border-radius: 14px;
     background-color: $headline-bar-surface;
-    backdrop-filter: blur(16px);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+
+    // blur вынесен на псевдоэлемент: backdrop-filter на самом баре создаёт
+    // stacking context и прячет бургер (z-index: 101) под мобильным меню.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      backdrop-filter: blur(16px);
+    }
 
     @media (max-width: $headline-mobile-breakpoint) {
       gap: 10px;
@@ -169,14 +180,14 @@ $headline-desktop-breakpoint: 1000px;
       width: 38px;
       height: 38px;
       border-color: $headline-action-border;
-      background-color: $headline-action-surface;
+      background-color: var(--u-pink-deep-a70);
       transition:
         background-color 180ms ease,
         border-color 180ms ease;
 
       &:hover {
         border-color: rgba(51, 45, 54, 0.18);
-        background-color: $headline-action-hover;
+        background-color: var(--u-pink-deep-a80);
       }
 
       &:focus-visible {
@@ -186,7 +197,7 @@ $headline-desktop-breakpoint: 1000px;
     }
 
     :deep(.u-burger-button__line) {
-      background-color: $headline-action-text;
+      background-color: white;
     }
   }
 }
