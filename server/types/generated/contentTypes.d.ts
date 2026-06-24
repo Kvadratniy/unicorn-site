@@ -495,6 +495,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    vkPostId: Schema.Attribute.Integer;
   };
 }
 
@@ -522,6 +523,39 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     Subtitle: Schema.Attribute.String;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDistributedMusicDistributedMusic
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'distributed_musics';
+  info: {
+    displayName: 'DistributedMusic';
+    pluralName: 'distributed-musics';
+    singularName: 'distributed-music';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artist: Schema.Attribute.String;
+    audio: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::distributed-music.distributed-music'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -734,6 +768,38 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.String;
     Subtitle: Schema.Attribute.String;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStudioMusicStudioMusic extends Struct.CollectionTypeSchema {
+  collectionName: 'studio_musics';
+  info: {
+    displayName: 'StudioMusic';
+    pluralName: 'studio-musics';
+    singularName: 'studio-music';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artist: Schema.Attribute.String;
+    audio: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::studio-music.studio-music'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1353,6 +1419,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
+      'api::distributed-music.distributed-music': ApiDistributedMusicDistributedMusic;
       'api::guitar.guitar': ApiGuitarGuitar;
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
@@ -1360,6 +1427,7 @@ declare module '@strapi/strapi' {
       'api::piano.piano': ApiPianoPiano;
       'api::rent.rent': ApiRentRent;
       'api::service.service': ApiServiceService;
+      'api::studio-music.studio-music': ApiStudioMusicStudioMusic;
       'api::studio.studio': ApiStudioStudio;
       'api::teacher.teacher': ApiTeacherTeacher;
       'api::vocal.vocal': ApiVocalVocal;
