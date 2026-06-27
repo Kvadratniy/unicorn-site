@@ -489,8 +489,11 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
     MainImage: Schema.Attribute.Component<'shared.shared-image', false>;
+    postToTelegram: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    postToVk: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
+    telegramPostId: Schema.Attribute.Integer;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

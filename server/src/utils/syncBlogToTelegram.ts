@@ -1,4 +1,4 @@
-import { publishNewsToVk } from './publishNewsToVk'
+import { publishNewsToTelegram } from './publishNewsToTelegram'
 
 type StrapiMedia = {
   url?: string | null
@@ -27,8 +27,8 @@ type BlogEntry = {
   description?: string | null
   slug?: string | null
   publishedAt?: string | null
-  postToVk?: boolean | null
-  vkPostId?: number | null
+  postToTelegram?: boolean | null
+  telegramPostId?: number | null
   MainImage?: BlogImage | null
   Content?: BlogContentBlock[] | null
 }
@@ -111,10 +111,10 @@ const fetchPublishedBlog = async (documentId: string): Promise<BlogEntry | null>
 }
 
 /**
- * Posts a freshly published blog entry to the VK community wall.
+ * Posts a freshly published blog entry to the Telegram channel.
  * Triggered from the document service middleware on the `publish` action.
  */
-export const syncBlogToVk = async (documentId: string | undefined): Promise<void> => {
+export const syncBlogToTelegram = async (documentId: string | undefined): Promise<void> => {
   if (!documentId) return
 
   let entry: BlogEntry | null = null
@@ -122,27 +122,29 @@ export const syncBlogToVk = async (documentId: string | undefined): Promise<void
     entry = await fetchPublishedBlog(documentId)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
-    strapi.log.error(`[VK] Failed to load published blog ${documentId}: ${message}`)
+    strapi.log.error(`[Telegram] Failed to load published blog ${documentId}: ${message}`)
     return
   }
 
   if (!entry) {
-    strapi.log.warn(`[VK] Published blog ${documentId} not found, skip posting`)
+    strapi.log.warn(`[Telegram] Published blog ${documentId} not found, skip posting`)
     return
   }
 
-  if (entry.postToVk === false) {
-    strapi.log.info(`[VK] Blog ${documentId} has postToVk disabled, skip`)
+  if (entry.postToTelegram === false) {
+    strapi.log.info(`[Telegram] Blog ${documentId} has postToTelegram disabled, skip`)
     return
   }
 
-  if (entry.vkPostId) {
-    strapi.log.info(`[VK] Blog ${documentId} already posted (vkPostId=${entry.vkPostId}), skip`)
+  if (entry.telegramPostId) {
+    strapi.log.info(
+      `[Telegram] Blog ${documentId} already posted (telegramPostId=${entry.telegramPostId}), skip`,
+    )
     return
   }
 
   try {
-    const publishResult = await publishNewsToVk({
+    const publishResult = await publishNewsToTelegram({
       title: entry.title,
       description: entry.description,
       slug: entry.slug,
@@ -151,38 +153,41 @@ export const syncBlogToVk = async (documentId: string | undefined): Promise<void
     })
 
     if (publishResult.skipped) {
-      strapi.log.info(`[VK] Skip posting blog ${documentId}: ${publishResult.reason}`)
+      strapi.log.info(`[Telegram] Skip posting blog ${documentId}: ${publishResult.reason}`)
       return
     }
 
-    if (!publishResult.postId) return
+    if (!publishResult.messageId) return
 
     if (publishResult.imageError) {
-      strapi.log.warn(`[VK] Blog ${documentId} posted without image: ${publishResult.imageError}`)
+      strapi.log.warn(
+        `[Telegram] Blog ${documentId} posted without image: ${publishResult.imageError}`,
+      )
     }
 
     const persistStatuses: DocumentStatus[] = ['draft', 'published']
     for (const status of persistStatuses) {
       try {
-        // Persist for both statuses so the id is visible in admin regardless of selected view.
+        // Persist for both statuses so re-publishing the same document does not
+        // repost and the id is visible in admin regardless of selected view.
         // Cast keeps the build independent of generated content-type types.
         await strapi.documents(BLOG_UID).update({
           documentId,
           status,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          data: { vkPostId: publishResult.postId } as any,
+          data: { telegramPostId: publishResult.messageId } as any,
         })
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error)
         strapi.log.warn(
-          `[VK] Failed to persist vkPostId for ${status} status of blog ${documentId}: ${message}`,
+          `[Telegram] Failed to persist telegramPostId for ${status} status of blog ${documentId}: ${message}`,
         )
       }
     }
 
-    strapi.log.info(`[VK] Blog ${documentId} posted with id ${publishResult.postId}`)
+    strapi.log.info(`[Telegram] Blog ${documentId} posted with message id ${publishResult.messageId}`)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
-    strapi.log.error(`[VK] Failed to post blog ${documentId}: ${message}`)
+    strapi.log.error(`[Telegram] Failed to post blog ${documentId}: ${message}`)
   }
 }

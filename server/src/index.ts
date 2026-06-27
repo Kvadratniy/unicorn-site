@@ -1,5 +1,6 @@
 import type { Core } from '@strapi/strapi';
 import { syncBlogToVk } from './utils/syncBlogToVk';
+import { syncBlogToTelegram } from './utils/syncBlogToTelegram';
 
 const BLOG_UID = 'api::blog.blog';
 
@@ -16,7 +17,7 @@ export default {
    * This gives you an opportunity to extend code.
    */
   register({ strapi }: { strapi: Core.Strapi }) {
-    strapi.log.info('[VK] Blog publish middleware registered');
+    strapi.log.info('[Autopost] Blog publish middleware registered');
 
     strapi.documents.use(async (context, next) => {
       const result = await next();
@@ -50,7 +51,12 @@ export default {
       for (const documentId of documentIds) {
         syncBlogToVk(documentId).catch((error) => {
           const message = error instanceof Error ? error.message : String(error);
-          strapi.log.error(`[VK] Unexpected error while posting blog ${documentId}: ${message}`);
+          strapi.log.info(`[Autopost] Queued blog ${documentId} for posting`);
+        });
+
+        syncBlogToTelegram(documentId).catch((error) => {
+          const message = error instanceof Error ? error.message : String(error);
+          strapi.log.error(`[Telegram] Unexpected error while posting blog ${documentId}: ${message}`);
         });
       }
     }, 2000);

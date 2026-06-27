@@ -113,7 +113,7 @@ export const postToTelegramChannel = async ({
   message,
   imageUrl,
   linkUrl,
-  parseMode = 'HTML',
+  parseMode,
   disableWebPagePreview = true,
 }: PostToTelegramChannelInput): Promise<PostToTelegramChannelResult> => {
   if (!botToken.trim()) throw new Error('Telegram bot token is required')

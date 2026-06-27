@@ -33,7 +33,18 @@
     "slug": {
       "type": "string"
     },
+    "postToVk": {
+      "type": "boolean",
+      "default": true
+    },
+    "postToTelegram": {
+      "type": "boolean",
+      "default": true
+    },
     "vkPostId": {
+      "type": "integer"
+    },
+    "telegramPostId": {
       "type": "integer"
     }
   }
