@@ -1,4 +1,4 @@
-import { publishNewsToTelegram } from './publishNewsToTelegram'
+import { notifyTelegramWorker } from './notifyTelegramWorker'
 
 type StrapiMedia = {
   url?: string | null
@@ -111,7 +111,7 @@ const fetchPublishedBlog = async (documentId: string): Promise<BlogEntry | null>
 }
 
 /**
- * Posts a freshly published blog entry to the Telegram channel.
+ * Posts a freshly published blog entry to Telegram via the Cloudflare Worker.
  * Triggered from the document service middleware on the `publish` action.
  */
 export const syncBlogToTelegram = async (documentId: string | undefined): Promise<void> => {
@@ -144,7 +144,7 @@ export const syncBlogToTelegram = async (documentId: string | undefined): Promis
   }
 
   try {
-    const publishResult = await publishNewsToTelegram({
+    const result = await notifyTelegramWorker({
       title: entry.title,
       description: entry.description,
       slug: entry.slug,
@@ -152,17 +152,15 @@ export const syncBlogToTelegram = async (documentId: string | undefined): Promis
       bodyText: extractBodyText(entry.Content),
     })
 
-    if (publishResult.skipped) {
-      strapi.log.info(`[Telegram] Skip posting blog ${documentId}: ${publishResult.reason}`)
+    if (result.skipped) {
+      strapi.log.info(`[Telegram] Skip posting blog ${documentId}: ${result.reason}`)
       return
     }
 
-    if (!publishResult.messageId) return
+    if (!result.messageId) return
 
-    if (publishResult.imageError) {
-      strapi.log.warn(
-        `[Telegram] Blog ${documentId} posted without image: ${publishResult.imageError}`,
-      )
+    if (result.imageError) {
+      strapi.log.warn(`[Telegram] Blog ${documentId} posted without image: ${result.imageError}`)
     }
 
     const persistStatuses: DocumentStatus[] = ['draft', 'published']
@@ -175,7 +173,7 @@ export const syncBlogToTelegram = async (documentId: string | undefined): Promis
           documentId,
           status,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          data: { telegramPostId: publishResult.messageId } as any,
+          data: { telegramPostId: result.messageId } as any,
         })
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error)
@@ -185,7 +183,7 @@ export const syncBlogToTelegram = async (documentId: string | undefined): Promis
       }
     }
 
-    strapi.log.info(`[Telegram] Blog ${documentId} posted with message id ${publishResult.messageId}`)
+    strapi.log.info(`[Telegram] Blog ${documentId} posted with message id ${result.messageId}`)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     strapi.log.error(`[Telegram] Failed to post blog ${documentId}: ${message}`)
