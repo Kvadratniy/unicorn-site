@@ -1,8 +1,0 @@
-name = "unicorn-telegram-posting"
-main = "src/index.ts"
-compatibility_date = "2025-06-25"
-
-# Secrets are set with `wrangler secret put <NAME>`:
-#   TELEGRAM_BOT_TOKEN   - bot token from @BotFather
-#   TELEGRAM_CHANNEL_ID  - channel id (e.g. @eto_kvadro or -100xxxxxxxxxx)
-#   WORKER_SECRET        - shared secret, must match TELEGRAM_WORKER_SECRET in Strapi
