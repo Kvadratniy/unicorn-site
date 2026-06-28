@@ -9,6 +9,13 @@ const BLOG_UID = 'api::blog.blog';
 // (otherwise queries fail with "Transaction query already complete").
 const pendingDocumentIds = new Set<string>();
 
+// Document IDs whose post+persist cycle is still running. Rapid re-publishing
+// fires the publish action again before the previous run saved vk/telegramPostId,
+// which would defeat the DB guard and post twice. These sets serialize work per
+// document and per platform (VK/Telegram post independently).
+const vkInFlightDocumentIds = new Set<string>();
+const telegramInFlightDocumentIds = new Set<string>();
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -49,15 +56,25 @@ export default {
       pendingDocumentIds.clear();
 
       for (const documentId of documentIds) {
-        syncBlogToVk(documentId).catch((error) => {
-          const message = error instanceof Error ? error.message : String(error);
-          strapi.log.info(`[Autopost] Queued blog ${documentId} for posting`);
-        });
+        if (!vkInFlightDocumentIds.has(documentId)) {
+          vkInFlightDocumentIds.add(documentId);
+          syncBlogToVk(documentId)
+            .catch((error) => {
+              const message = error instanceof Error ? error.message : String(error);
+              strapi.log.error(`[VK] Unexpected error while posting blog ${documentId}: ${message}`);
+            })
+            .finally(() => vkInFlightDocumentIds.delete(documentId));
+        }
 
-        syncBlogToTelegram(documentId).catch((error) => {
-          const message = error instanceof Error ? error.message : String(error);
-          strapi.log.error(`[Telegram] Unexpected error while posting blog ${documentId}: ${message}`);
-        });
+        if (!telegramInFlightDocumentIds.has(documentId)) {
+          telegramInFlightDocumentIds.add(documentId);
+          syncBlogToTelegram(documentId)
+            .catch((error) => {
+              const message = error instanceof Error ? error.message : String(error);
+              strapi.log.error(`[Telegram] Unexpected error while posting blog ${documentId}: ${message}`);
+            })
+            .finally(() => telegramInFlightDocumentIds.delete(documentId));
+        }
       }
     }, 2000);
 
