@@ -24,6 +24,15 @@ type WorkerResponse = {
 const clean = (value: string | null | undefined): string =>
   typeof value === 'string' ? value.trim() : ''
 
+// Tolerate values configured without a scheme/path so a typo in env does not
+// break posting (fetch requires an absolute URL, the worker serves `/post`).
+const normalizeWorkerUrl = (value: string): string => {
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`
+  const url = new URL(withScheme)
+  if (url.pathname === '' || url.pathname === '/') url.pathname = '/post'
+  return url.toString()
+}
+
 const buildNewsUrl = (siteUrl: string, slug: string): string =>
   `${siteUrl.replace(/\/$/, '')}/news/${encodeURIComponent(slug)}`
 
@@ -65,7 +74,7 @@ export const notifyTelegramWorker = async ({
   const linkUrl = buildNewsUrl(siteUrl, normalizedSlug)
   const normalizedImageUrl = clean(imageUrl)
 
-  const response = await fetch(workerUrl, {
+  const response = await fetch(normalizeWorkerUrl(workerUrl), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
